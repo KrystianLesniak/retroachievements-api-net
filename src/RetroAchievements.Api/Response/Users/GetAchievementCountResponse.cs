@@ -7,22 +7,16 @@ namespace RetroAchievements.Api.Response.Users
     {
         internal GetAchievementCountResponse(string jsonString, HttpStatusCode statusCode) : base(jsonString, statusCode)
         {
+            if (IsSuccess)
+            {
+                GameId = JsonElement.GetProperty("GameID").GetInt32();
+                AchievementIds = JsonElement.GetProperty("AchievementIDs").Deserialize<IEnumerable<int>>() ?? new List<int>();
+            }
         }
 
-        public int GameId
-        {
-            get
-            {
-                return JsonElement.GetProperty("GameID").GetInt32();
-            }
-        } 
+        public int GameId { get; private set; }
+        public IEnumerable<int> AchievementIds { get; private set; } = new List<int>();
 
-        public IEnumerable<int> AchievementIds {
-            get
-            {
-                return JsonElement.GetProperty("AchievementIDs").Deserialize<IEnumerable<int>>() ?? new List<int>();
-            }
-          }
-        
+
     }
 }

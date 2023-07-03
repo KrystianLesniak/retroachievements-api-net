@@ -1,6 +1,4 @@
-﻿using RetroAchievements.Api.Internal.Calls;
-using RetroAchievements.Api.Internal.Calls.Users;
-using RetroAchievements.Api.Requests.Users;
+﻿using RetroAchievements.Api.Requests.Users;
 using RetroAchievements.Api.Response.Users;
 
 namespace RetroAchievements.Api.Users

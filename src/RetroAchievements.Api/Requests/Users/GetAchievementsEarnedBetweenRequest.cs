@@ -4,6 +4,8 @@ namespace RetroAchievements.Api.Requests.Users
 {
     public record GetAchievementsEarnedBetweenRequest : IRequest
     {
+        public string RequestEndpoint => throw new NotImplementedException();
+
         public GetAchievementsEarnedBetweenRequest(string user, DateTime from, DateTime to)
         {
             ArgumentNullException.ThrowIfNull(user);
@@ -18,5 +20,6 @@ namespace RetroAchievements.Api.Requests.Users
         public string User { get; init; }
         public DateTime From { get; init; }
         public DateTime To { get; init; }
+
     }
 }
