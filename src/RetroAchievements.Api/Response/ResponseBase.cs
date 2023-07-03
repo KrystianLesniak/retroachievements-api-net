@@ -5,16 +5,17 @@ namespace RetroAchievements.Api.Response.Users
 {
     public abstract class ResponseBase : IResponse
     {
-        public string JsonString { get; private set; }
+        public string ResponseString { get; private set; }
         public JsonElement JsonElement { get; private set; }
         public HttpStatusCode StatusCode { get; private set; }
         public bool IsSuccess => StatusCode == HttpStatusCode.OK;
 
-        internal ResponseBase(string jsonString, HttpStatusCode statusCode)
+        internal ResponseBase(string responseString, HttpStatusCode statusCode)
         {
-            JsonString = jsonString;
-            JsonElement = JsonSerializer.Deserialize<JsonElement>(JsonString);
             StatusCode = statusCode;
+            ResponseString = responseString;
+
+            JsonElement = JsonSerializer.Deserialize<JsonElement>(ResponseString);
         }
     }
 }

@@ -13,22 +13,6 @@ namespace RetroAchievements.Api.Internal.Utils
             return Task.FromResult(string.Concat(baseUrl, apiUrl.Trim().Trim('/'), ".php"));
         }
 
-        public static Task<IDictionary<string, string>> PrepareRequestQueries(RetroAchievementsAuthenticationData auth, params KeyValuePair<string, string>[] parameters)
-        {
-            var values = new Dictionary<string, string>()
-            {
-                ["z"] = auth.UserName,
-                ["y"] = auth.WebApiKey
-            };
-
-            foreach (var param in parameters)
-            {
-                values.Add(param.Key, param.Value);
-            }
-
-            return Task.FromResult(values as IDictionary<string, string>);
-        }
-
         public static Task<IDictionary<string, string>> PrepareRequestQueries(RetroAchievementsAuthenticationData auth, IRequest request)
         {
             var values = new Dictionary<string, string>()
@@ -52,15 +36,15 @@ namespace RetroAchievements.Api.Internal.Utils
             return Task.FromResult(values as IDictionary<string, string>);
         }
 
-        private static string GetMemberStringValue(PropertyInfo memberInfo, IRequest requestObject)
+        private static string GetMemberStringValue(PropertyInfo propertyInfo, IRequest requestObject)
         {
-            var value = memberInfo.GetValue(requestObject);
+            var value = propertyInfo.GetValue(requestObject);
             if (value == null)
                 return string.Empty;
 
-            if(memberInfo.PropertyType == typeof(DateTime))
+            if (propertyInfo.PropertyType == typeof(DateTime))
             {
-                return ((DateTime) value).ToString("Y-m-d H:i:s");
+                return ((DateTime)value).ToString("Y-m-d H:i:s");
             }
 
             return value.ToString() ?? string.Empty;

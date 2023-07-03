@@ -2,7 +2,6 @@
 
 using Microsoft.Extensions.Configuration;
 using RetroAchievements.Api;
-using RetroAchievements.Api.Users;
 
 var configuration = new ConfigurationBuilder()
      .AddJsonFile($"appsettings.json")
@@ -21,7 +20,7 @@ if (string.IsNullOrWhiteSpace(webApiKey))
 
 var authData = new RetroAchievementsAuthenticationData(userName, webApiKey);
 
-using (var client = new RetroAchievementsHttpClient())
+using (var client = new RetroAchievementsHttpClient(new HttpMessageHandler()))
 {
     var response = await client.GetAchievementCount(14402, authData);
 };

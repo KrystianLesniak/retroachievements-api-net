@@ -20,7 +20,7 @@ namespace RetroAchievements.Api.Internal.Utils
             sb.Append(requestUri);
             foreach (var parameter in queryStringParams)
             {
-                if (parameter.Value == null)
+                if (string.IsNullOrWhiteSpace(parameter.Value))
                 {
                     continue;
                 }
