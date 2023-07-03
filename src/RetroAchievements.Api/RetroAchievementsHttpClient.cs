@@ -9,7 +9,7 @@ namespace RetroAchievements.Api
         public RetroAchievementsHttpClient() : base()
         {
         }
-        public RetroAchievementsHttpClient(RetroAchievementsAuthenticationData authenticationData) : this()
+        public RetroAchievementsHttpClient(IRetroAchievementsAuthenticationData authenticationData) : this()
         {
             SetAuthenticationData(authenticationData);
         }
@@ -18,15 +18,15 @@ namespace RetroAchievements.Api
         {
         }
 
-        public RetroAchievementsHttpClient(HttpMessageHandler handler, RetroAchievementsAuthenticationData authenticationData) : this(handler)
+        public RetroAchievementsHttpClient(HttpMessageHandler handler, IRetroAchievementsAuthenticationData authenticationData) : this(handler)
         {
             SetAuthenticationData(authenticationData);
         }
 
 
-        internal RetroAchievementsAuthenticationData? AuthenticationData { get; private set; }
+        internal IRetroAchievementsAuthenticationData? AuthenticationData { get; private set; }
 
-        public void SetAuthenticationData(RetroAchievementsAuthenticationData authenticationData)
+        public void SetAuthenticationData(IRetroAchievementsAuthenticationData authenticationData)
         {
             ArgumentNullException.ThrowIfNull(authenticationData, nameof(authenticationData));
 
@@ -38,7 +38,7 @@ namespace RetroAchievements.Api
             AuthenticationData = null;
         }
 
-        internal async Task<(string, HttpStatusCode)> HandleRequestCall(IRequest request, RetroAchievementsAuthenticationData? authenticationData)
+        internal async Task<(string, HttpStatusCode)> HandleRequestCall(IRequest request, IRetroAchievementsAuthenticationData? authenticationData)
         {
             ArgumentNullException.ThrowIfNull(request, nameof(request));
             var auth = ValidateAuthenticationData(authenticationData);
@@ -51,7 +51,7 @@ namespace RetroAchievements.Api
             return (await response.Content.ReadAsStringAsync(), response.StatusCode);
         }
 
-        private RetroAchievementsAuthenticationData ValidateAuthenticationData(RetroAchievementsAuthenticationData? authenticationData)
+        private IRetroAchievementsAuthenticationData ValidateAuthenticationData(IRetroAchievementsAuthenticationData? authenticationData)
         {
             //TODO: Create custom exception for no Authentication Data
 

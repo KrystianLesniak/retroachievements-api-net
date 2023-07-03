@@ -20,8 +20,8 @@ if (string.IsNullOrWhiteSpace(webApiKey))
 
 var authData = new RetroAchievementsAuthenticationData(userName, webApiKey);
 
-using (var client = new RetroAchievementsHttpClient(new HttpMessageHandler()))
+using (var client = new RetroAchievementsHttpClient(authData))
 {
-    var response = await client.GetAchievementCount(14402, authData);
+    var response = await client.GetAchievementOfTheWeek();
 };
 

@@ -1,25 +1,26 @@
-﻿using RetroAchievements.Api.Request;
+﻿//using RetroAchievements.Api.Request;
 
-namespace RetroAchievements.Api.Requests.Users
-{
-    public record GetAchievementsEarnedBetweenRequest : IRequest
-    {
-        public string RequestEndpoint => throw new NotImplementedException();
+//namespace RetroAchievements.Api.Requests.Users
+//{
+//    public record GetAchievementsEarnedBetweenRequest : IRequest
+//    {
+//        //TODO:
+//        public string RequestEndpoint => throw new NotImplementedException();
 
-        public GetAchievementsEarnedBetweenRequest(string user, DateTime from, DateTime to)
-        {
-            ArgumentNullException.ThrowIfNull(user);
-            ArgumentNullException.ThrowIfNull(from);
-            ArgumentNullException.ThrowIfNull(to);
+//        public GetAchievementsEarnedBetweenRequest(string user, DateTime from, DateTime to)
+//        {
+//            ArgumentNullException.ThrowIfNull(user);
+//            ArgumentNullException.ThrowIfNull(from);
+//            ArgumentNullException.ThrowIfNull(to);
 
-            User = user;
-            From = from;
-            To = to;
-        }
+//            User = user;
+//            From = from;
+//            To = to;
+//        }
 
-        public string User { get; init; }
-        public DateTime From { get; init; }
-        public DateTime To { get; init; }
+//        public string User { get; init; }
+//        public DateTime From { get; init; }
+//        public DateTime To { get; init; }
 
-    }
-}
+//    }
+//}

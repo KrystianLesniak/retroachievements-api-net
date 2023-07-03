@@ -5,6 +5,9 @@ namespace RetroAchievements.Api.Response.Users
 {
     public class GetAchievementCountResponse : ResponseBase
     {
+        public int GameId { get; private set; }
+        public IEnumerable<int> AchievementIds { get; private set; }
+
         internal GetAchievementCountResponse(string jsonString, HttpStatusCode statusCode) : base(jsonString, statusCode)
         {
             if (IsSuccess)
@@ -17,10 +20,6 @@ namespace RetroAchievements.Api.Response.Users
                 AchievementIds = new List<int>();
             }
         }
-
-        public int GameId { get; private set; }
-        public IEnumerable<int> AchievementIds { get; private set; }
-
 
     }
 }

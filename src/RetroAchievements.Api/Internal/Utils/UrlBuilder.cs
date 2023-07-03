@@ -13,7 +13,7 @@ namespace RetroAchievements.Api.Internal.Utils
             return Task.FromResult(string.Concat(baseUrl, apiUrl.Trim().Trim('/'), ".php"));
         }
 
-        public static Task<IDictionary<string, string>> PrepareRequestQueries(RetroAchievementsAuthenticationData auth, IRequest request)
+        public static Task<IDictionary<string, string>> PrepareRequestQueries(IRetroAchievementsAuthenticationData auth, IRequest request)
         {
             var values = new Dictionary<string, string>()
             {
