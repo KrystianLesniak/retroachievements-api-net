@@ -4,14 +4,14 @@ using RetroAchievements.Api;
 using RetroAchievements.Api.Requests.Users;
 using RetroAchievements.Api.Users;
 
-var userName = "";
-var webApiKey = "";
+//var userName = "dsa";
+//var webApiKey = "dsadas";
 
 var authData = new RetroAchievementsAuthenticationData(userName, webApiKey);
 
-using (var client = new RetroAchievementsClient())
+using (var client = new RetroAchievementsHttpClient())
 {
-    var response = await client.GetAchievementsEarnedBetween(authData, new GetAchievementsEarnedBetweenRequest("14402"));
+    var response = await client.GetAchievementCount(authData, new GetAchievementCountRequest(14402));
     var test = "";
 };
 

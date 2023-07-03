@@ -4,13 +4,19 @@ namespace RetroAchievements.Api.Requests.Users
 {
     public record GetAchievementsEarnedBetweenRequest : IRequest
     {
-        public GetAchievementsEarnedBetweenRequest(string gameId)
+        public GetAchievementsEarnedBetweenRequest(string user, DateTime from, DateTime to)
         {
-            ArgumentNullException.ThrowIfNull(gameId);
+            ArgumentNullException.ThrowIfNull(user);
+            ArgumentNullException.ThrowIfNull(from);
+            ArgumentNullException.ThrowIfNull(to);
 
-            GameId = gameId;
+            User = user;
+            From = from;
+            To = to;
         }
 
-        public string GameId { get; init; }
+        public string User { get; init; }
+        public DateTime From { get; init; }
+        public DateTime To { get; init; }
     }
 }

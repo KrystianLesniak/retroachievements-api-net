@@ -7,11 +7,15 @@ namespace RetroAchievements.Api.Users
 {
     public static class UsersApi
     {
-        private static readonly Lazy<ICall<GetAchievementsEarnedBetweenRequest, GetAchievementsEarnedBetweenResponse>> _getAchievementsEarnedBetweenCall = new(() => new GetAchievementsEarnedBetweenCall());
-        public static async Task<GetAchievementsEarnedBetweenResponse> GetAchievementsEarnedBetween(this RetroAchievementsClient client, RetroAchievementsAuthenticationData authenticationData, string gameId)
-                => await GetAchievementsEarnedBetween(client, authenticationData, new GetAchievementsEarnedBetweenRequest(gameId));
+        public static async Task<GetAchievementCountResponse> GetAchievementCount(this RetroAchievementsHttpClient client, int gameId, RetroAchievementsAuthenticationData? authenticationData = null)
+        {
+            return await GetAchievementCount(client, new GetAchievementCountRequest(gameId), authenticationData);
+        }
 
-        public static async Task<GetAchievementsEarnedBetweenResponse> GetAchievementsEarnedBetween(this RetroAchievementsClient client, RetroAchievementsAuthenticationData authenticationData, GetAchievementsEarnedBetweenRequest request)
-                => await _getAchievementsEarnedBetweenCall.Value.Call(client, authenticationData, request);
+        public static async Task<GetAchievementCountResponse> GetAchievementCount(this RetroAchievementsHttpClient client, GetAchievementCountRequest request, RetroAchievementsAuthenticationData? authenticationData = null)
+        {
+            var response = await client.HandleRequestCall(request, authenticationData);
+            return new GetAchievementCountResponse(await response.Content.ReadAsStringAsync(), response.StatusCode);
+        }
     }
 }

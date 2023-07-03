@@ -3,10 +3,10 @@ using RetroAchievements.Api.Response;
 
 namespace RetroAchievements.Api.Internal.Calls
 {
-    internal interface ICall<TRequest, TResponse> where TResponse : IResponse where TRequest : IRequest
+    internal interface ICall<TResponse> where TResponse : IResponse
     {
         string ApiUrl { get; set; }
 
-        Task<TResponse> Call(RetroAchievementsClient client, RetroAchievementsAuthenticationData authenticationData, TRequest request);
+        Task<TResponse> Call(RetroAchievementsHttpClient client, RetroAchievementsAuthenticationData authenticationData, IRequest request);
     }
 }
