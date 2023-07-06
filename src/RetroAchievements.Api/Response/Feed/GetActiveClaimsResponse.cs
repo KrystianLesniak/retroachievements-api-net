@@ -21,7 +21,7 @@ namespace RetroAchievements.Api.Response.Users
         public int Id { get; private set; }
 
         [JsonInclude]
-        public string User { get; private set; }
+        public string User { get; private set; } = string.Empty;
 
         [JsonInclude]
         [JsonPropertyName("GameID")]

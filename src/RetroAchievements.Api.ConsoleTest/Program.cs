@@ -46,5 +46,3 @@ using (var client = new RetroAchievementsHttpClient(authData))
     //}
     var response = await client.GetActiveClaimsAsync();
 };
-
-var test = "";
