@@ -44,7 +44,7 @@ using (var client = new RetroAchievementsHttpClient(authData))
     //    await Task.Delay(500);
 
     //}
-    var response = client.GetAchievementOfTheWeek();
+    var response = await client.GetActiveClaimsAsync();
 };
 
 var test = "";

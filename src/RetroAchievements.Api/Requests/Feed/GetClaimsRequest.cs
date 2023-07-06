@@ -1,4 +1,5 @@
-﻿using RetroAchievements.Api.Request;
+﻿using RetroAchievements.Api.Common.Enums;
+using RetroAchievements.Api.Request;
 
 namespace RetroAchievements.Api.Requests.Users
 {
@@ -13,13 +14,6 @@ namespace RetroAchievements.Api.Requests.Users
 
         [ApiInputKey("k")]
         public ClaimKindEnum ClaimKind { get; init; }
-    }
-
-    public enum ClaimKindEnum
-    {
-        Completed = 1,
-        Dropped = 2,
-        Expired = 3,
     }
 
 }
