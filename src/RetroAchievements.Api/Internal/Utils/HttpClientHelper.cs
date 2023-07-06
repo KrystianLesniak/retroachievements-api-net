@@ -4,16 +4,16 @@ using System.Reflection;
 
 namespace RetroAchievements.Api.Internal.Utils
 {
-    internal static class UrlBuilder
+    internal static class HttpClientHelper
     {
         private static readonly string baseUrl = "https://retroachievements.org/API/";
 
-        public static Task<string> PrepareRequestUrl(string apiUrl)
+        public static string PrepareRequestUrl(string apiUrl)
         {
-            return Task.FromResult(string.Concat(baseUrl, apiUrl.Trim().Trim('/'), ".php"));
+            return string.Concat(baseUrl, apiUrl.Trim().Trim('/'), ".php");
         }
 
-        public static Task<IDictionary<string, string>> PrepareRequestQueries(IRetroAchievementsAuthenticationData auth, IRequest request)
+        public static IDictionary<string, string> PrepareRequestQueries(IRetroAchievementsAuthenticationData auth, IRequest request)
         {
             var values = new Dictionary<string, string>()
             {
@@ -33,7 +33,7 @@ namespace RetroAchievements.Api.Internal.Utils
                 }
             }
 
-            return Task.FromResult(values as IDictionary<string, string>);
+            return values;
         }
 
         private static string GetMemberStringValue(PropertyInfo propertyInfo, IRequest requestObject)

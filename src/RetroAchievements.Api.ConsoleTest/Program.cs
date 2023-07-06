@@ -2,6 +2,8 @@
 
 using Microsoft.Extensions.Configuration;
 using RetroAchievements.Api;
+using RetroAchievements.Api.Response;
+using System.Diagnostics;
 
 var configuration = new ConfigurationBuilder()
      .AddJsonFile($"appsettings.json")
@@ -20,8 +22,29 @@ if (string.IsNullOrWhiteSpace(webApiKey))
 
 var authData = new RetroAchievementsAuthenticationData(userName, webApiKey);
 
+
 using (var client = new RetroAchievementsHttpClient(authData))
 {
-    var response = await client.GetAchievementOfTheWeek();
+
+    var responseList = new List<IRetroAchievementResponse>();
+
+    Stopwatch stopWatch = new Stopwatch();
+
+    //for (int i = 0; i < 100; i++)
+    //{
+    //    stopWatch.Start();
+    //    responseList.Add( await client.GetAchievementOfTheWeek());
+
+    //    stopWatch.Stop();
+
+    //    Console.WriteLine($"Time: {stopWatch.Elapsed}");
+
+    //    stopWatch.Reset();
+
+    //    await Task.Delay(500);
+
+    //}
+    var response = client.GetAchievementOfTheWeek();
 };
 
+var test = "";

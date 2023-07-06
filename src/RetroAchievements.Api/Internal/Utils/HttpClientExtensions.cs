@@ -4,12 +4,18 @@ namespace RetroAchievements.Api.Internal.Utils
 {
     internal static class HttpClientExtensions
     {
-        public static async Task<HttpResponseMessage> GetWithQueryStringAsync(this HttpClient client, string uri,
-            IDictionary<string, string> queryStringParams)
+        public static async Task<HttpResponseMessage> GetWithQueryStringAsync(this HttpClient client, string uri, IDictionary<string, string> queryStringParams)
         {
             var url = GetUriWithQueryString(uri, queryStringParams);
 
             return await client.GetAsync(url);
+        }
+
+        public static HttpResponseMessage GetWithQueryString(this HttpClient client, string uri, IDictionary<string, string> queryStringParams)
+        {
+            var url = GetUriWithQueryString(uri, queryStringParams);
+
+            return client.Send(new HttpRequestMessage(HttpMethod.Get, url));
         }
 
         private static string GetUriWithQueryString(string requestUri,

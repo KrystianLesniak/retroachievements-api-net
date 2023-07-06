@@ -15,7 +15,8 @@ namespace RetroAchievements.Api.Requests.Users
         public ClaimKindEnum ClaimKind { get; init; }
     }
 
-    public enum ClaimKindEnum{
+    public enum ClaimKindEnum
+    {
         Completed = 1,
         Dropped = 2,
         Expired = 3,

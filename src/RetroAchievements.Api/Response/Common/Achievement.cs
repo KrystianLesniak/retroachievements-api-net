@@ -1,21 +1,35 @@
-﻿using System.Text.Json;
+﻿using RetroAchievements.Api.Internal.Json;
+using System.Text.Json.Serialization;
 
 namespace RetroAchievements.Api.Response.Common
 {
-    public class Achievement
+    public record Achievement
     {
-        public int Id { get; set; }
-        public string Title { get; set; } = string.Empty;
-        public string Description { get; set; } = string.Empty;
-        public int Points { get; set; }
-        public int TrueRatio { get; set; }
-        public string Author { get; set; } = string.Empty;
-        public DateTime DateCreated { get; set; }
-        public DateTime DateModified { get; set; }
+        [JsonInclude]
+        [JsonPropertyName("ID")]
+        public int Id { get; private set; }
 
-        internal static Achievement? Deserialize(JsonElement jsonElement)
-        {
-            return jsonElement.Deserialize<Achievement>();
-        }
+        [JsonInclude]
+        public string Title { get; private set; } = string.Empty;
+
+        [JsonInclude]
+        public string Description { get; private set; } = string.Empty;
+
+        [JsonInclude]
+        public int Points { get; private set; }
+
+        [JsonInclude]
+        public int TrueRatio { get; private set; }
+
+        [JsonInclude]
+        public string Author { get; private set; } = string.Empty;
+
+        [JsonInclude]
+        [JsonConverter(typeof(DateTimeConverterForCustomApiFormat))]
+        public DateTime DateCreated { get; private set; }
+
+        [JsonInclude]
+        [JsonConverter(typeof(DateTimeConverterForCustomApiFormat))]
+        public DateTime DateModified { get; private set; }
     }
 }

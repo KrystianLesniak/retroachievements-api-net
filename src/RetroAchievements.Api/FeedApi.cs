@@ -5,15 +5,27 @@ namespace RetroAchievements.Api
 {
     public static class FeedApi
     {
-        public static async Task<GetAchievementOfTheWeekResponse> GetAchievementOfTheWeek(this RetroAchievementsHttpClient client, RetroAchievementsAuthenticationData? authenticationData = null)
+        #region GetAchievementOfTheWeek
+        public static async Task<GetAchievementOfTheWeekResponse> GetAchievementOfTheWeekAsync(this RetroAchievementsHttpClient client, RetroAchievementsAuthenticationData? authenticationData = null)
         {
-            return await client.GetAchievementOfTheWeek(new GetAchievementOfTheWeekRequest(), authenticationData);
+            return await client.GetAchievementOfTheWeekAsync(new GetAchievementOfTheWeekRequest(), authenticationData);
         }
 
-        public static async Task<GetAchievementOfTheWeekResponse> GetAchievementOfTheWeek(this RetroAchievementsHttpClient client, GetAchievementOfTheWeekRequest request, RetroAchievementsAuthenticationData? authenticationData = null)
+        public static async Task<GetAchievementOfTheWeekResponse> GetAchievementOfTheWeekAsync(this RetroAchievementsHttpClient client, GetAchievementOfTheWeekRequest request, RetroAchievementsAuthenticationData? authenticationData = null)
         {
-            var response = await client.HandleRequestCall(request, authenticationData);
-            return new GetAchievementOfTheWeekResponse(response.Item1, response.Item2);
+            return await client.HandleRequestCallAsync<GetAchievementOfTheWeekResponse>(request, authenticationData);
         }
+
+        public static GetAchievementOfTheWeekResponse GetAchievementOfTheWeek(this RetroAchievementsHttpClient client, RetroAchievementsAuthenticationData? authenticationData = null)
+        {
+            return client.GetAchievementOfTheWeek(new GetAchievementOfTheWeekRequest(), authenticationData);
+        }
+
+        public static GetAchievementOfTheWeekResponse GetAchievementOfTheWeek(this RetroAchievementsHttpClient client, GetAchievementOfTheWeekRequest request, RetroAchievementsAuthenticationData? authenticationData = null)
+        {
+            return client.HandleRequestCall<GetAchievementOfTheWeekResponse>(request, authenticationData);
+        }
+        #endregion GetAchievementOfTheWeek
+
     }
 }

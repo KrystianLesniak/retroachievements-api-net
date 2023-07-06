@@ -1,21 +1,25 @@
-﻿using RetroAchievements.Api.Internal.Utils;
+﻿using RetroAchievements.Api.Exceptions;
+using RetroAchievements.Api.Internal.Json;
+using RetroAchievements.Api.Internal.Utils;
 using RetroAchievements.Api.Request;
-using System.Net;
+using RetroAchievements.Api.Response.Users;
 
 namespace RetroAchievements.Api
 {
-    public class RetroAchievementsHttpClient : HttpClient
+    public class RetroAchievementsHttpClient : IDisposable
     {
-        public RetroAchievementsHttpClient() : base()
+        public RetroAchievementsHttpClient()
         {
+            httpClient = new HttpClient();
         }
         public RetroAchievementsHttpClient(IRetroAchievementsAuthenticationData authenticationData) : this()
         {
             SetAuthenticationData(authenticationData);
         }
 
-        public RetroAchievementsHttpClient(HttpMessageHandler handler) : base(handler)
+        public RetroAchievementsHttpClient(HttpMessageHandler handler)
         {
+            httpClient = new HttpClient(handler);
         }
 
         public RetroAchievementsHttpClient(HttpMessageHandler handler, IRetroAchievementsAuthenticationData authenticationData) : this(handler)
@@ -24,7 +28,10 @@ namespace RetroAchievements.Api
         }
 
 
-        internal IRetroAchievementsAuthenticationData? AuthenticationData { get; private set; }
+        private IRetroAchievementsAuthenticationData? AuthenticationData { get; set; }
+
+        private readonly HttpClient httpClient;
+        private readonly ResponseBuilder responseBuilder = new();
 
         public void SetAuthenticationData(IRetroAchievementsAuthenticationData authenticationData)
         {
@@ -38,26 +45,45 @@ namespace RetroAchievements.Api
             AuthenticationData = null;
         }
 
-        internal async Task<(string, HttpStatusCode)> HandleRequestCall(IRequest request, IRetroAchievementsAuthenticationData? authenticationData)
+        internal async Task<TResponse> HandleRequestCallAsync<TResponse>(IRequest request, IRetroAchievementsAuthenticationData? authenticationData) where TResponse : BaseRetroAchievementsResponse
         {
             ArgumentNullException.ThrowIfNull(request, nameof(request));
             var auth = ValidateAuthenticationData(authenticationData);
 
-            var queries = await UrlBuilder.PrepareRequestQueries(auth, request);
-            var url = await UrlBuilder.PrepareRequestUrl(request.RequestEndpoint);
+            var queries = HttpClientHelper.PrepareRequestQueries(auth, request);
+            var url = HttpClientHelper.PrepareRequestUrl(request.RequestEndpoint);
 
-            using var response = await this.GetWithQueryStringAsync(url, queries);
+            using var response = await httpClient.GetWithQueryStringAsync(url, queries);
+            using var contentStream = await response.Content.ReadAsStreamAsync();
 
-            return (await response.Content.ReadAsStringAsync(), response.StatusCode);
+            return await responseBuilder.FromResponseAsync<TResponse>(contentStream, response.StatusCode);
+        }
+
+        internal TResponse HandleRequestCall<TResponse>(IRequest request, IRetroAchievementsAuthenticationData? authenticationData) where TResponse : BaseRetroAchievementsResponse
+        {
+            ArgumentNullException.ThrowIfNull(request, nameof(request));
+            var auth = ValidateAuthenticationData(authenticationData);
+
+            var queries = HttpClientHelper.PrepareRequestQueries(auth, request);
+            var url = HttpClientHelper.PrepareRequestUrl(request.RequestEndpoint);
+
+            using var response = httpClient.GetWithQueryString(url, queries);
+            using var contentStream = response.Content.ReadAsStream();
+
+            return responseBuilder.FromResponse<TResponse>(contentStream, response.StatusCode);
         }
 
         private IRetroAchievementsAuthenticationData ValidateAuthenticationData(IRetroAchievementsAuthenticationData? authenticationData)
         {
-            //TODO: Create custom exception for no Authentication Data
-
             return authenticationData
                 ?? AuthenticationData
-                ?? throw new ArgumentNullException();
+                ?? throw new MissingAuthenticationDataException();
+        }
+
+        public void Dispose()
+        {
+            httpClient.Dispose();
+            GC.SuppressFinalize(this);
         }
     }
 }
