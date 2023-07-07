@@ -1,4 +1,4 @@
-﻿using RetroAchievements.Api.Internal.Json;
+﻿using RetroAchievements.Api.Internal.Json.Converters;
 using System.Text.Json.Serialization;
 
 namespace RetroAchievements.Api.Response.Common
@@ -25,11 +25,11 @@ namespace RetroAchievements.Api.Response.Common
         public string Author { get; private set; } = string.Empty;
 
         [JsonInclude]
-        [JsonConverter(typeof(DateTimeConverterForCustomApiFormat))]
+        [JsonConverter(typeof(DateTimeCustomApiFormatConverter))]
         public DateTime DateCreated { get; private set; }
 
         [JsonInclude]
-        [JsonConverter(typeof(DateTimeConverterForCustomApiFormat))]
+        [JsonConverter(typeof(DateTimeCustomApiFormatConverter))]
         public DateTime DateModified { get; private set; }
     }
 }

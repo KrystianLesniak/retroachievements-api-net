@@ -1,6 +1,6 @@
-﻿namespace RetroAchievements.Api.Common.Enums
+﻿namespace RetroAchievements.Api.Response.Enums
 {
-    public enum StatusEnum
+    public enum Status
     {
         Active = 0,
         Complete = 1,

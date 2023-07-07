@@ -1,5 +1,5 @@
-﻿using RetroAchievements.Api.Common.Enums;
-using RetroAchievements.Api.Request;
+﻿using RetroAchievements.Api.Request;
+using RetroAchievements.Api.Requests.Enums;
 
 namespace RetroAchievements.Api.Requests.Users
 {
@@ -7,13 +7,13 @@ namespace RetroAchievements.Api.Requests.Users
     {
         public string RequestEndpoint => "API_GetClaims";
 
-        public GetClaimsRequest(ClaimKindEnum claimKind = ClaimKindEnum.Completed)
+        public GetClaimsRequest(ClaimKind claimKind = ClaimKind.Completed)
         {
             ClaimKind = claimKind;
         }
 
         [ApiInputKey("k")]
-        public ClaimKindEnum ClaimKind { get; init; }
+        public ClaimKind ClaimKind { get; init; }
     }
 
 }

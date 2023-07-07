@@ -1,4 +1,5 @@
-﻿using RetroAchievements.Api.Requests.Users;
+﻿using RetroAchievements.Api.Requests.Enums;
+using RetroAchievements.Api.Requests.Users;
 using RetroAchievements.Api.Response.Users;
 
 namespace RetroAchievements.Api
@@ -49,48 +50,48 @@ namespace RetroAchievements.Api
         }
         #endregion GetActiveClaims
 
-        //#region GetClaims
-        //public static async Task<GetClaimsResponse> GetClaimsAsync(this RetroAchievementsHttpClient client, RetroAchievementsAuthenticationData? authenticationData = null)
-        //{
-        //    return await client.GetClaimsAsync(new GetClaimsRequest(), authenticationData);
-        //}
+        #region GetClaims
+        public static async Task<GetClaimsResponse> GetClaimsAsync(this RetroAchievementsHttpClient client, ClaimKind claimKind = ClaimKind.Completed, RetroAchievementsAuthenticationData? authenticationData = null)
+        {
+            return await client.GetClaimsAsync(new GetClaimsRequest(claimKind), authenticationData);
+        }
 
-        //public static async Task<GetClaimsResponse> GetClaimsAsync(this RetroAchievementsHttpClient client, GetClaimsRequest request, RetroAchievementsAuthenticationData? authenticationData = null)
-        //{
-        //    return await client.HandleRequestCallAsync<GetClaimsResponse>(request, authenticationData);
-        //}
+        public static async Task<GetClaimsResponse> GetClaimsAsync(this RetroAchievementsHttpClient client, GetClaimsRequest request, RetroAchievementsAuthenticationData? authenticationData = null)
+        {
+            return await client.HandleRequestCallAsync<GetClaimsResponse>(request, authenticationData);
+        }
 
-        //public static GetClaimsResponse GetClaims(this RetroAchievementsHttpClient client, RetroAchievementsAuthenticationData? authenticationData = null)
-        //{
-        //    return client.GetClaims(new GetClaimsRequest(), authenticationData);
-        //}
+        public static GetClaimsResponse GetClaims(this RetroAchievementsHttpClient client, ClaimKind claimKind = ClaimKind.Completed, RetroAchievementsAuthenticationData? authenticationData = null)
+        {
+            return client.GetClaims(new GetClaimsRequest(claimKind), authenticationData);
+        }
 
-        //public static GetClaimsResponse GetClaims(this RetroAchievementsHttpClient client, GetClaimsRequest request, RetroAchievementsAuthenticationData? authenticationData = null)
-        //{
-        //    return client.HandleRequestCall<GetClaimsResponse>(request, authenticationData);
-        //}
-        //#endregion GetClaims
+        public static GetClaimsResponse GetClaims(this RetroAchievementsHttpClient client, GetClaimsRequest request, RetroAchievementsAuthenticationData? authenticationData = null)
+        {
+            return client.HandleRequestCall<GetClaimsResponse>(request, authenticationData);
+        }
+        #endregion GetClaims
 
-        //#region GetTopTenUsers
-        //public static async Task<GetTopTenUsersResponse> GetTopTenUsersAsync(this RetroAchievementsHttpClient client, RetroAchievementsAuthenticationData? authenticationData = null)
-        //{
-        //    return await client.GetTopTenUsersAsync(new GetTopTenUsersRequest(), authenticationData);
-        //}
+        #region GetTopTenUsers
+        public static async Task<GetTopTenUsersResponse> GetTopTenUsersAsync(this RetroAchievementsHttpClient client, RetroAchievementsAuthenticationData? authenticationData = null)
+        {
+            return await client.GetTopTenUsersAsync(new GetTopTenUsersRequest(), authenticationData);
+        }
 
-        //public static async Task<GetTopTenUsersResponse> GetTopTenUsersAsync(this RetroAchievementsHttpClient client, GetTopTenUsersRequest request, RetroAchievementsAuthenticationData? authenticationData = null)
-        //{
-        //    return await client.HandleRequestCallAsync<GetTopTenUsersResponse>(request, authenticationData);
-        //}
+        public static async Task<GetTopTenUsersResponse> GetTopTenUsersAsync(this RetroAchievementsHttpClient client, GetTopTenUsersRequest request, RetroAchievementsAuthenticationData? authenticationData = null)
+        {
+            return await client.HandleRequestCallAsync<GetTopTenUsersResponse>(request, authenticationData);
+        }
 
-        //public static GetTopTenUsersResponse GetTopTenUsers(this RetroAchievementsHttpClient client, RetroAchievementsAuthenticationData? authenticationData = null)
-        //{
-        //    return client.GetTopTenUsers(new GetTopTenUsersRequest(), authenticationData);
-        //}
+        public static GetTopTenUsersResponse GetTopTenUsers(this RetroAchievementsHttpClient client, RetroAchievementsAuthenticationData? authenticationData = null)
+        {
+            return client.GetTopTenUsers(new GetTopTenUsersRequest(), authenticationData);
+        }
 
-        //public static GetTopTenUsersResponse GetTopTenUsers(this RetroAchievementsHttpClient client, GetTopTenUsersRequest request, RetroAchievementsAuthenticationData? authenticationData = null)
-        //{
-        //    return client.HandleRequestCall<GetTopTenUsersResponse>(request, authenticationData);
-        //}
-        //#endregion GetTopTenUsers
+        public static GetTopTenUsersResponse GetTopTenUsers(this RetroAchievementsHttpClient client, GetTopTenUsersRequest request, RetroAchievementsAuthenticationData? authenticationData = null)
+        {
+            return client.HandleRequestCall<GetTopTenUsersResponse>(request, authenticationData);
+        }
+        #endregion GetTopTenUsers
     }
 }

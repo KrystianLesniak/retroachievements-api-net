@@ -1,4 +1,5 @@
-﻿using RetroAchievements.Api.Response.Users;
+﻿using RetroAchievements.Api.Response;
+using RetroAchievements.Api.Response.Users;
 using System.Net;
 using System.Text.Json;
 
@@ -6,46 +7,46 @@ namespace RetroAchievements.Api.Internal.Json
 {
     internal class ResponseBuilder
     {
-        internal async Task<T> FromResponseAsync<T>(Stream content, HttpStatusCode status) where T : BaseRetroAchievementsResponse
+        internal async Task<TResponse> FromResponseAsync<TResponse>(Stream content, HttpStatusCode status) where TResponse : BaseRetroAchievementsResponse, new()
         {
 
-            BaseRetroAchievementsResponse? responseInstance;
+            TResponse? responseInstance;
 
             if (status == HttpStatusCode.OK)
             {
-                responseInstance = await JsonSerializer.DeserializeAsync<T>(content);
+                responseInstance = await JsonSerializer.DeserializeAsync<TResponse>(content);
 
-                responseInstance ??= BaseRetroAchievementsResponse.Create(await ReadStreamToStringAsync(content), status);
+                responseInstance ??= new TResponse() { FailedStatusResponseString = await ReadStreamToStringAsync(content), StatusCode = status };
             }
             else
             {
-                responseInstance = BaseRetroAchievementsResponse.Create(await ReadStreamToStringAsync(content), status);
+                responseInstance = new TResponse() { FailedStatusResponseString = await ReadStreamToStringAsync(content), StatusCode = status };
             }
 
             responseInstance.StatusCode = status;
 
-            return (T)responseInstance;
+            return responseInstance;
         }
 
-        internal T FromResponse<T>(Stream content, HttpStatusCode status) where T : BaseRetroAchievementsResponse
+        internal TResponse FromResponse<TResponse>(Stream content, HttpStatusCode status) where TResponse : BaseRetroAchievementsResponse, new()
         {
 
-            BaseRetroAchievementsResponse? responseInstance;
+            TResponse? responseInstance;
 
             if (status == HttpStatusCode.OK)
             {
-                responseInstance = JsonSerializer.Deserialize<T>(content);
+                responseInstance = JsonSerializer.Deserialize<TResponse>(content);
 
-                responseInstance ??= BaseRetroAchievementsResponse.Create(ReadStreamToString(content), status);
+                responseInstance ??= new TResponse() { FailedStatusResponseString = ReadStreamToString(content), StatusCode = status };
             }
             else
             {
-                responseInstance = BaseRetroAchievementsResponse.Create(ReadStreamToString(content), status);
+                responseInstance = new TResponse() { FailedStatusResponseString = ReadStreamToString(content), StatusCode = status };
             }
 
             responseInstance.StatusCode = status;
 
-            return (T)responseInstance;
+            return responseInstance;
         }
 
         private static string ReadStreamToString(Stream stream)

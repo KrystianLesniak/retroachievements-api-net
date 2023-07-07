@@ -1,6 +1,6 @@
-﻿namespace RetroAchievements.Api.Common.Enums
+﻿namespace RetroAchievements.Api.Requests.Enums
 {
-    public enum ClaimKindEnum
+    public enum ClaimKind
     {
         Completed = 1,
         Dropped = 2,

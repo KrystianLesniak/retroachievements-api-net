@@ -2,6 +2,7 @@
 using RetroAchievements.Api.Internal.Json;
 using RetroAchievements.Api.Internal.Utils;
 using RetroAchievements.Api.Request;
+using RetroAchievements.Api.Response;
 using RetroAchievements.Api.Response.Users;
 
 namespace RetroAchievements.Api
@@ -45,7 +46,7 @@ namespace RetroAchievements.Api
             AuthenticationData = null;
         }
 
-        internal async Task<TResponse> HandleRequestCallAsync<TResponse>(IRequest request, IRetroAchievementsAuthenticationData? authenticationData) where TResponse : BaseRetroAchievementsResponse
+        internal async Task<TResponse> HandleRequestCallAsync<TResponse>(IRequest request, IRetroAchievementsAuthenticationData? authenticationData) where TResponse : BaseRetroAchievementsResponse, new()
         {
             ArgumentNullException.ThrowIfNull(request, nameof(request));
             var auth = ValidateAuthenticationData(authenticationData);
@@ -59,7 +60,7 @@ namespace RetroAchievements.Api
             return await responseBuilder.FromResponseAsync<TResponse>(contentStream, response.StatusCode);
         }
 
-        internal TResponse HandleRequestCall<TResponse>(IRequest request, IRetroAchievementsAuthenticationData? authenticationData) where TResponse : BaseRetroAchievementsResponse
+        internal TResponse HandleRequestCall<TResponse>(IRequest request, IRetroAchievementsAuthenticationData? authenticationData) where TResponse : BaseRetroAchievementsResponse, new()
         {
             ArgumentNullException.ThrowIfNull(request, nameof(request));
             var auth = ValidateAuthenticationData(authenticationData);

@@ -1,4 +1,4 @@
-﻿using RetroAchievements.Api.Internal.Json;
+﻿using RetroAchievements.Api.Internal.Json.Converters;
 using System.Text.Json.Serialization;
 
 namespace RetroAchievements.Api.Response.Common
@@ -11,7 +11,7 @@ namespace RetroAchievements.Api.Response.Common
         [JsonInclude]
         public int RAPoints { get; private set; }
 
-        [JsonConverter(typeof(DateTimeConverterForCustomApiFormat))]
+        [JsonConverter(typeof(DateTimeCustomApiFormatConverter))]
         [JsonInclude]
         public DateTime DateAwarded { get; private set; }
 

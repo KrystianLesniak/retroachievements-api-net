@@ -5,20 +5,20 @@ namespace RetroAchievements.Api.Response.Users
 {
     public record BaseRetroAchievementsResponse : IRetroAchievementResponse
     {
+        internal BaseRetroAchievementsResponse()
+        {
+        }
+
+        internal BaseRetroAchievementsResponse(HttpStatusCode statusCode, string? failedStatusResponseString)
+        {
+            StatusCode = statusCode;
+            FailedStatusResponseString = failedStatusResponseString;
+        }
+
         [JsonIgnore]
         public HttpStatusCode StatusCode { get; internal set; }
 
         [JsonIgnore]
-        public string? FailedStatusResponseString { get; private set; }
-
-        internal static BaseRetroAchievementsResponse Create(string? responseString, HttpStatusCode statusCode)
-        {
-            return new()
-            {
-                FailedStatusResponseString = responseString,
-                StatusCode = statusCode
-            };
-        }
-
+        public string? FailedStatusResponseString { get; internal set; }
     }
 }
