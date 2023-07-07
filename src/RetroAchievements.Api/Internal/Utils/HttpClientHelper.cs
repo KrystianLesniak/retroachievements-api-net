@@ -46,9 +46,9 @@ namespace RetroAchievements.Api.Internal.Utils
             {
                 return ((DateTime)value).ToString("Y-m-d H:i:s");
             }
-            else if(propertyInfo.PropertyType.IsEnum)
+            else if (propertyInfo.PropertyType.IsEnum)
             {
-                return ((int) value).ToString();
+                return ((int)value).ToString();
             }
 
             return value.ToString() ?? string.Empty;

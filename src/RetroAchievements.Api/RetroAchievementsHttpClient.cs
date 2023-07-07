@@ -2,7 +2,6 @@
 using RetroAchievements.Api.Internal.Json;
 using RetroAchievements.Api.Internal.Utils;
 using RetroAchievements.Api.Request;
-using RetroAchievements.Api.Response;
 using RetroAchievements.Api.Response.Users;
 
 namespace RetroAchievements.Api

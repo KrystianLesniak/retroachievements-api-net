@@ -1,5 +1,4 @@
-﻿using RetroAchievements.Api.Response;
-using RetroAchievements.Api.Response.Users;
+﻿using RetroAchievements.Api.Response.Users;
 using System.Net;
 using System.Text.Json;
 

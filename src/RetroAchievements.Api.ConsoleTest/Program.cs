@@ -2,7 +2,6 @@
 
 using Microsoft.Extensions.Configuration;
 using RetroAchievements.Api;
-using RetroAchievements.Api.Requests.Enums;
 using RetroAchievements.Api.Response;
 using System.Diagnostics;
 
