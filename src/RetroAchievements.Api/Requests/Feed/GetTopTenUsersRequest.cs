@@ -2,7 +2,7 @@
 
 namespace RetroAchievements.Api.Requests.Users
 {
-    public record GetTopTenUsersRequest : IRequest
+    public record GetTopTenUsersRequest : IRetroAchievementsRequest
     {
         public string RequestEndpoint => "API_GetTopTenUsers";
 

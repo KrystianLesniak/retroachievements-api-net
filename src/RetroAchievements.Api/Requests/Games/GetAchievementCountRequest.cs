@@ -1,8 +1,8 @@
 ﻿using RetroAchievements.Api.Request;
 
-namespace RetroAchievements.Api.Requests.Users
+namespace RetroAchievements.Api.Requests.Games
 {
-    public record GetAchievementCountRequest : IRequest
+    public record GetAchievementCountRequest : IRetroAchievementsRequest
     {
         public string RequestEndpoint => "API_GetAchievementCount";
 

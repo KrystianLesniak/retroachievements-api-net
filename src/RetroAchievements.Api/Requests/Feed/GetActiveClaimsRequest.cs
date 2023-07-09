@@ -2,7 +2,7 @@
 
 namespace RetroAchievements.Api.Requests.Users
 {
-    public record GetActiveClaimsRequest : IRequest
+    public record GetActiveClaimsRequest : IRetroAchievementsRequest
     {
         public string RequestEndpoint => "API_GetActiveClaims";
 

@@ -1,5 +1,6 @@
 ﻿using RetroAchievements.Api.Request;
 using RetroAchievements.Api.Requests;
+using System.Collections;
 using System.Reflection;
 
 namespace RetroAchievements.Api.Internal.Utils
@@ -13,7 +14,7 @@ namespace RetroAchievements.Api.Internal.Utils
             return string.Concat(baseUrl, apiUrl.Trim().Trim('/'), ".php");
         }
 
-        public static IDictionary<string, string> PrepareRequestQueries(IRetroAchievementsAuthenticationData auth, IRequest request)
+        public static IDictionary<string, string> PrepareRequestQueries(IRetroAchievementsAuthenticationData auth, IRetroAchievementsRequest request)
         {
             var values = new Dictionary<string, string>()
             {
@@ -29,29 +30,35 @@ namespace RetroAchievements.Api.Internal.Utils
 
                 if (attr != null)
                 {
-                    values.Add(attr.Key, GetMemberStringValue(property, request));
+                    var value = property.GetValue(request);
+                    values.Add(attr.Key, GetMemberStringValue(property, value));
                 }
             }
 
             return values;
         }
 
-        private static string GetMemberStringValue(PropertyInfo propertyInfo, IRequest requestObject)
+        private static string GetMemberStringValue(PropertyInfo p, object? propertyValue)
         {
-            var value = propertyInfo.GetValue(requestObject);
-            if (value == null)
+            if (propertyValue == null)
                 return string.Empty;
 
-            if (propertyInfo.PropertyType == typeof(DateTime))
+            if (p.PropertyType == typeof(DateTime))
             {
-                return ((DateTime)value).ToString("Y-m-d H:i:s");
+                return ((DateTime)propertyValue).ToString("Y-m-d H:i:s");
             }
-            else if (propertyInfo.PropertyType.IsEnum)
+            else if (p.PropertyType.IsEnum)
             {
-                return ((int)value).ToString();
+                return ((int)propertyValue).ToString();
+
+            }else if(p.PropertyType != typeof(string) && typeof(IEnumerable).IsAssignableFrom(p.PropertyType))
+            {
+                var prop = (IEnumerable<object?>)propertyValue;
+                //TODO: Add support for CSV: collect(explode(',', $gameCSV))
+
             }
 
-            return value.ToString() ?? string.Empty;
+            return propertyValue.ToString() ?? string.Empty;
         }
     }
 }

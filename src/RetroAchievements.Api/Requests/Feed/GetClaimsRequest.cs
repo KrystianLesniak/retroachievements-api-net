@@ -3,7 +3,7 @@ using RetroAchievements.Api.Requests.Enums;
 
 namespace RetroAchievements.Api.Requests.Users
 {
-    public record GetClaimsRequest : IRequest
+    public record GetClaimsRequest : IRetroAchievementsRequest
     {
         public string RequestEndpoint => "API_GetClaims";
 
