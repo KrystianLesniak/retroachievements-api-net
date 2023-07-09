@@ -17,7 +17,7 @@ namespace RetroAchievements.Api.Requests.Users
         [ApiInputKey("u")]
         public string User { get; init; }
 
-        [ApiInputKey("d")]
+        [ApiInputKey("d", CustomOption.DateTimeToShortDate)]
         public DateTime Date { get; init; }
     }
 }

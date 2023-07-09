@@ -20,10 +20,10 @@ namespace RetroAchievements.Api.Requests.Users
         [ApiInputKey("u")]
         public string User { get; init; }
 
-        [ApiInputKey("f")]
+        [ApiInputKey("f", CustomOption.DateTimeToUnixSeconds)]
         public DateTime From { get; init; }
 
-        [ApiInputKey("t")]
+        [ApiInputKey("t", CustomOption.DateTimeToUnixSeconds)]
         public DateTime To { get; init; }
     }
 }

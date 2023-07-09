@@ -5,49 +5,49 @@ namespace RetroAchievements.Api
 {
     public static class UsersApi
     {
-        //#region GetAchievementsEarnedBetween
-        //public static async Task<GetAchievementsEarnedBetweenResponse> GetAchievementsEarnedBetweenAsync(this RetroAchievementsHttpClient client, RetroAchievementsAuthenticationData? authenticationData = null)
-        //{
-        //    return await client.GetAchievementsEarnedBetweenAsync(new GetAchievementsEarnedBetweenRequest(), authenticationData);
-        //}
+        #region GetAchievementsEarnedBetween
+        public static async Task<GetAchievementsEarnedBetweenResponse> GetAchievementsEarnedBetweenAsync(this RetroAchievementsHttpClient client, string user, DateTime from, DateTime to, RetroAchievementsAuthenticationData? authenticationData = null)
+        {
+            return await client.GetAchievementsEarnedBetweenAsync(new GetAchievementsEarnedBetweenRequest(user, from, to), authenticationData);
+        }
 
-        //public static async Task<GetAchievementsEarnedBetweenResponse> GetAchievementsEarnedBetweenAsync(this RetroAchievementsHttpClient client, GetAchievementsEarnedBetweenRequest request, RetroAchievementsAuthenticationData? authenticationData = null)
-        //{
-        //    return await client.HandleRequestCallAsync<GetAchievementsEarnedBetweenResponse>(request, authenticationData);
-        //}
+        public static async Task<GetAchievementsEarnedBetweenResponse> GetAchievementsEarnedBetweenAsync(this RetroAchievementsHttpClient client, GetAchievementsEarnedBetweenRequest request, RetroAchievementsAuthenticationData? authenticationData = null)
+        {
+            return await client.HandleRequestCallAsync<GetAchievementsEarnedBetweenResponse>(request, authenticationData);
+        }
 
-        //public static GetAchievementsEarnedBetweenResponse GetAchievementsEarnedBetween(this RetroAchievementsHttpClient client, RetroAchievementsAuthenticationData? authenticationData = null)
-        //{
-        //    return client.GetAchievementsEarnedBetween(new GetAchievementsEarnedBetweenRequest(), authenticationData);
-        //}
+        public static GetAchievementsEarnedBetweenResponse GetAchievementsEarnedBetween(this RetroAchievementsHttpClient client, string user, DateTime from, DateTime to, RetroAchievementsAuthenticationData? authenticationData = null)
+        {
+            return client.GetAchievementsEarnedBetween(new GetAchievementsEarnedBetweenRequest(user, from, to), authenticationData);
+        }
 
-        //public static GetAchievementsEarnedBetweenResponse GetAchievementsEarnedBetween(this RetroAchievementsHttpClient client, GetAchievementsEarnedBetweenRequest request, RetroAchievementsAuthenticationData? authenticationData = null)
-        //{
-        //    return client.HandleRequestCall<GetAchievementsEarnedBetweenResponse>(request, authenticationData);
-        //}
-        //#endregion GetAchievementsEarnedBetween
+        public static GetAchievementsEarnedBetweenResponse GetAchievementsEarnedBetween(this RetroAchievementsHttpClient client, GetAchievementsEarnedBetweenRequest request, RetroAchievementsAuthenticationData? authenticationData = null)
+        {
+            return client.HandleRequestCall<GetAchievementsEarnedBetweenResponse>(request, authenticationData);
+        }
+        #endregion GetAchievementsEarnedBetween
 
-        //#region GetAchievementsEarnedOnDay
-        //public static async Task<GetAchievementsEarnedOnDayResponse> GetAchievementsEarnedOnDayAsync(this RetroAchievementsHttpClient client, RetroAchievementsAuthenticationData? authenticationData = null)
-        //{
-        //    return await client.GetAchievementsEarnedOnDayAsync(new GetAchievementsEarnedOnDayRequest(), authenticationData);
-        //}
+        #region GetAchievementsEarnedOnDay
+        public static async Task<GetAchievementsEarnedOnDayResponse> GetAchievementsEarnedOnDayAsync(this RetroAchievementsHttpClient client, string user, DateTime date, RetroAchievementsAuthenticationData? authenticationData = null)
+        {
+            return await client.GetAchievementsEarnedOnDayAsync(new GetAchievementsEarnedOnDayRequest(user, date), authenticationData);
+        }
 
-        //public static async Task<GetAchievementsEarnedOnDayResponse> GetAchievementsEarnedOnDayAsync(this RetroAchievementsHttpClient client, GetAchievementsEarnedOnDayRequest request, RetroAchievementsAuthenticationData? authenticationData = null)
-        //{
-        //    return await client.HandleRequestCallAsync<GetAchievementsEarnedOnDayResponse>(request, authenticationData);
-        //}
+        public static async Task<GetAchievementsEarnedOnDayResponse> GetAchievementsEarnedOnDayAsync(this RetroAchievementsHttpClient client, GetAchievementsEarnedOnDayRequest request, RetroAchievementsAuthenticationData? authenticationData = null)
+        {
+            return await client.HandleRequestCallAsync<GetAchievementsEarnedOnDayResponse>(request, authenticationData);
+        }
 
-        //public static GetAchievementsEarnedOnDayResponse GetAchievementsEarnedOnDay(this RetroAchievementsHttpClient client, RetroAchievementsAuthenticationData? authenticationData = null)
-        //{
-        //    return client.GetAchievementsEarnedOnDay(new GetAchievementsEarnedOnDayRequest(), authenticationData);
-        //}
+        public static GetAchievementsEarnedOnDayResponse GetAchievementsEarnedOnDay(this RetroAchievementsHttpClient client, string user, DateTime date, RetroAchievementsAuthenticationData? authenticationData = null)
+        {
+            return client.GetAchievementsEarnedOnDay(new GetAchievementsEarnedOnDayRequest(user, date), authenticationData);
+        }
 
-        //public static GetAchievementsEarnedOnDayResponse GetAchievementsEarnedOnDay(this RetroAchievementsHttpClient client, GetAchievementsEarnedOnDayRequest request, RetroAchievementsAuthenticationData? authenticationData = null)
-        //{
-        //    return client.HandleRequestCall<GetAchievementsEarnedOnDayResponse>(request, authenticationData);
-        //}
-        //#endregion GetAchievementsEarnedOnDay
+        public static GetAchievementsEarnedOnDayResponse GetAchievementsEarnedOnDay(this RetroAchievementsHttpClient client, GetAchievementsEarnedOnDayRequest request, RetroAchievementsAuthenticationData? authenticationData = null)
+        {
+            return client.HandleRequestCall<GetAchievementsEarnedOnDayResponse>(request, authenticationData);
+        }
+        #endregion GetAchievementsEarnedOnDay
 
         //#region GetGameInfoAndUserProgress
         //public static async Task<GetGameInfoAndUserProgressResponse> GetGameInfoAndUserProgressAsync(this RetroAchievementsHttpClient client, RetroAchievementsAuthenticationData? authenticationData = null)

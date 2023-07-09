@@ -34,7 +34,7 @@ namespace RetroAchievements.Api.Internal.Utils
                 sb.Append(startingQuestionMarkAdded ? '&' : '?');
                 sb.Append(parameter.Key);
                 sb.Append('=');
-                sb.Append(parameter.Value);
+                sb.Append(parameter.Value.Replace(" ", "%20"));
                 startingQuestionMarkAdded = true;
             }
             return sb.ToString();

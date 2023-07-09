@@ -1,5 +1,6 @@
 ﻿using RetroAchievements.Api.Request;
 using RetroAchievements.Api.Requests;
+using System;
 using System.Collections;
 using System.Reflection;
 
@@ -31,27 +32,41 @@ namespace RetroAchievements.Api.Internal.Utils
                 if (attr != null)
                 {
                     var value = property.GetValue(request);
-                    values.Add(attr.Key, GetMemberStringValue(property, value));
+                    values.Add(attr.Key, GetMemberStringValue(property, value, attr.Option));
                 }
             }
 
             return values;
         }
 
-        private static string GetMemberStringValue(PropertyInfo p, object? propertyValue)
+        private static string GetMemberStringValue(PropertyInfo p, object? propertyValue, CustomOption option)
         {
             if (propertyValue == null)
                 return string.Empty;
 
+            //Is DateTime
             if (p.PropertyType == typeof(DateTime))
             {
-                return ((DateTime)propertyValue).ToString("Y-m-d H:i:s");
+                if(option == CustomOption.DateTimeToUnixSeconds)
+                {
+                    DateTimeOffset dto = new(((DateTime)propertyValue).ToUniversalTime());
+                    return dto.ToUnixTimeSeconds().ToString();
+                }
+                else if(option == CustomOption.DateTimeToShortDate)
+                {
+                    return ((DateTime)propertyValue).ToString("yyyy-MM-dd");
+                }
+
+                return ((DateTime)propertyValue).ToString("yyyy-MM-dd HH:mm:ss");
             }
+            //Is Enum
             else if (p.PropertyType.IsEnum)
             {
                 return ((int)propertyValue).ToString();
 
-            }else if(p.PropertyType != typeof(string) && typeof(IEnumerable).IsAssignableFrom(p.PropertyType))
+            }
+            //Is IEnumerable
+            else if(p.PropertyType != typeof(string) && typeof(IEnumerable).IsAssignableFrom(p.PropertyType))
             {
                 var prop = (IEnumerable<object?>)propertyValue;
                 //TODO: Add support for CSV: collect(explode(',', $gameCSV))
