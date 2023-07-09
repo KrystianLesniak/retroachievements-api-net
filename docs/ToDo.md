@@ -2,3 +2,4 @@
 
 - Create a NuGet Package
 - Add XML tags for C# documentation comments
+- Create Unit Tests
