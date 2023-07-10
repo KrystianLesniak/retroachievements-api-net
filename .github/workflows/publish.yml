@@ -21,7 +21,7 @@ env:
   DOTNET_NOLOGO: true
   NuGetDirectory: ${{ github.workspace}}/nuget
   SlnFolderPath: src
-  CsProjFilePath: ${{ env.SlnFolderPath }}/RetroAchievements.Api/RetroAchievements.Api.csproj
+  CsProjFilePath: src/RetroAchievements.Api/RetroAchievements.Api.csproj
 
 defaults:
   run:
