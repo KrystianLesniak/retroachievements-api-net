@@ -60,12 +60,10 @@ jobs:
           path: ${{ env.NuGetDirectory }}
 
       - name: Install nuget validator
-        run: dotnet tool update Meziantou.Framework.NuGetPackageValidation.Tool --global
+        run: dotnet tool update dotnet-validate --global
 
-      # Validate metadata and content of the NuGet package
-      # https://www.nuget.org/packages/Meziantou.Framework.NuGetPackageValidation.Tool#readme-body-tab
       - name: Validate package
-        run: meziantou.validate-nuget-package (Get-ChildItem "${{ env.NuGetDirectory }}/*.nupkg")
+        run: dotnet validate package local (Get-ChildItem "${{ env.NuGetDirectory }}/*.nupkg")
 
   run_test:
     runs-on: ubuntu-latest
