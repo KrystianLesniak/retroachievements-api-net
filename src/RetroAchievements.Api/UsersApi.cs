@@ -41,29 +41,29 @@ namespace RetroAchievements.Api
         }
         #endregion GetGameInfoAndUserProgress
 
-        //#region GetUserAwards
-        //public static async Task<GetUserAwardsResponse> GetUserAwardsAsync(this RetroAchievementsHttpClient client, RetroAchievementsAuthenticationData? authenticationData = null)
-        //{
-        //    return await client.SendAsync(new GetUserAwardsRequest(), authenticationData);
-        //}
+        #region GetUserAwards
+        public static async Task<GetUserAwardsResponse> GetUserAwardsAsync(this RetroAchievementsHttpClient client, string username, RetroAchievementsAuthenticationData? authenticationData = null)
+        {
+            return await client.SendAsync(new GetUserAwardsRequest(username), authenticationData);
+        }
 
-        //public static GetUserAwardsResponse GetUserAwards(this RetroAchievementsHttpClient client, RetroAchievementsAuthenticationData? authenticationData = null)
-        //{
-        //    return client.Send(new GetUserAwardsRequest(), authenticationData);
-        //}
-        //#endregion GetUserAwards
+        public static GetUserAwardsResponse GetUserAwards(this RetroAchievementsHttpClient client, string username, RetroAchievementsAuthenticationData? authenticationData = null)
+        {
+            return client.Send(new GetUserAwardsRequest(username), authenticationData);
+        }
+        #endregion GetUserAwards
 
-        //#region GetUserClaims
-        //public static async Task<GetUserClaimsResponse> GetUserClaimsAsync(this RetroAchievementsHttpClient client, RetroAchievementsAuthenticationData? authenticationData = null)
-        //{
-        //    return await client.SendAsync(new GetUserClaimsRequest(), authenticationData);
-        //}
+        #region GetUserClaims
+        public static async Task<GetUserClaimsResponse> GetUserClaimsAsync(this RetroAchievementsHttpClient client, string username, RetroAchievementsAuthenticationData? authenticationData = null)
+        {
+            return await client.SendAsync(new GetUserClaimsRequest(username), authenticationData);
+        }
 
-        //public static GetUserClaimsResponse GetUserClaims(this RetroAchievementsHttpClient client, RetroAchievementsAuthenticationData? authenticationData = null)
-        //{
-        //    return client.Send(new GetUserClaimsRequest(), authenticationData);
-        //}
-        //#endregion GetUserClaims
+        public static GetUserClaimsResponse GetUserClaims(this RetroAchievementsHttpClient client, string username, RetroAchievementsAuthenticationData? authenticationData = null)
+        {
+            return client.Send(new GetUserClaimsRequest(username), authenticationData);
+        }
+        #endregion GetUserClaims
 
         //#region GetUserCompletedGames
         //public static async Task<GetUserCompletedGamesResponse> GetUserCompletedGamesAsync(this RetroAchievementsHttpClient client, RetroAchievementsAuthenticationData? authenticationData = null)
