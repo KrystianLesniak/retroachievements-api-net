@@ -120,6 +120,14 @@ class Program
 - ✅ GetClaimsAsync(ClaimKind claimKind)- Get all claims of other kinds on the site.
 - ✅ GetTopTenUsersAsync()-  Get the current top ten users on the site.
 
+#### Tickets
+- ⏳ GetTicketDataAsync() - Get details for a specific ticket.
+- ⏳ GetOpenTicketsAsync() - Get open tickets, starting at the most recent.
+- ⏳ GetGamesWithMostTicketsAsync() - Get games with the most open tickets.
+- ⏳ GetUserTicketDataAsync() -  Get ticket statistics for the specified user.
+- ⏳ GetGameTicketDataAsync() -  Get ticket statistics for the specified game.
+- ⏳ GetAchievementTicketDataAsync() -  Get ticket statistics for the specified achievement.
+
 <br />
 
 [External To-Do](docs/ToDo.md)
