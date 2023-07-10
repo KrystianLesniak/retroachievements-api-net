@@ -99,7 +99,7 @@ class Program
 #### Users
 - ✅ GetAchievementsEarnedBetweenAsync(string user, DateTime from, DateTime to) - Get a list of achievements earned by a user between two dates.
 - ✅ GetAchievementsEarnedOnDayAsync(string user, DateTime date) - Get a list of achievements earned by a user on a given date.
-- ⏳ GetGameInfoAndUserProgressAsync() - Get metadata about a game as well as a user's progress on that game.
+- ❌ GetGameInfoAndUserProgressAsync() - Temporary disabled: [#46](https://github.com/RetroAchievements/retroachievements-api-js/issues/46) - Get metadata about a game as well as a user's progress on that game.
 - ✅ GetUserAwardsAsync() - Get a list of a user's site awards/badges.
 - ✅ GetUserClaimsAsync() - Get a list of set claims made over the lifetime of a user.
 - ✅ GetUserCompletedGamesAsync() - Get hardcore and softcore completion metadata about games a user has played.
@@ -107,8 +107,8 @@ class Program
 - ⏳ GetUserPointsAsync() - Get a user's total hardcore and softcore points.
 - ⏳ GetUserProgressAsync() - Get a user's progress on a list of specified games.
 - ⏳ GetUserRecentAchievementsAsync() - Get a list of achievements recently earned by the user.
-- ⏳ GetUserRecentlyPlayedGamesAsync() - Get a list of games a user has recently played.
-- ⏳ GetUserSummaryAsync() - Get a user's profile metadata. 
+- ❌ GetUserRecentlyPlayedGamesAsync() - Temporary disabled: [#46](https://github.com/RetroAchievements/retroachievements-api-js/issues/46) - Get a list of games a user has recently played.
+- ❌ GetUserSummaryAsync() - Temporary disabled: [#46](https://github.com/RetroAchievements/retroachievements-api-js/issues/46) - Get a user's profile metadata. 
 
 #### Games
 - ⏳ GetAchievementCountAsync() - Get the list of achievement IDs for a game.

@@ -30,16 +30,16 @@ namespace RetroAchievements.Api
         #endregion GetAchievementsEarnedOnDay
 
         #region GetGameInfoAndUserProgress
-        public static async Task<GetGameInfoAndUserProgressResponse> GetGameInfoAndUserProgressAsync(this RetroAchievementsHttpClient client, int gameId, string username, RetroAchievementsAuthenticationData? authenticationData = null)
-        {
-            return await client.SendAsync(new GetGameInfoAndUserProgressRequest(gameId, username), authenticationData);
-        }
+        //public static async Task<GetGameInfoAndUserProgressResponse> GetGameInfoAndUserProgressAsync(this RetroAchievementsHttpClient client, int gameId, string username, RetroAchievementsAuthenticationData? authenticationData = null)
+        //{
+        //    return await client.SendAsync(new GetGameInfoAndUserProgressRequest(gameId, username), authenticationData);
+        //}
 
-        public static GetGameInfoAndUserProgressResponse GetGameInfoAndUserProgress(this RetroAchievementsHttpClient client, int gameId, string username, RetroAchievementsAuthenticationData? authenticationData = null)
-        {
-            return client.Send(new GetGameInfoAndUserProgressRequest(gameId, username), authenticationData);
-        }
-        #endregion GetGameInfoAndUserProgress
+        //public static GetGameInfoAndUserProgressResponse GetGameInfoAndUserProgress(this RetroAchievementsHttpClient client, int gameId, string username, RetroAchievementsAuthenticationData? authenticationData = null)
+        //{
+        //    return client.Send(new GetGameInfoAndUserProgressRequest(gameId, username), authenticationData);
+        //}
+        //#endregion GetGameInfoAndUserProgress
 
         #region GetUserAwards
         public static async Task<GetUserAwardsResponse> GetUserAwardsAsync(this RetroAchievementsHttpClient client, string username, RetroAchievementsAuthenticationData? authenticationData = null)
