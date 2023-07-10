@@ -1,19 +1,20 @@
-﻿//using RetroAchievements.Api.Request;
+﻿using RetroAchievements.Api.Request;
+using RetroAchievements.Api.Response.Users;
 
-//namespace RetroAchievements.Api.Requests.Users
-//{
-//    public record GetUserCompletedGamesRequest : IRetroAchievementsRequest
-//    {
-//        public GetUserCompletedGamesRequest(string username)
-//        {
-//            ArgumentNullException.ThrowIfNull(username, nameof(username));
+namespace RetroAchievements.Api.Requests.Users
+{
+    public record GetUserCompletedGamesRequest : IRetroAchievementsRequest<GetUserCompletedGamesResponse>
+    {
+        public GetUserCompletedGamesRequest(string username)
+        {
+            ArgumentNullException.ThrowIfNull(username, nameof(username));
 
-//            Username = username;
-//        }
+            Username = username;
+        }
 
-//        public string RequestEndpoint => "API_GetUserCompletedGames";
+        public string RequestEndpoint => "API_GetUserCompletedGames";
 
-//        [ApiInputKey("u")]
-//        public string Username { get; init; }
-//    }
-//}
+        [ApiInputKey("u")]
+        public string Username { get; init; }
+    }
+}

@@ -1,6 +1,6 @@
 ﻿using RetroAchievements.Api.Internal.Json.Converters;
-using RetroAchievements.Api.Response.Common;
 using RetroAchievements.Api.Response.Feed.Records;
+using RetroAchievements.Api.Response.Records;
 using System.Text.Json.Serialization;
 
 namespace RetroAchievements.Api.Response.Users
@@ -8,10 +8,10 @@ namespace RetroAchievements.Api.Response.Users
     public record GetAchievementOfTheWeekResponse : RetroAchievementsResponse
     {
         [JsonInclude]
-        public Achievement Achievement { get; private set; } = new();
+        public FeedAchievement Achievement { get; private set; } = new();
 
         [JsonInclude]
-        public Common.Console Console { get; private set; } = new();
+        public Response.Records.Console Console { get; private set; } = new();
 
         [JsonInclude]
         [JsonConverter(typeof(DateTimeCustomApiFormatConverter))]

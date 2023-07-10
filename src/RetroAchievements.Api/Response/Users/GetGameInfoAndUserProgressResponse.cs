@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 
 namespace RetroAchievements.Api.Response.Users
 {
-    //TODO: Test this response, 503 Service Unavailable
+    //TODO: Test this response after issue is solved: https://github.com/RetroAchievements/retroachievements-api-js/issues/46
     public record GetGameInfoAndUserProgressResponse : RetroAchievementsResponse
     {
         [JsonInclude]
