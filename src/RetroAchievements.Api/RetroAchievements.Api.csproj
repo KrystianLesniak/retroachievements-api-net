@@ -6,7 +6,7 @@
 		<Authors>Krystian Leśniak</Authors>
 		<Description>C# .NET library for getting achievement, user, and game data from RetroAchievements API</Description>
 		<PackageTags>library, api, retroachievements</PackageTags>
-		<PackageLicenseExpression>MIT</PackageLicenseExpression>
+		<PackageLicenseFile>LICENSE</PackageLicenseFile>
 		<PackageReadmeFile>README.md</PackageReadmeFile>
 		<PackageIcon>icon.png</PackageIcon>
 	</PropertyGroup>
