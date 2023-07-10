@@ -101,17 +101,17 @@ namespace RetroAchievements.Api
         }
         #endregion GetUserPoints
 
-        //#region GetUserProgress
-        //public static async Task<GetUserProgressResponse> GetUserProgressAsync(this RetroAchievementsHttpClient client, RetroAchievementsAuthenticationData? authenticationData = null)
-        //{
-        //    return await client.SendAsync(new GetUserProgressRequest(), authenticationData);
-        //}
+        #region GetUserProgress
+        public static async Task<GetUserProgressResponse> GetUserProgressAsync(this RetroAchievementsHttpClient client, string username, IEnumerable<int> gameIds, RetroAchievementsAuthenticationData? authenticationData = null)
+        {
+            return await client.SendAsync(new GetUserProgressRequest(username, gameIds), authenticationData);
+        }
 
-        //public static GetUserProgressResponse GetUserProgress(this RetroAchievementsHttpClient client, RetroAchievementsAuthenticationData? authenticationData = null)
-        //{
-        //    return client.Send(new GetUserProgressRequest(), authenticationData);
-        //}
-        //#endregion GetUserProgress
+        public static GetUserProgressResponse GetUserProgress(this RetroAchievementsHttpClient client, string username, IEnumerable<int> gameIds, RetroAchievementsAuthenticationData? authenticationData = null)
+        {
+            return client.Send(new GetUserProgressRequest(username, gameIds), authenticationData);
+        }
+        #endregion GetUserProgress
 
         //#region GetUserRecentAchievements
         //public static async Task<GetUserRecentAchievementsResponse> GetUserRecentAchievementsAsync(this RetroAchievementsHttpClient client, RetroAchievementsAuthenticationData? authenticationData = null)
