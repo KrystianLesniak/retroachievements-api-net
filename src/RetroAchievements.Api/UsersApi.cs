@@ -29,7 +29,7 @@ namespace RetroAchievements.Api
         }
         #endregion GetAchievementsEarnedOnDay
 
-        #region GetGameInfoAndUserProgress
+        //#region GetGameInfoAndUserProgress
         //public static async Task<GetGameInfoAndUserProgressResponse> GetGameInfoAndUserProgressAsync(this RetroAchievementsHttpClient client, int gameId, string username, RetroAchievementsAuthenticationData? authenticationData = null)
         //{
         //    return await client.SendAsync(new GetGameInfoAndUserProgressRequest(gameId, username), authenticationData);
@@ -89,17 +89,17 @@ namespace RetroAchievements.Api
         }
         #endregion GetUserGameRankAndScore
 
-        //#region GetUserPoints
-        //public static async Task<GetUserPointsResponse> GetUserPointsAsync(this RetroAchievementsHttpClient client, RetroAchievementsAuthenticationData? authenticationData = null)
-        //{
-        //    return await client.SendAsync(new GetUserPointsRequest(), authenticationData);
-        //}
+        #region GetUserPoints
+        public static async Task<GetUserPointsResponse> GetUserPointsAsync(this RetroAchievementsHttpClient client, string username, RetroAchievementsAuthenticationData? authenticationData = null)
+        {
+            return await client.SendAsync(new GetUserPointsRequest(username), authenticationData);
+        }
 
-        //public static GetUserPointsResponse GetUserPoints(this RetroAchievementsHttpClient client, RetroAchievementsAuthenticationData? authenticationData = null)
-        //{
-        //    return client.Send(new GetUserPointsRequest(), authenticationData);
-        //}
-        //#endregion GetUserPoints
+        public static GetUserPointsResponse GetUserPoints(this RetroAchievementsHttpClient client, string username, RetroAchievementsAuthenticationData? authenticationData = null)
+        {
+            return client.Send(new GetUserPointsRequest(username), authenticationData);
+        }
+        #endregion GetUserPoints
 
         //#region GetUserProgress
         //public static async Task<GetUserProgressResponse> GetUserProgressAsync(this RetroAchievementsHttpClient client, RetroAchievementsAuthenticationData? authenticationData = null)
