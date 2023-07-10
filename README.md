@@ -90,7 +90,7 @@ class Program
 - ✅ GetAchievementsEarnedBetweenAsync(string user, DateTime from, DateTime to) - Get a list of achievements earned by a user between two dates.
 - ✅ GetAchievementsEarnedOnDayAsync(string user, DateTime date) - Get a list of achievements earned by a user on a given date.
 - ⏳ GetGameInfoAndUserProgressAsync() - Get metadata about a game as well as a user's progress on that game.
-- ⏳ GetUserAwardsAsync() - Get a list of a user's site awards/badges.
+- ✅ GetUserAwardsAsync() - Get a list of a user's site awards/badges.
 - ⏳ GetUserClaimsAsync() - Get a list of set claims made over the lifetime of a user.
 - ⏳ GetUserCompletedGamesAsync() - Get hardcore and softcore completion metadata about games a user has played.
 - ⏳ GetUserGameRankAndScoreAsync() - Get metadata about how a user has performed on a given game.

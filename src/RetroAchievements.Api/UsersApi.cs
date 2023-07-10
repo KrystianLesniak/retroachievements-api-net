@@ -29,122 +29,122 @@ namespace RetroAchievements.Api
         }
         #endregion GetAchievementsEarnedOnDay
 
-        //#region GetGameInfoAndUserProgress
-        //public static async Task<GetGameInfoAndUserProgressResponse> GetGameInfoAndUserProgressAsync(this RetroAchievementsHttpClient client, int gameId, string username, RetroAchievementsAuthenticationData? authenticationData = null)
-        //{
-        //    return await client.GetGameInfoAndUserProgressAsync(new GetGameInfoAndUserProgressRequest(gameId, username), authenticationData);
-        //}
+        #region GetGameInfoAndUserProgress
+        public static async Task<GetGameInfoAndUserProgressResponse> GetGameInfoAndUserProgressAsync(this RetroAchievementsHttpClient client, int gameId, string username, RetroAchievementsAuthenticationData? authenticationData = null)
+        {
+            return await client.SendAsync(new GetGameInfoAndUserProgressRequest(gameId, username), authenticationData);
+        }
 
-        //public static GetGameInfoAndUserProgressResponse GetGameInfoAndUserProgress(this RetroAchievementsHttpClient client, int gameId, string username, RetroAchievementsAuthenticationData? authenticationData = null)
-        //{
-        //    return client.GetGameInfoAndUserProgress(new GetGameInfoAndUserProgressRequest(gameId, username), authenticationData);
-        //}
-        //#endregion GetGameInfoAndUserProgress
+        public static GetGameInfoAndUserProgressResponse GetGameInfoAndUserProgress(this RetroAchievementsHttpClient client, int gameId, string username, RetroAchievementsAuthenticationData? authenticationData = null)
+        {
+            return client.Send(new GetGameInfoAndUserProgressRequest(gameId, username), authenticationData);
+        }
+        #endregion GetGameInfoAndUserProgress
 
         //#region GetUserAwards
         //public static async Task<GetUserAwardsResponse> GetUserAwardsAsync(this RetroAchievementsHttpClient client, RetroAchievementsAuthenticationData? authenticationData = null)
         //{
-        //    return await client.GetUserAwardsAsync(new GetUserAwardsRequest(), authenticationData);
+        //    return await client.SendAsync(new GetUserAwardsRequest(), authenticationData);
         //}
 
         //public static GetUserAwardsResponse GetUserAwards(this RetroAchievementsHttpClient client, RetroAchievementsAuthenticationData? authenticationData = null)
         //{
-        //    return client.GetUserAwards(new GetUserAwardsRequest(), authenticationData);
+        //    return client.Send(new GetUserAwardsRequest(), authenticationData);
         //}
         //#endregion GetUserAwards
 
         //#region GetUserClaims
         //public static async Task<GetUserClaimsResponse> GetUserClaimsAsync(this RetroAchievementsHttpClient client, RetroAchievementsAuthenticationData? authenticationData = null)
         //{
-        //    return await client.GetUserClaimsAsync(new GetUserClaimsRequest(), authenticationData);
+        //    return await client.SendAsync(new GetUserClaimsRequest(), authenticationData);
         //}
 
         //public static GetUserClaimsResponse GetUserClaims(this RetroAchievementsHttpClient client, RetroAchievementsAuthenticationData? authenticationData = null)
         //{
-        //    return client.GetUserClaims(new GetUserClaimsRequest(), authenticationData);
+        //    return client.Send(new GetUserClaimsRequest(), authenticationData);
         //}
         //#endregion GetUserClaims
 
         //#region GetUserCompletedGames
         //public static async Task<GetUserCompletedGamesResponse> GetUserCompletedGamesAsync(this RetroAchievementsHttpClient client, RetroAchievementsAuthenticationData? authenticationData = null)
         //{
-        //    return await client.GetUserCompletedGamesAsync(new GetUserCompletedGamesRequest(), authenticationData);
+        //    return await client.SendAsync(new GetUserCompletedGamesRequest(), authenticationData);
         //}
 
         //public static GetUserCompletedGamesResponse GetUserCompletedGames(this RetroAchievementsHttpClient client, RetroAchievementsAuthenticationData? authenticationData = null)
         //{
-        //    return client.GetUserCompletedGames(new GetUserCompletedGamesRequest(), authenticationData);
+        //    return client.Send(new GetUserCompletedGamesRequest(), authenticationData);
         //}
         //#endregion GetUserCompletedGames
 
         //#region GetUserGameRankAndScore
         //public static async Task<GetUserGameRankAndScoreResponse> GetUserGameRankAndScoreAsync(this RetroAchievementsHttpClient client, RetroAchievementsAuthenticationData? authenticationData = null)
         //{
-        //    return await client.GetUserGameRankAndScoreAsync(new GetUserGameRankAndScoreRequest(), authenticationData);
+        //    return await client.SendAsync(new GetUserGameRankAndScoreRequest(), authenticationData);
         //}
 
         //public static GetUserGameRankAndScoreResponse GetUserGameRankAndScore(this RetroAchievementsHttpClient client, RetroAchievementsAuthenticationData? authenticationData = null)
         //{
-        //    return client.GetUserGameRankAndScore(new GetUserGameRankAndScoreRequest(), authenticationData);
+        //    return client.Send(new GetUserGameRankAndScoreRequest(), authenticationData);
         //}
         //#endregion GetUserGameRankAndScore
 
         //#region GetUserPoints
         //public static async Task<GetUserPointsResponse> GetUserPointsAsync(this RetroAchievementsHttpClient client, RetroAchievementsAuthenticationData? authenticationData = null)
         //{
-        //    return await client.GetUserPointsAsync(new GetUserPointsRequest(), authenticationData);
+        //    return await client.SendAsync(new GetUserPointsRequest(), authenticationData);
         //}
 
         //public static GetUserPointsResponse GetUserPoints(this RetroAchievementsHttpClient client, RetroAchievementsAuthenticationData? authenticationData = null)
         //{
-        //    return client.GetUserPoints(new GetUserPointsRequest(), authenticationData);
+        //    return client.Send(new GetUserPointsRequest(), authenticationData);
         //}
         //#endregion GetUserPoints
 
         //#region GetUserProgress
         //public static async Task<GetUserProgressResponse> GetUserProgressAsync(this RetroAchievementsHttpClient client, RetroAchievementsAuthenticationData? authenticationData = null)
         //{
-        //    return await client.GetUserProgressAsync(new GetUserProgressRequest(), authenticationData);
+        //    return await client.SendAsync(new GetUserProgressRequest(), authenticationData);
         //}
 
         //public static GetUserProgressResponse GetUserProgress(this RetroAchievementsHttpClient client, RetroAchievementsAuthenticationData? authenticationData = null)
         //{
-        //    return client.GetUserProgress(new GetUserProgressRequest(), authenticationData);
+        //    return client.Send(new GetUserProgressRequest(), authenticationData);
         //}
         //#endregion GetUserProgress
 
         //#region GetUserRecentAchievements
         //public static async Task<GetUserRecentAchievementsResponse> GetUserRecentAchievementsAsync(this RetroAchievementsHttpClient client, RetroAchievementsAuthenticationData? authenticationData = null)
         //{
-        //    return await client.GetUserRecentAchievementsAsync(new GetUserRecentAchievementsRequest(), authenticationData);
+        //    return await client.SendAsync(new GetUserRecentAchievementsRequest(), authenticationData);
         //}
 
         //public static GetUserRecentAchievementsResponse GetUserRecentAchievements(this RetroAchievementsHttpClient client, RetroAchievementsAuthenticationData? authenticationData = null)
         //{
-        //    return client.GetUserRecentAchievements(new GetUserRecentAchievementsRequest(), authenticationData);
+        //    return client.Send(new GetUserRecentAchievementsRequest(), authenticationData);
         //}
         //#endregion GetUserRecentAchievements
 
         //#region GetUserRecentlyPlayedGames
         //public static async Task<GetUserRecentlyPlayedGamesResponse> GetUserRecentlyPlayedGamesAsync(this RetroAchievementsHttpClient client, RetroAchievementsAuthenticationData? authenticationData = null)
         //{
-        //    return await client.GetUserRecentlyPlayedGamesAsync(new GetUserRecentlyPlayedGamesRequest(), authenticationData);
+        //    return await client.SendAsync(new GetUserRecentlyPlayedGamesRequest(), authenticationData);
         //}
         //public static GetUserRecentlyPlayedGamesResponse GetUserRecentlyPlayedGames(this RetroAchievementsHttpClient client, RetroAchievementsAuthenticationData? authenticationData = null)
         //{
-        //    return client.GetUserRecentlyPlayedGames(new GetUserRecentlyPlayedGamesRequest(), authenticationData);
+        //    return client.Send(new GetUserRecentlyPlayedGamesRequest(), authenticationData);
         //}
         //#endregion GetUserRecentlyPlayedGames
 
         //#region GetUserSummary
         //public static async Task<GetUserSummaryResponse> GetUserSummaryAsync(this RetroAchievementsHttpClient client, RetroAchievementsAuthenticationData? authenticationData = null)
         //{
-        //    return await client.GetUserSummaryAsync(new GetUserSummaryRequest(), authenticationData);
+        //    return await client.SendAsync(new GetUserSummaryRequest(), authenticationData);
         //}
 
         //public static GetUserSummaryResponse GetUserSummary(this RetroAchievementsHttpClient client, RetroAchievementsAuthenticationData? authenticationData = null)
         //{
-        //    return client.GetUserSummary(new GetUserSummaryRequest(), authenticationData);
+        //    return client.Send(new GetUserSummaryRequest(), authenticationData);
         //}
         //#endregion GetUserSummary
     }

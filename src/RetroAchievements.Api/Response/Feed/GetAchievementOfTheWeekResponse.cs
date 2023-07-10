@@ -1,5 +1,6 @@
 ﻿using RetroAchievements.Api.Internal.Json.Converters;
 using RetroAchievements.Api.Response.Common;
+using RetroAchievements.Api.Response.Feed.Records;
 using System.Text.Json.Serialization;
 
 namespace RetroAchievements.Api.Response.Users
