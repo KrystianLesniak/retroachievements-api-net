@@ -10,19 +10,21 @@ namespace RetroAchievements.Api
     {
         public RetroAchievementsHttpClient()
         {
-            httpClient = new HttpClient();
+            _httpClient = new HttpClient();
         }
         public RetroAchievementsHttpClient(IRetroAchievementsAuthenticationData authenticationData) : this()
         {
             SetAuthenticationData(authenticationData);
         }
 
-        public RetroAchievementsHttpClient(HttpMessageHandler handler)
+        public RetroAchievementsHttpClient(HttpClient httpClient)
         {
-            httpClient = new HttpClient(handler);
+            ArgumentNullException.ThrowIfNull(httpClient, nameof(httpClient));
+
+            _httpClient = httpClient;
         }
 
-        public RetroAchievementsHttpClient(HttpMessageHandler handler, IRetroAchievementsAuthenticationData authenticationData) : this(handler)
+        public RetroAchievementsHttpClient(HttpClient httpClient, IRetroAchievementsAuthenticationData authenticationData) : this(httpClient)
         {
             SetAuthenticationData(authenticationData);
         }
@@ -30,7 +32,7 @@ namespace RetroAchievements.Api
 
         private IRetroAchievementsAuthenticationData? AuthenticationData { get; set; }
 
-        private readonly HttpClient httpClient;
+        private readonly HttpClient _httpClient;
         private readonly ResponseBuilder responseBuilder = new();
 
         public void SetAuthenticationData(IRetroAchievementsAuthenticationData authenticationData)
@@ -53,7 +55,7 @@ namespace RetroAchievements.Api
             var queries = HttpClientHelper.PrepareRequestQueries(auth, request);
             var url = HttpClientHelper.PrepareRequestUrl(request.RequestEndpoint);
 
-            using var response = await httpClient.GetWithQueryStringAsync(url, queries);
+            using var response = await _httpClient.GetWithQueryStringAsync(url, queries);
             using var contentStream = await response.Content.ReadAsStreamAsync();
 
             return await responseBuilder.FromResponseAsync<TResponse>(contentStream, response.StatusCode);
@@ -67,7 +69,7 @@ namespace RetroAchievements.Api
             var queries = HttpClientHelper.PrepareRequestQueries(auth, request);
             var url = HttpClientHelper.PrepareRequestUrl(request.RequestEndpoint);
 
-            using var response = httpClient.GetWithQueryString(url, queries);
+            using var response = _httpClient.GetWithQueryString(url, queries);
             using var contentStream = response.Content.ReadAsStream();
 
             return responseBuilder.FromResponse<TResponse>(contentStream, response.StatusCode);
@@ -82,7 +84,7 @@ namespace RetroAchievements.Api
 
         public void Dispose()
         {
-            httpClient.Dispose();
+            _httpClient.Dispose();
             GC.SuppressFinalize(this);
         }
     }
