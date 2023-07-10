@@ -8,7 +8,7 @@ namespace RetroAchievements.Api.Response.Users
     public record GetAchievementOfTheWeekResponse : RetroAchievementsResponse
     {
         [JsonInclude]
-        public Achievement Achievement { get; private set; } = new();
+        public FeedAchievement Achievement { get; private set; } = new();
 
         [JsonInclude]
         public Response.Records.Console Console { get; private set; } = new();
