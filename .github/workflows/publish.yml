@@ -20,6 +20,7 @@ env:
   DOTNET_SKIP_FIRST_TIME_EXPERIENCE: 1
   DOTNET_NOLOGO: true
   NuGetDirectory: ${{ github.workspace}}/nuget
+  DotNetValidateVersion: 0.0.1-preview.304
   SlnFolderPath: src
   CsProjFilePath: src/RetroAchievements.Api/RetroAchievements.Api.csproj
 
@@ -60,7 +61,7 @@ jobs:
           path: ${{ env.NuGetDirectory }}
 
       - name: Install nuget validator
-        run: dotnet tool update dotnet-validate --global
+        run: dotnet tool update dotnet-validate --global --version ${{ env.DotNetValidateVersion }}
 
       - name: Validate package
         run: dotnet validate package local (Get-ChildItem "${{ env.NuGetDirectory }}/*.nupkg")
