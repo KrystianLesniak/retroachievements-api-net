@@ -1,6 +1,5 @@
 ﻿using RetroAchievements.Api.Request;
 using RetroAchievements.Api.Response;
-using RetroAchievements.Api.Response.Users;
 
 namespace RetroAchievements.Api
 {

@@ -47,12 +47,12 @@ namespace RetroAchievements.Api.Internal.Utils
             //Is DateTime
             if (p.PropertyType == typeof(DateTime))
             {
-                if(option == CustomOption.DateTimeToUnixSeconds)
+                if (option == CustomOption.DateTimeToUnixSeconds)
                 {
                     DateTimeOffset dto = new(((DateTime)propertyValue).ToUniversalTime());
                     return dto.ToUnixTimeSeconds().ToString();
                 }
-                else if(option == CustomOption.DateTimeToShortDate)
+                else if (option == CustomOption.DateTimeToShortDate)
                 {
                     return ((DateTime)propertyValue).ToString("yyyy-MM-dd");
                 }
@@ -66,7 +66,7 @@ namespace RetroAchievements.Api.Internal.Utils
 
             }
             //Is IEnumerable
-            else if(p.PropertyType != typeof(string) && typeof(IEnumerable).IsAssignableFrom(p.PropertyType))
+            else if (p.PropertyType != typeof(string) && typeof(IEnumerable).IsAssignableFrom(p.PropertyType))
             {
                 var prop = (IEnumerable<object?>)propertyValue;
                 //TODO: Add support for CSV: collect(explode(',', $gameCSV))

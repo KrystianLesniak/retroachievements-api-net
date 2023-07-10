@@ -76,6 +76,7 @@ class Program
     static async Task Main()
     {
         //GetAchievementsEarnedOnDay API Call
+        
         var response = await client.GetAchievementsEarnedOnDayAsync("SomeUserName", DateTime.Now);
         //Or
         var request = new GetAchievementsEarnedOnDayRequest("SomeUserName", DateTime.Now);

@@ -3,7 +3,7 @@
 namespace RetroAchievements.Api.Response.Users
 {
     [JsonConverter(typeof(BaseCollectionRetroAchievementsResponseConverter<UserAchievement, GetAchievementsEarnedOnDayResponse>))]
-    public record GetAchievementsEarnedOnDayResponse :  CollectionRetroAchievementsResponse<UserAchievement>
+    public record GetAchievementsEarnedOnDayResponse : CollectionRetroAchievementsResponse<UserAchievement>
     {
     }
 }

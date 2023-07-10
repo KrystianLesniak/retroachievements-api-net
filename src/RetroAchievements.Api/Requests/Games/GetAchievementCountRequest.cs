@@ -1,5 +1,4 @@
-﻿using RetroAchievements.Api.Request;
-
+﻿
 //namespace RetroAchievements.Api.Requests.Games
 //{
 //    public record GetAchievementCountRequest : IRetroAchievementsRequest<GetAchievementCountResponse>
