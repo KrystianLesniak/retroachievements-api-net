@@ -3,16 +3,16 @@ using RetroAchievements.Api.Response.Users;
 
 namespace RetroAchievements.Api.Requests.Users
 {
-    public record GetUserClaimsRequest : IRetroAchievementsRequest<GetUserClaimsResponse>
+    public record GetUserRankAndPointsRequest : IRetroAchievementsRequest<GetUserRankAndPointsResponse>
     {
-        public GetUserClaimsRequest(string username)
+        public GetUserRankAndPointsRequest(string username)
         {
             ArgumentNullException.ThrowIfNull(username, nameof(username));
 
             Username = username;
         }
 
-        public string RequestEndpoint => "API_GetUserClaims";
+        public string RequestEndpoint => "API_GetUserRankAndScore";
 
         [ApiInputKey("u")]
         public string Username { get; init; }

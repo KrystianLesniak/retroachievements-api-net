@@ -2,6 +2,7 @@
 
 //namespace RetroAchievements.Api.Requests.Users
 //{
+//    TODO: Request disabled until issue will be resolved: https://github.com/RetroAchievements/retroachievements-api-js/issues/46
 //    public record GetUserSummaryRequest : IRetroAchievementsRequest
 //    {
 //        public GetUserSummaryRequest(string username, int recentGamesToReturn = 5, int recentAchievementsToReturn = 10)

@@ -1,25 +1,28 @@
-﻿//using RetroAchievements.Api.Request;
+﻿using RetroAchievements.Api.Exceptions;
+using RetroAchievements.Api.Request;
+using RetroAchievements.Api.Response.Users;
 
-//namespace RetroAchievements.Api.Requests.Users
-//{
-//    public record GetUserProgressRequest : IRetroAchievementsRequest
-//    {
-//        public GetUserProgressRequest(string username, IEnumerable<int> gameIds)
-//        {
-//            ArgumentNullException.ThrowIfNull(username, nameof(username));
-//            ArgumentNullException.ThrowIfNull(gameIds, nameof(gameIds));
 
-//            Username = username;
-//            GameIds = gameIds;
-//        }
+namespace RetroAchievements.Api.Requests.Users
+{
+    public record GetUserProgressRequest : IRetroAchievementsRequest<GetUserProgressResponse>
+    {
+        public GetUserProgressRequest(string username, IEnumerable<int> gameIds)
+        {
+            ArgumentNullException.ThrowIfNull(username, nameof(username));
+            ArgumentNullException.ThrowIfNull(gameIds, nameof(gameIds));
+            ArgumentExceptionGuard.ThrowIfEmpty(gameIds, nameof(gameIds));
 
-//        public string RequestEndpoint => "API_GetUserProgress";
+            Username = username;
+            GameIds = gameIds;
+        }
 
-//        [ApiInputKey("u")]
-//        public string Username { get; init; }
+        public string RequestEndpoint => "API_GetUserProgress";
 
-//        //TODO: Add support for CSV: collect(explode(',', $gameCSV))
-//        [ApiInputKey("i")]
-//        public IEnumerable<int> GameIds { get; init; }
-//    }
-//}
+        [ApiInputKey("u")]
+        public string Username { get; init; }
+
+        [ApiInputKey("i")]
+        public IEnumerable<int> GameIds { get; init; }
+    }
+}

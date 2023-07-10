@@ -2,7 +2,7 @@
 
 	<!-- Package Metadata -->
 	<PropertyGroup>
-		<Version>0.1.0-alpha</Version>
+		<Version>0.2.0-alpha</Version>
 		<Authors>Krystian Leśniak</Authors>
 		<Description>C# .NET library for getting achievement, user, and game data from RetroAchievements API</Description>
 		<PackageTags>library, api, retroachievements</PackageTags>

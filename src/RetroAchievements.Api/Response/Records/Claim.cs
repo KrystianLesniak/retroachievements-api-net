@@ -2,7 +2,7 @@
 using RetroAchievements.Api.Response.Enums;
 using System.Text.Json.Serialization;
 
-namespace RetroAchievements.Api.Response.Common
+namespace RetroAchievements.Api.Response.Records
 {
     public record Claim
     {

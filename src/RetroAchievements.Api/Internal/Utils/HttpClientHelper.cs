@@ -32,20 +32,20 @@ namespace RetroAchievements.Api.Internal.Utils
                 if (attr != null)
                 {
                     var value = property.GetValue(request);
-                    values.Add(attr.Key, GetMemberStringValue(property, value, attr.Option));
+                    values.Add(attr.Key, GetMemberStringValue(property.PropertyType, value, attr.Option));
                 }
             }
 
             return values;
         }
 
-        private static string GetMemberStringValue(PropertyInfo p, object? propertyValue, CustomOption option)
+        private static string GetMemberStringValue(Type propertyType, object? propertyValue, CustomOption option)
         {
             if (propertyValue == null)
                 return string.Empty;
 
             //Is DateTime
-            if (p.PropertyType == typeof(DateTime))
+            if (propertyType == typeof(DateTime))
             {
                 if (option == CustomOption.DateTimeToUnixSeconds)
                 {
@@ -60,17 +60,24 @@ namespace RetroAchievements.Api.Internal.Utils
                 return ((DateTime)propertyValue).ToString("yyyy-MM-dd HH:mm:ss");
             }
             //Is Enum
-            else if (p.PropertyType.IsEnum)
+            else if (propertyType.IsEnum)
             {
                 return ((int)propertyValue).ToString();
 
             }
             //Is IEnumerable
-            else if (p.PropertyType != typeof(string) && typeof(IEnumerable).IsAssignableFrom(p.PropertyType))
+            else if (propertyType != typeof(string) && typeof(IEnumerable).IsAssignableFrom(propertyType))
             {
-                var prop = (IEnumerable<object?>)propertyValue;
-                //TODO: Add support for CSV: collect(explode(',', $gameCSV))
+                var enumerable = (IEnumerable)propertyValue;
 
+                var preparedPropList = new List<string>();
+                foreach(var enumerableItem in enumerable)
+                {
+                    if (enumerableItem != null)
+                        preparedPropList.Add(GetMemberStringValue(enumerableItem.GetType(), enumerableItem, option));
+                }
+
+                return string.Join(',', preparedPropList);
             }
 
             return propertyValue.ToString() ?? string.Empty;

@@ -13,7 +13,10 @@ namespace RetroAchievements.Api.Internal.Json.Converters
             {
                 JsonTokenType.True => true,
                 JsonTokenType.False => false,
-                JsonTokenType.String => bool.TryParse(reader.GetString(), out var b) ? b : throw new JsonException(),
+                JsonTokenType.String => bool.TryParse(reader.GetString(), out var b) ? b :
+                                        reader.GetString() == "0" ? false : 
+                                        reader.GetString() == "1" ? true :
+                                        throw new JsonException(),
                 JsonTokenType.Number => reader.TryGetInt64(out long l) ? Convert.ToBoolean(l) : reader.TryGetDouble(out double d) ? Convert.ToBoolean(d) : false,
                 _ => throw new JsonException(),
             };
