@@ -77,17 +77,17 @@ namespace RetroAchievements.Api
         }
         #endregion GetUserCompletedGames
 
-        //#region GetUserGameRankAndScore
-        //public static async Task<GetUserGameRankAndScoreResponse> GetUserGameRankAndScoreAsync(this RetroAchievementsHttpClient client, RetroAchievementsAuthenticationData? authenticationData = null)
-        //{
-        //    return await client.SendAsync(new GetUserGameRankAndScoreRequest(), authenticationData);
-        //}
+        #region GetUserGameRankAndScore
+        public static async Task<GetUserGameRankAndScoreResponse> GetUserGameRankAndScoreAsync(this RetroAchievementsHttpClient client, string username, int gameId, RetroAchievementsAuthenticationData? authenticationData = null)
+        {
+            return await client.SendAsync(new GetUserGameRankAndScoreRequest(username, gameId), authenticationData);
+        }
 
-        //public static GetUserGameRankAndScoreResponse GetUserGameRankAndScore(this RetroAchievementsHttpClient client, RetroAchievementsAuthenticationData? authenticationData = null)
-        //{
-        //    return client.Send(new GetUserGameRankAndScoreRequest(), authenticationData);
-        //}
-        //#endregion GetUserGameRankAndScore
+        public static GetUserGameRankAndScoreResponse GetUserGameRankAndScore(this RetroAchievementsHttpClient client, string username, int gameId, RetroAchievementsAuthenticationData? authenticationData = null)
+        {
+            return client.Send(new GetUserGameRankAndScoreRequest(username, gameId), authenticationData);
+        }
+        #endregion GetUserGameRankAndScore
 
         //#region GetUserPoints
         //public static async Task<GetUserPointsResponse> GetUserPointsAsync(this RetroAchievementsHttpClient client, RetroAchievementsAuthenticationData? authenticationData = null)
