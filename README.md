@@ -100,14 +100,14 @@ class Program
 - ✅ GetAchievementsEarnedBetweenAsync(string user, DateTime from, DateTime to) - Get a list of achievements earned by a user between two dates.
 - ✅ GetAchievementsEarnedOnDayAsync(string user, DateTime date) - Get a list of achievements earned by a user on a given date.
 - ❌ GetGameInfoAndUserProgressAsync() - Temporary disabled: [#46](https://github.com/RetroAchievements/retroachievements-api-js/issues/46) - Get metadata about a game as well as a user's progress on that game.
-- ✅ GetUserAwardsAsync() - Get a list of a user's site awards/badges.
-- ✅ GetUserClaimsAsync() - Get a list of set claims made over the lifetime of a user.
-- ✅ GetUserCompletedGamesAsync() - Get hardcore and softcore completion metadata about games a user has played.
-- ✅ GetUserGameRankAndScoreAsync() - Get metadata about how a user has performed on a given game.
-- ✅ GetUserPointsAsync() - Get a user's total points.
-- ✅ GetUserRankAndScore() - Get a user's total points and rank.
-- ✅ GetUserProgressAsync() - Get a user's progress on a list of specified games.
-- ✅ GetUserRecentAchievementsAsync() - Get a list of achievements recently earned by the user.
+- ✅ GetUserAwardsAsync(string username) - Get a list of a user's site awards/badges.
+- ✅ GetUserClaimsAsync(string username) - Get a list of set claims made over the lifetime of a user.
+- ✅ GetUserCompletedGamesAsync(string username) - Get hardcore and softcore completion metadata about games a user has played.
+- ✅ GetUserGameRankAndScoreAsync(string username, int gameId) - Get metadata about how a user has performed on a given game.
+- ✅ GetUserPointsAsync(string username) - Get a user's total points.
+- ✅ GetUserRankAndScore(string username) - Get a user's total points and rank.
+- ✅ GetUserProgressAsync(string username) - Get a user's progress on a list of specified games.
+- ✅ GetUserRecentAchievementsAsync(string username, IEnumerable<int> gameIds) - Get a list of achievements recently earned by the user.
 - ❌ GetUserRecentlyPlayedGamesAsync() - Temporary disabled: [#46](https://github.com/RetroAchievements/retroachievements-api-js/issues/46) - Get a list of games a user has recently played.
 - ❌ GetUserSummaryAsync() - Temporary disabled: [#46](https://github.com/RetroAchievements/retroachievements-api-js/issues/46) - Get a user's profile metadata. 
 
