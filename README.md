@@ -2,7 +2,15 @@
 
 <p align="center">
   <i>A C# .NET library that lets you get achievement, user, and game data from RetroAchievements.</i>
-  <br /><br />
+  <br /> <br />
+  <img alt="GitHub Workflow Status (with event)" src="https://img.shields.io/github/actions/workflow/status/KrystianLesniak/retroachievements-api-net/publish.yml?label=verification">
+  <a href="https://github.com/KrystianLesniak/retroachievements-api-net/blob/main/LICENSE">
+    <img alt="GitHub" src="https://img.shields.io/github/license/KrystianLesniak/retroachievements-api-net">
+  </a>
+  <a href="https://www.nuget.org/packages/RetroAchievements.Api/">
+    <img alt="Nuget" src="https://img.shields.io/nuget/dt/RetroAchievements.Api">
+    <img alt="Nuget (with prereleases)" src="https://img.shields.io/nuget/vpre/RetroAchievements.Api">
+  </a>
 </p>
 
 <hr />
