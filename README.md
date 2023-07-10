@@ -27,7 +27,7 @@ Learn how to authenticate and start pulling data from RetroAchievements.
 Install `RetroAchievements.Api` NuGet via Package Manager or run the following dotnet CLI command:
 
 ```bash
-dotnet add package RetroAchievements.Api
+dotnet add package RetroAchievements.Api --version <latest NuGet preview version>
 ```
 
 ## How to begin making API calls
