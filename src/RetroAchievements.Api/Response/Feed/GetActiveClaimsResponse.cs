@@ -4,7 +4,7 @@ using System.Text.Json.Serialization;
 namespace RetroAchievements.Api.Response.Users
 {
 
-    [JsonConverter(typeof(BaseCollectionRetroAchievementsResponseConverter<Claim, GetActiveClaimsResponse>))]
+    [JsonConverter(typeof(CollectionRetroAchievementsResponseConverter<Claim, GetActiveClaimsResponse>))]
     public record GetActiveClaimsResponse : CollectionRetroAchievementsResponse<Claim>
     {
     }

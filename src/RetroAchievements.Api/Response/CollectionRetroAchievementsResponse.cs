@@ -10,7 +10,7 @@ namespace RetroAchievements.Api.Response
         public IEnumerable<TItem> Items { get; internal set; } = new List<TItem>();
     }
 
-    internal class BaseCollectionRetroAchievementsResponseConverter<TItem, TResponse> : JsonConverter<TResponse> where TResponse : CollectionRetroAchievementsResponse<TItem>, new()
+    internal class CollectionRetroAchievementsResponseConverter<TItem, TResponse> : JsonConverter<TResponse> where TResponse : CollectionRetroAchievementsResponse<TItem>, new()
     {
         public override TResponse Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
         {

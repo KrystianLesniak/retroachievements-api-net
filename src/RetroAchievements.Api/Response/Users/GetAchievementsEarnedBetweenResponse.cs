@@ -3,7 +3,7 @@ using RetroAchievements.Api.Response.Users.Records;
 
 namespace RetroAchievements.Api.Response.Users
 {
-    [JsonConverter(typeof(BaseCollectionRetroAchievementsResponseConverter<UserAchievement, GetAchievementsEarnedBetweenResponse>))]
+    [JsonConverter(typeof(CollectionRetroAchievementsResponseConverter<UserAchievement, GetAchievementsEarnedBetweenResponse>))]
     public record GetAchievementsEarnedBetweenResponse : CollectionRetroAchievementsResponse<UserAchievement>
     {
     }
