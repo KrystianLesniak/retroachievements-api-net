@@ -104,9 +104,10 @@ class Program
 - ✅ GetUserClaimsAsync() - Get a list of set claims made over the lifetime of a user.
 - ✅ GetUserCompletedGamesAsync() - Get hardcore and softcore completion metadata about games a user has played.
 - ✅ GetUserGameRankAndScoreAsync() - Get metadata about how a user has performed on a given game.
-- ✅ GetUserPointsAsync() - Get a user's total hardcore and softcore points.
-- ⏳ GetUserProgressAsync() - Get a user's progress on a list of specified games.
-- ⏳ GetUserRecentAchievementsAsync() - Get a list of achievements recently earned by the user.
+- ✅ GetUserPointsAsync() - Get a user's total points.
+- ✅ GetUserRankAndScore() - Get a user's total points and rank.
+- ✅ GetUserProgressAsync() - Get a user's progress on a list of specified games.
+- ✅ GetUserRecentAchievementsAsync() - Get a list of achievements recently earned by the user.
 - ❌ GetUserRecentlyPlayedGamesAsync() - Temporary disabled: [#46](https://github.com/RetroAchievements/retroachievements-api-js/issues/46) - Get a list of games a user has recently played.
 - ❌ GetUserSummaryAsync() - Temporary disabled: [#46](https://github.com/RetroAchievements/retroachievements-api-js/issues/46) - Get a user's profile metadata. 
 

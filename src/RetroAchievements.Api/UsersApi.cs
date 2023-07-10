@@ -101,6 +101,18 @@ namespace RetroAchievements.Api
         }
         #endregion GetUserPoints
 
+        #region GetUserRankAndPoints
+        public static async Task<GetUserRankAndPointsResponse> GetUserRankAndPointsAsync(this RetroAchievementsHttpClient client, string username, RetroAchievementsAuthenticationData? authenticationData = null)
+        {
+            return await client.SendAsync(new GetUserRankAndPointsRequest(username), authenticationData);
+        }
+
+        public static GetUserRankAndPointsResponse GetRankAndPointsPoints(this RetroAchievementsHttpClient client, string username, RetroAchievementsAuthenticationData? authenticationData = null)
+        {
+            return client.Send(new GetUserRankAndPointsRequest(username), authenticationData);
+        }
+        #endregion GetUserRankAndPoints
+
         #region GetUserProgress
         public static async Task<GetUserProgressResponse> GetUserProgressAsync(this RetroAchievementsHttpClient client, string username, IEnumerable<int> gameIds, RetroAchievementsAuthenticationData? authenticationData = null)
         {
@@ -113,17 +125,17 @@ namespace RetroAchievements.Api
         }
         #endregion GetUserProgress
 
-        //#region GetUserRecentAchievements
-        //public static async Task<GetUserRecentAchievementsResponse> GetUserRecentAchievementsAsync(this RetroAchievementsHttpClient client, RetroAchievementsAuthenticationData? authenticationData = null)
-        //{
-        //    return await client.SendAsync(new GetUserRecentAchievementsRequest(), authenticationData);
-        //}
+        #region GetUserRecentAchievements
+        public static async Task<GetUserRecentAchievementsResponse> GetUserRecentAchievementsAsync(this RetroAchievementsHttpClient client, string username, int minutesToLookBack = 60, RetroAchievementsAuthenticationData? authenticationData = null)
+        {
+            return await client.SendAsync(new GetUserRecentAchievementsRequest(username, minutesToLookBack), authenticationData);
+        }
 
-        //public static GetUserRecentAchievementsResponse GetUserRecentAchievements(this RetroAchievementsHttpClient client, RetroAchievementsAuthenticationData? authenticationData = null)
-        //{
-        //    return client.Send(new GetUserRecentAchievementsRequest(), authenticationData);
-        //}
-        //#endregion GetUserRecentAchievements
+        public static GetUserRecentAchievementsResponse GetUserRecentAchievements(this RetroAchievementsHttpClient client, string username, int minutesToLookBack = 60, RetroAchievementsAuthenticationData? authenticationData = null)
+        {
+            return client.Send(new GetUserRecentAchievementsRequest(username, minutesToLookBack), authenticationData);
+        }
+        #endregion GetUserRecentAchievements
 
         //#region GetUserRecentlyPlayedGames
         //public static async Task<GetUserRecentlyPlayedGamesResponse> GetUserRecentlyPlayedGamesAsync(this RetroAchievementsHttpClient client, RetroAchievementsAuthenticationData? authenticationData = null)

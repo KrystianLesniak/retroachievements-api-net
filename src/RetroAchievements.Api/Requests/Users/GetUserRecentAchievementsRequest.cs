@@ -1,23 +1,24 @@
-﻿//using RetroAchievements.Api.Request;
+﻿using RetroAchievements.Api.Request;
+using RetroAchievements.Api.Response.Users;
 
-//namespace RetroAchievements.Api.Requests.Users
-//{
-//    public record GetUserRecentAchievementsRequest : IRetroAchievementsRequest
-//    {
-//        public GetUserRecentAchievementsRequest(string username, int minutesToLookBack = 60)
-//        {
-//            ArgumentNullException.ThrowIfNull(username, nameof(username));
+namespace RetroAchievements.Api.Requests.Users
+{
+    public record GetUserRecentAchievementsRequest : IRetroAchievementsRequest<GetUserRecentAchievementsResponse>
+    {
+        public GetUserRecentAchievementsRequest(string username, int minutesToLookBack = 60)
+        {
+            ArgumentNullException.ThrowIfNull(username, nameof(username));
 
-//            Username = username;
-//            MinutesToLookBack = minutesToLookBack;
-//        }
+            Username = username;
+            MinutesToLookBack = minutesToLookBack;
+        }
 
-//        public string RequestEndpoint => "API_GetUserRecentAchievements";
+        public string RequestEndpoint => "API_GetUserRecentAchievements";
 
-//        [ApiInputKey("u")]
-//        public string Username { get; init; }
+        [ApiInputKey("u")]
+        public string Username { get; init; }
 
-//        [ApiInputKey("m")]
-//        public int MinutesToLookBack { get; init; }
-//    }
-//}
+        [ApiInputKey("m")]
+        public int MinutesToLookBack { get; init; }
+    }
+}
