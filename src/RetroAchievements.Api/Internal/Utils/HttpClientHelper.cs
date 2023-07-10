@@ -1,6 +1,6 @@
 ﻿using RetroAchievements.Api.Request;
 using RetroAchievements.Api.Requests;
-using System;
+using RetroAchievements.Api.Response;
 using System.Collections;
 using System.Reflection;
 
@@ -15,7 +15,7 @@ namespace RetroAchievements.Api.Internal.Utils
             return string.Concat(baseUrl, apiUrl.Trim().Trim('/'), ".php");
         }
 
-        public static IDictionary<string, string> PrepareRequestQueries(IRetroAchievementsAuthenticationData auth, IRetroAchievementsRequest request)
+        public static IDictionary<string, string> PrepareRequestQueries<TResponse>(IRetroAchievementsAuthenticationData auth, IRetroAchievementsRequest<TResponse> request) where TResponse : RetroAchievementsResponse, new()
         {
             var values = new Dictionary<string, string>()
             {

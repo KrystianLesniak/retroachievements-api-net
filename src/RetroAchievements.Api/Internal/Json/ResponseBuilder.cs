@@ -1,4 +1,4 @@
-﻿using RetroAchievements.Api.Response.Users;
+﻿using RetroAchievements.Api.Response;
 using System.Net;
 using System.Text.Json;
 
@@ -6,7 +6,7 @@ namespace RetroAchievements.Api.Internal.Json
 {
     internal class ResponseBuilder
     {
-        internal async Task<TResponse> FromResponseAsync<TResponse>(Stream content, HttpStatusCode status) where TResponse : BaseRetroAchievementsResponse, new()
+        internal async Task<TResponse> FromResponseAsync<TResponse>(Stream content, HttpStatusCode status) where TResponse : RetroAchievementsResponse, new()
         {
 
             TResponse? responseInstance;
@@ -27,7 +27,7 @@ namespace RetroAchievements.Api.Internal.Json
             return responseInstance;
         }
 
-        internal TResponse FromResponse<TResponse>(Stream content, HttpStatusCode status) where TResponse : BaseRetroAchievementsResponse, new()
+        internal TResponse FromResponse<TResponse>(Stream content, HttpStatusCode status) where TResponse : RetroAchievementsResponse, new()
         {
 
             TResponse? responseInstance;

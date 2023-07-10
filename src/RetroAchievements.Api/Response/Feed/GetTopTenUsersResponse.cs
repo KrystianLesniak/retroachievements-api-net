@@ -4,7 +4,7 @@ namespace RetroAchievements.Api.Response.Users
 {
 
     [JsonConverter(typeof(BaseCollectionRetroAchievementsResponseConverter<User, GetTopTenUsersResponse>))]
-    public record GetTopTenUsersResponse : BaseCollectionRetroAchievementsResponse<User>
+    public record GetTopTenUsersResponse : CollectionRetroAchievementsResponse<User>
     {
     }
 

@@ -1,17 +1,16 @@
-﻿using RetroAchievements.Api.Response.Users;
-using System.Diagnostics;
+﻿using System.Diagnostics;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 
 namespace RetroAchievements.Api.Response
 {
-    public record BaseCollectionRetroAchievementsResponse<TItem> : BaseRetroAchievementsResponse
+    public record CollectionRetroAchievementsResponse<TItem> : RetroAchievementsResponse
     {
         [JsonInclude]
         public IEnumerable<TItem> Items { get; internal set; } = new List<TItem>();
     }
 
-    internal class BaseCollectionRetroAchievementsResponseConverter<TItem, TResponse> : JsonConverter<TResponse> where TResponse : BaseCollectionRetroAchievementsResponse<TItem>, new()
+    internal class BaseCollectionRetroAchievementsResponseConverter<TItem, TResponse> : JsonConverter<TResponse> where TResponse : CollectionRetroAchievementsResponse<TItem>, new()
     {
         public override TResponse Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
         {

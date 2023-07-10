@@ -1,6 +1,8 @@
-﻿namespace RetroAchievements.Api.Request
+﻿using RetroAchievements.Api.Response;
+
+namespace RetroAchievements.Api.Request
 {
-    internal interface IRetroAchievementsRequest
+    public interface IRetroAchievementsRequest<TResponse> where TResponse : RetroAchievementsResponse
     {
         string RequestEndpoint { get; }
     }

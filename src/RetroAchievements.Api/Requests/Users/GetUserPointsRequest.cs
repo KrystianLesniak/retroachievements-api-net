@@ -1,19 +1,19 @@
-﻿using RetroAchievements.Api.Request;
+﻿//using RetroAchievements.Api.Request;
 
-namespace RetroAchievements.Api.Requests.Users
-{
-    public record GetUserPointsRequest : IRetroAchievementsRequest
-    {
-        public GetUserPointsRequest(string username)
-        {
-            ArgumentNullException.ThrowIfNull(username, nameof(username));
+//namespace RetroAchievements.Api.Requests.Users
+//{
+//    public record GetUserPointsRequest : IRetroAchievementsRequest
+//    {
+//        public GetUserPointsRequest(string username)
+//        {
+//            ArgumentNullException.ThrowIfNull(username, nameof(username));
 
-            Username = username;
-        }
+//            Username = username;
+//        }
 
-        public string RequestEndpoint => "API_GetUserPoints";
+//        public string RequestEndpoint => "API_GetUserPoints";
 
-        [ApiInputKey("u")]
-        public string Username { get; init; }
-    }
-}
+//        [ApiInputKey("u")]
+//        public string Username { get; init; }
+//    }
+//}

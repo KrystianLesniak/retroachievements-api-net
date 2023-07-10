@@ -5,7 +5,7 @@ namespace RetroAchievements.Api.Response.Users
 {
 
     [JsonConverter(typeof(BaseCollectionRetroAchievementsResponseConverter<Claim, GetActiveClaimsResponse>))]
-    public record GetActiveClaimsResponse : BaseCollectionRetroAchievementsResponse<Claim>
+    public record GetActiveClaimsResponse : CollectionRetroAchievementsResponse<Claim>
     {
     }
 }

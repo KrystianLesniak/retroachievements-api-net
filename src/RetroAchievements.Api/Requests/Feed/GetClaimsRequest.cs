@@ -1,9 +1,10 @@
 ﻿using RetroAchievements.Api.Request;
 using RetroAchievements.Api.Requests.Enums;
+using RetroAchievements.Api.Response.Users;
 
 namespace RetroAchievements.Api.Requests.Users
 {
-    public record GetClaimsRequest : IRetroAchievementsRequest
+    public record GetClaimsRequest : IRetroAchievementsRequest<GetClaimsResponse>
     {
         public string RequestEndpoint => "API_GetClaims";
 

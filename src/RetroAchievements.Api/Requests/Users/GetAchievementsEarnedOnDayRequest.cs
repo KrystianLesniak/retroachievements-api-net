@@ -1,8 +1,9 @@
 ﻿using RetroAchievements.Api.Request;
+using RetroAchievements.Api.Response.Users;
 
 namespace RetroAchievements.Api.Requests.Users
 {
-    public record GetAchievementsEarnedOnDayRequest : IRetroAchievementsRequest
+    public record GetAchievementsEarnedOnDayRequest : IRetroAchievementsRequest<GetAchievementsEarnedOnDayResponse>
     {
         public string RequestEndpoint => "API_GetAchievementsEarnedOnDay";
 

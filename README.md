@@ -55,6 +55,11 @@ using RetroAchievementsHttpClient client = new RetroAchievementsHttpClient(authD
 
 ```csharp
 var response = await client.GetAchievementsEarnedOnDayAsync("SomeUserName", DateTime.Now);
+
+//Or
+
+var request = new GetAchievementsEarnedOnDayRequest("SomeUserName", DateTime.Now);
+var response2 = await client.SendAsync(request);
 ```
 
 6. **Here's a full example of API Call:**
@@ -72,6 +77,9 @@ class Program
     {
         //GetAchievementsEarnedOnDay API Call
         var response = await client.GetAchievementsEarnedOnDayAsync("SomeUserName", DateTime.Now);
+        //Or
+        var request = new GetAchievementsEarnedOnDayRequest("SomeUserName", DateTime.Now);
+        var response2 = await client.SendAsync(request);
     }
 }
 ```

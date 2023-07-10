@@ -2,6 +2,7 @@
 
 using Microsoft.Extensions.Configuration;
 using RetroAchievements.Api;
+using RetroAchievements.Api.Requests.Users;
 using RetroAchievements.Api.Response;
 using System.Diagnostics;
 
@@ -44,5 +45,5 @@ using (var client = new RetroAchievementsHttpClient(authData))
     //    await Task.Delay(500);
 
     //}
-    var response = await client.GetAchievementsEarnedOnDayAsync("dasda", new DateTime(2023, 6, 26));
+    var response = await client.SendAsync(new GetAchievementsEarnedOnDayRequest("dsadas", new DateTime(2023, 6, 26)));
 };

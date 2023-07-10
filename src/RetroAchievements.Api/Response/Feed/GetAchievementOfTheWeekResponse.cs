@@ -4,7 +4,7 @@ using System.Text.Json.Serialization;
 
 namespace RetroAchievements.Api.Response.Users
 {
-    public record GetAchievementOfTheWeekResponse : BaseRetroAchievementsResponse
+    public record GetAchievementOfTheWeekResponse : RetroAchievementsResponse
     {
         [JsonInclude]
         public Achievement Achievement { get; private set; } = new();

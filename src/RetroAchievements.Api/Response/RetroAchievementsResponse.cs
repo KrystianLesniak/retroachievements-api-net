@@ -1,15 +1,15 @@
 ﻿using System.Net;
 using System.Text.Json.Serialization;
 
-namespace RetroAchievements.Api.Response.Users
+namespace RetroAchievements.Api.Response
 {
-    public record BaseRetroAchievementsResponse : IRetroAchievementResponse
+    public record RetroAchievementsResponse : IRetroAchievementResponse
     {
-        internal BaseRetroAchievementsResponse()
+        internal RetroAchievementsResponse()
         {
         }
 
-        internal BaseRetroAchievementsResponse(HttpStatusCode statusCode, string? failedStatusResponseString)
+        internal RetroAchievementsResponse(HttpStatusCode statusCode, string? failedStatusResponseString)
         {
             StatusCode = statusCode;
             FailedStatusResponseString = failedStatusResponseString;

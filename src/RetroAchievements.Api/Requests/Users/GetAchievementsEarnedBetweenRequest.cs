@@ -1,8 +1,9 @@
 ﻿using RetroAchievements.Api.Request;
+using RetroAchievements.Api.Response.Users;
 
 namespace RetroAchievements.Api.Requests.Users
 {
-    public record GetAchievementsEarnedBetweenRequest : IRetroAchievementsRequest
+    public record GetAchievementsEarnedBetweenRequest : IRetroAchievementsRequest<GetAchievementsEarnedBetweenResponse>
     {
         public string RequestEndpoint => "API_GetAchievementsEarnedBetween";
 
