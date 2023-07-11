@@ -40,7 +40,7 @@ namespace RetroAchievements.Api.Response.Users
         public int NumAwardedToUserHardcore { get; private set; }
 
         [JsonInclude]
-        public IDictionary<string, Achievement> Achievements { get; private set;} = new Dictionary<string, Achievement>();
+        public IDictionary<string, Achievement> Achievements { get; private set; } = new Dictionary<string, Achievement>();
 
         [JsonInclude]
         public int ForumTopicID { get; private set; }
