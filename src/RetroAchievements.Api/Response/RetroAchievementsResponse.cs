@@ -9,14 +9,14 @@ namespace RetroAchievements.Api.Response
         {
         }
 
-        internal RetroAchievementsResponse(HttpStatusCode statusCode, string? failedStatusResponseString)
+        internal RetroAchievementsResponse(HttpStatusCode httpStatusCode, string? failedStatusResponseString)
         {
-            StatusCode = statusCode;
+            HttpStatusCode = httpStatusCode;
             FailedStatusResponseString = failedStatusResponseString;
         }
 
         [JsonIgnore]
-        public HttpStatusCode StatusCode { get; internal set; }
+        public HttpStatusCode HttpStatusCode { get; internal set; }
 
         [JsonIgnore]
         public string? FailedStatusResponseString { get; internal set; }

@@ -1,20 +1,34 @@
-﻿using RetroAchievements.Api.Internal.Json.Converters;
-using RetroAchievements.Api.Response.Games.Records;
-using System.Text.Json.Serialization;
+﻿using System.Text.Json.Serialization;
 
-namespace RetroAchievements.Api.Response.Users
+namespace RetroAchievements.Api.Response.Games
 {
     public record GetGameRatingResponse : RetroAchievementsResponse
     {
-        [JsonInclude]
-        public string Title { get; private set; } = string.Empty;
-
         [JsonInclude]
         [JsonPropertyName("GameID")]
         [JsonNumberHandling(JsonNumberHandling.AllowReadingFromString)]
         public int GameId { get; private set; }
 
         [JsonInclude]
-        public IEnumerable<GameRating> Ratings { get; private set; } = new List<GameRating>();
+        public GameRatings Ratings { get; private set; } = new GameRatings();
+    }
+
+    public record GameRatings
+    {
+        [JsonInclude]
+        [JsonPropertyName("Game")]
+        public double AverageGameRating { get; private set; }
+
+        [JsonInclude]
+        [JsonPropertyName("Achievements")]
+        public double AverageAchievementsRating { get; private set; }
+
+        [JsonInclude]
+        [JsonPropertyName("GameNumVotes")]
+        public int GameVotesCount { get; private set; }
+
+        [JsonInclude]
+        [JsonPropertyName("AchievementsNumVotes")]
+        public int AchievementVotesCount { get; private set; }
     }
 }

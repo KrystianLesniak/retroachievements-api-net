@@ -1,6 +1,6 @@
 ﻿using System.Text.Json.Serialization;
 
-namespace RetroAchievements.Api.Response.Users
+namespace RetroAchievements.Api.Response.Games
 {
     public record GetAchievementCountResponse : RetroAchievementsResponse
     {
@@ -9,7 +9,7 @@ namespace RetroAchievements.Api.Response.Users
         public int GameId { get; private set; }
 
         [JsonInclude]
-        [JsonPropertyName("AchievementsIDs")]
-        public IEnumerable<int> AchievementsIds { get; private set; } = new List<int>();
+        [JsonPropertyName("AchievementIDs")]
+        public IEnumerable<int> AchievementIds { get; private set; } = new List<int>();
     }
 }

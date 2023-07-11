@@ -15,14 +15,14 @@ namespace RetroAchievements.Api.Internal.Json
             {
                 responseInstance = await JsonSerializer.DeserializeAsync<TResponse>(content);
 
-                responseInstance ??= new TResponse() { FailedStatusResponseString = await ReadStreamToStringAsync(content), StatusCode = status };
+                responseInstance ??= new TResponse() { FailedStatusResponseString = await ReadStreamToStringAsync(content), HttpStatusCode = status };
             }
             else
             {
-                responseInstance = new TResponse() { FailedStatusResponseString = await ReadStreamToStringAsync(content), StatusCode = status };
+                responseInstance = new TResponse() { FailedStatusResponseString = await ReadStreamToStringAsync(content), HttpStatusCode = status };
             }
 
-            responseInstance.StatusCode = status;
+            responseInstance.HttpStatusCode = status;
 
             return responseInstance;
         }
@@ -36,14 +36,14 @@ namespace RetroAchievements.Api.Internal.Json
             {
                 responseInstance = JsonSerializer.Deserialize<TResponse>(content);
 
-                responseInstance ??= new TResponse() { FailedStatusResponseString = ReadStreamToString(content), StatusCode = status };
+                responseInstance ??= new TResponse() { FailedStatusResponseString = ReadStreamToString(content), HttpStatusCode = status };
             }
             else
             {
-                responseInstance = new TResponse() { FailedStatusResponseString = ReadStreamToString(content), StatusCode = status };
+                responseInstance = new TResponse() { FailedStatusResponseString = ReadStreamToString(content), HttpStatusCode = status };
             }
 
-            responseInstance.StatusCode = status;
+            responseInstance.HttpStatusCode = status;
 
             return responseInstance;
         }

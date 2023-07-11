@@ -1,10 +1,10 @@
 ﻿using System.Text.Json.Serialization;
 
-namespace RetroAchievements.Api.Response.Users
+namespace RetroAchievements.Api.Response.Games
 {
-    [JsonConverter(typeof(DictionaryRetroAchievementsResponseConverter<string, int, GetAchievementDistributionResponse>))]
+    [JsonConverter(typeof(DictionaryRetroAchievementsResponseConverter<int, int, GetAchievementDistributionResponse>))]
 
-    public record GetAchievementDistributionResponse : DictionaryRetroAchievementsResponse<string, int>
+    public record GetAchievementDistributionResponse : DictionaryRetroAchievementsResponse<int, int>
     {
 
     }
