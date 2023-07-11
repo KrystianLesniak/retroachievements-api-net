@@ -112,12 +112,12 @@ class Program
 - ❌ GetUserSummaryAsync() - Temporary disabled: [#46](https://github.com/RetroAchievements/retroachievements-api-js/issues/46) - Get a user's profile metadata. 
 
 #### Games
-- ⏳ GetAchievementCountAsync() - Get the list of achievement IDs for a game.
-- ⏳ GetAchievementDistributionAsync() - Get how many players have unlocked how many achievements for a game.
-- ⏳ GetGameAsync() - Get basic metadata about a game.
-- ⏳ GetGameExtendedAsync() - Get extended metadata about a game.
-- ⏳ GetGameRankAndScoreAsync() - Get a list of either the latest masters or highest points earners for a game.
-- ⏳ GetGameRatingAsync() - Get how users have rated a game.
+- ✅ GetAchievementCountAsync(int gameId) - Get the list of achievement IDs for a game.
+- ✅ GetAchievementDistributionAsync(int gameId, bool hardcoreOnly, bool unofficialAchievements) - Get how many players have unlocked how many achievements for a game.
+- ✅ GetGameAsync(int gameId) - Get basic metadata about a game.
+- ✅ GetGameExtendedAsync(int gameId) - Get extended metadata about a game.
+- ✅ GetGameRankAndScoreAsync(int gameId, RankType rankType) - Get a list of either the latest masters or highest points earners for a game.
+- ✅ GetGameRatingAsync(int gameId) - Get how users have rated a game.
 
 #### Achievements
 - ⏳ GetAchievementUnlocksAsync() - Get a list of users who have earned an achievement.
