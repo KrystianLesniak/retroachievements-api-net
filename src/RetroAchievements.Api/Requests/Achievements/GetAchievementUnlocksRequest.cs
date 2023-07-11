@@ -10,7 +10,7 @@ namespace RetroAchievements.Api.Requests.Achievements
 
         public GetAchievementUnlocksRequest(int achievementId, int offset = 0, int count = 50)
         {
-            ArgumentExceptionGuard.ThrowIfGreaterThen(count, nameof(count), 500);
+            ArgumentExceptionGuard.ThrowIfGreaterThan(count, nameof(count), 500);
 
             AchievementId = achievementId;
             Offset = offset;
