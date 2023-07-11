@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 
 namespace RetroAchievements.Api.Response.Users.Records
 {
-    public record Achievement
+    public record UserProgressAchievement
     {
         [JsonInclude]
         [JsonPropertyName("ID")]
