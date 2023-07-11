@@ -95,7 +95,7 @@ class Program
 }
 ```
 
-# Project Status - Work In Progress ⏳
+# Project Status
 #### Users
 - ✅ GetAchievementsEarnedBetweenAsync(string user, DateTime from, DateTime to) - Get a list of achievements earned by a user between two dates.
 - ✅ GetAchievementsEarnedOnDayAsync(string user, DateTime date) - Get a list of achievements earned by a user on a given date.
@@ -141,9 +141,6 @@ class Program
 - ⏳ GetAchievementTicketDataAsync() -  Get ticket statistics for the specified achievement.
 
 <br />
-
-[External To-Do](docs/ToDo.md)
-
 
 ## Different usages
 
