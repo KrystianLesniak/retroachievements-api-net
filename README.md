@@ -120,7 +120,7 @@ class Program
 - ✅ GetGameRatingAsync(int gameId) - Get how users have rated a game.
 
 #### Achievements
-- ⏳ GetAchievementUnlocksAsync() - Get a list of users who have earned an achievement.
+- ✅ GetAchievementUnlocksAsync(int achievementId, int offset, int count) - Get a list of users who have earned an achievement.
 
 #### Consoles
 - ⏳ GetConsoleIdsAsync() - Get the complete list of console ID and name pairs on the site.
