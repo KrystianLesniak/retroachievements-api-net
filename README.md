@@ -1,4 +1,4 @@
-<h1 align="center">RetroAchievements API .NET - Work In Progress ⏳</h1>
+<h1 align="center">RetroAchievements API .NET<br/><p style="color:red">Work In Progress ⏳ Experimental use only</p></h1>
 
 <p align="center">
   <i>A C# .NET library that lets you get achievement, user, and game data from RetroAchievements.</i>
