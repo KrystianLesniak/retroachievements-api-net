@@ -4,7 +4,7 @@ namespace RetroAchievements.Api.Response
 {
     public interface IRetroAchievementResponse
     {
-        HttpStatusCode StatusCode { get; }
+        HttpStatusCode HttpStatusCode { get; }
         string? FailedStatusResponseString { get; }
     }
 }
