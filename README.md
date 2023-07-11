@@ -123,8 +123,8 @@ class Program
 - ✅ GetAchievementUnlocksAsync(int achievementId, int offset, int count) - Get a list of users who have earned an achievement.
 
 #### Consoles
-- ⏳ GetConsoleIdsAsync() - Get the complete list of console ID and name pairs on the site.
-- ⏳ GetGameListAsync() - Get the complete list of games for a console.
+- ✅ GetConsoleIdsAsync() - Get the complete list of console ID and name pairs on the site.
+- ✅ GetGameListAsync(int consoleId, bool onlyWithAchievements, bool getHashes) - Get the complete list of games for a console.
 
 #### Feed
 - ✅ GetAchievementOfTheWeekAsync() - Get comprehensive metadata about the current Achievement of the Week.
