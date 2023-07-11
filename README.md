@@ -105,7 +105,7 @@ class Program
 - ✅ GetUserCompletedGamesAsync(string username) - Get hardcore and softcore completion metadata about games a user has played.
 - ✅ GetUserGameRankAndScoreAsync(string username, int gameId) - Get metadata about how a user has performed on a given game.
 - ✅ GetUserPointsAsync(string username) - Get a user's total points.
-- ✅ GetUserRankAndScore(string username) - Get a user's total points and rank.
+- ✅ GetUserRankAndScoreAsync(string username) - Get a user's total points and rank.
 - ✅ GetUserProgressAsync(string username) - Get a user's progress on a list of specified games.
 - ✅ GetUserRecentAchievementsAsync(string username, IEnumerable<int> gameIds) - Get a list of achievements recently earned by the user.
 - ❌ GetUserRecentlyPlayedGamesAsync() - Temporary disabled: [#46](https://github.com/RetroAchievements/retroachievements-api-js/issues/46) - Get a list of games a user has recently played.
