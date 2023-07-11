@@ -2,8 +2,9 @@
 
 - Create a GitHub Code scanning securities
 
-- Make Collections ReadOnly
 - Add XML tags for C# documentation comments
-- Rename Properties / Responses / Requests to better reflect c# .net naming conventions
+    - Make Collections ReadOnly
+    - Check if GuardAgainsts are in Requests
+    - Rename Properties / Responses / Requests to better reflect c# .net naming conventions
 
 - Create Unit Tests
