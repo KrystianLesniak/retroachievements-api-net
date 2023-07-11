@@ -95,7 +95,7 @@ class Program
 }
 ```
 
-# Project Status
+# Requests List
 #### Users
 - ✅ GetAchievementsEarnedBetweenAsync(string user, DateTime from, DateTime to) - Get a list of achievements earned by a user between two dates.
 - ✅ GetAchievementsEarnedOnDayAsync(string user, DateTime date) - Get a list of achievements earned by a user on a given date.
