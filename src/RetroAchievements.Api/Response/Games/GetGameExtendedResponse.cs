@@ -1,9 +1,8 @@
 ﻿using RetroAchievements.Api.Internal.Json.Converters;
 using RetroAchievements.Api.Response.Games.Records;
-using RetroAchievements.Api.Response.Records;
 using System.Text.Json.Serialization;
 
-namespace RetroAchievements.Api.Response.Users
+namespace RetroAchievements.Api.Response.Games
 {
     public record GetGameExtendedResponse : RetroAchievementsResponse
     {
@@ -67,14 +66,13 @@ namespace RetroAchievements.Api.Response.Users
         public DateTime Released { get; private set; }
 
         [JsonInclude]
+        [JsonConverter(typeof(NumberApiToBooleanConverter))]
         public bool IsFinal { get; private set; }
 
         [JsonInclude]
         public string RichPresencePatch { get; private set; } = string.Empty;
 
         [JsonInclude]
-        //TODO: This claim object looks different in https://github.dev/RetroAchievements/RAWeb/blob/master/public/API/API_GetAchievementOfTheWeek.php
-        // Check whether can be used full object or should short object as in API created
-        public IEnumerable<Claim> Claims { get; private set; } = new List<Claim>();
+        public IEnumerable<GameClaim> Claims { get; private set; } = new List<GameClaim>();
     }
 }

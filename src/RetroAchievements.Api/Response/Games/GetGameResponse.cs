@@ -1,7 +1,7 @@
 ﻿using RetroAchievements.Api.Internal.Json.Converters;
 using System.Text.Json.Serialization;
 
-namespace RetroAchievements.Api.Response.Users
+namespace RetroAchievements.Api.Response.Games
 {
     public record GetGameResponse : RetroAchievementsResponse
     {
