@@ -29,5 +29,17 @@ namespace RetroAchievements.Api
             return client.Send(new GetOpenTicketsRequest(offset, count), authenticationData);
         }
         #endregion GetOpenTickets
+
+        #region GetGamesWithMostTickets
+        public static async Task<GetGamesWithMostTicketsResponse> GetGamesWithMostTicketsAsync(this RetroAchievementsHttpClient client, int offset = 0, int count = 10, RetroAchievementsAuthenticationData? authenticationData = null)
+        {
+            return await client.SendAsync(new GetGamesWithMostTicketsRequest(offset, count), authenticationData);
+        }
+
+        public static GetGamesWithMostTicketsResponse GetGamesWithMostTickets(this RetroAchievementsHttpClient client, int offset = 0, int count = 10, RetroAchievementsAuthenticationData? authenticationData = null)
+        {
+            return client.Send(new GetGamesWithMostTicketsRequest(offset, count), authenticationData);
+        }
+        #endregion GetGamesWithMostTickets
     }
 }
