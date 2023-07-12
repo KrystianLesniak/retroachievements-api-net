@@ -67,7 +67,7 @@ namespace RetroAchievements.Api.Response.Games
         /// Achievements information collection.
         /// </summary>
         [JsonInclude]
-        public IDictionary<int, GameAchievement> Achievements { get; private set; } = new Dictionary<int, GameAchievement>();
+        public IReadOnlyDictionary<int, GameAchievement> Achievements { get; private set; } = new Dictionary<int, GameAchievement>();
 
         /// <summary>
         /// Unique identifier of the official forum topic for the game.
@@ -143,6 +143,6 @@ namespace RetroAchievements.Api.Response.Games
         /// Claims collection for specified game.
         /// </summary>
         [JsonInclude]
-        public IEnumerable<GameClaim> Claims { get; private set; } = new List<GameClaim>();
+        public IReadOnlyCollection<GameClaim> Claims { get; private set; } = new List<GameClaim>();
     }
 }

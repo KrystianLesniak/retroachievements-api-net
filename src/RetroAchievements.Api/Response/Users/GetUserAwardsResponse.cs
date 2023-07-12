@@ -24,6 +24,6 @@ namespace RetroAchievements.Api.Response.Users
         public int SiteAwardsCount { get; private set; }
 
         [JsonInclude]
-        public IEnumerable<VisibleUserAward> VisibleUserAwards { get; private set; } = new List<VisibleUserAward>();
+        public IReadOnlyCollection<VisibleUserAward> VisibleUserAwards { get; private set; } = new List<VisibleUserAward>();
     }
 }

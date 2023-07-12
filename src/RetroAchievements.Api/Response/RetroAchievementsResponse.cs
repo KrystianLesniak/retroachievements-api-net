@@ -13,7 +13,7 @@ namespace RetroAchievements.Api.Response
         internal RetroAchievementsResponse(HttpStatusCode httpStatusCode, string? failedStatusResponseString)
         {
             HttpStatusCode = httpStatusCode;
-            FailedStatusResponseString = failedStatusResponseString;
+            FailedResponseString = failedStatusResponseString;
         }
 
         /// <inheritdoc />
@@ -22,6 +22,6 @@ namespace RetroAchievements.Api.Response
 
         /// <inheritdoc />
         [JsonIgnore]
-        public string? FailedStatusResponseString { get; internal set; }
+        public string? FailedResponseString { get; internal set; }
     }
 }

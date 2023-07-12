@@ -2,7 +2,6 @@
 
 - Create a GitHub Code scanning securities
 
-- Make Collections ReadOnly
 - Add more GuardAgainsts in Requests
 
 - Create Unit Tests

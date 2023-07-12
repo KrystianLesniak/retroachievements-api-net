@@ -24,7 +24,7 @@ namespace RetroAchievements.Api.Response.Tickets
         public string Url { get; private set; } = string.Empty;
 
         [JsonInclude]
-        public IEnumerable<Ticket> Tickets { get; private set; } = new List<Ticket>();
+        public IReadOnlyCollection<Ticket> Tickets { get; private set; } = new List<Ticket>();
 
     }
 }
