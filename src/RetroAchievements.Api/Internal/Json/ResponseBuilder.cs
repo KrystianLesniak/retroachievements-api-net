@@ -8,18 +8,24 @@ namespace RetroAchievements.Api.Internal.Json
     {
         internal async Task<TResponse> FromResponseAsync<TResponse>(Stream content, HttpStatusCode status) where TResponse : RetroAchievementsResponse, new()
         {
-
             TResponse? responseInstance;
 
             if (status == HttpStatusCode.OK)
             {
-                responseInstance = await JsonSerializer.DeserializeAsync<TResponse>(content);
+                try
+                {
+                    responseInstance = await JsonSerializer.DeserializeAsync<TResponse>(content);
+                }
+                catch (JsonException)
+                {
+                    responseInstance = new TResponse() { FailedResponseString = await ReadStreamToStringAsync(content), HttpStatusCode = status };
+                }
 
-                responseInstance ??= new TResponse() { FailedStatusResponseString = await ReadStreamToStringAsync(content), HttpStatusCode = status };
+                responseInstance ??= new TResponse() { FailedResponseString = await ReadStreamToStringAsync(content), HttpStatusCode = status };
             }
             else
             {
-                responseInstance = new TResponse() { FailedStatusResponseString = await ReadStreamToStringAsync(content), HttpStatusCode = status };
+                responseInstance = new TResponse() { FailedResponseString = await ReadStreamToStringAsync(content), HttpStatusCode = status };
             }
 
             responseInstance.HttpStatusCode = status;
@@ -34,13 +40,20 @@ namespace RetroAchievements.Api.Internal.Json
 
             if (status == HttpStatusCode.OK)
             {
-                responseInstance = JsonSerializer.Deserialize<TResponse>(content);
+                try
+                {
+                    responseInstance = JsonSerializer.Deserialize<TResponse>(content);
+                }
+                catch (JsonException)
+                {
+                    responseInstance = new TResponse() { FailedResponseString = ReadStreamToString(content), HttpStatusCode = status };
+                }
 
-                responseInstance ??= new TResponse() { FailedStatusResponseString = ReadStreamToString(content), HttpStatusCode = status };
+                responseInstance ??= new TResponse() { FailedResponseString = ReadStreamToString(content), HttpStatusCode = status };
             }
             else
             {
-                responseInstance = new TResponse() { FailedStatusResponseString = ReadStreamToString(content), HttpStatusCode = status };
+                responseInstance = new TResponse() { FailedResponseString = ReadStreamToString(content), HttpStatusCode = status };
             }
 
             responseInstance.HttpStatusCode = status;
