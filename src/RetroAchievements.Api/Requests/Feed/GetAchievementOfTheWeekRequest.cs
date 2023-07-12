@@ -4,7 +4,7 @@ using RetroAchievements.Api.Response.Users;
 namespace RetroAchievements.Api.Requests.Users
 {
     /// <summary>
-    /// TODO:
+    /// Get data about current achievement of the week.
     /// </summary>
     public record GetAchievementOfTheWeekRequest : IRetroAchievementsRequest<GetAchievementOfTheWeekResponse>
     {
