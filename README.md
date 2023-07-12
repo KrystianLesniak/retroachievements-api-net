@@ -19,7 +19,6 @@ _A C# .NET library that lets you get achievement, user, and game data from Retro
 
 Learn how to authenticate and start pulling data from RetroAchievements.
 
-
 ## Installation
 
 Install `RetroAchievements.Api` NuGet via Package Manager or run the following dotnet CLI command:
