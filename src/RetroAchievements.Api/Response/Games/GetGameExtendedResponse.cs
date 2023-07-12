@@ -1,10 +1,10 @@
-﻿using RetroAchievements.Api.Response.Users.Records;
+﻿using RetroAchievements.Api.Internal.Json.Converters;
+using RetroAchievements.Api.Response.Games.Records;
 using System.Text.Json.Serialization;
 
-namespace RetroAchievements.Api.Response.Users
+namespace RetroAchievements.Api.Response.Games
 {
-    //TODO: Test this response after issue is solved: https://github.com/RetroAchievements/retroachievements-api-js/issues/46
-    public record GetGameInfoAndUserProgressResponse : RetroAchievementsResponse
+    public record GetGameExtendedResponse : RetroAchievementsResponse
     {
         [JsonInclude]
         [JsonPropertyName("ID")]
@@ -34,19 +34,11 @@ namespace RetroAchievements.Api.Response.Users
         public int NumAchievements { get; private set; }
 
         [JsonInclude]
-        public int NumAwardedToUser { get; private set; }
+        public IDictionary<int, GameAchievement> Achievements { get; private set; } = new Dictionary<int, GameAchievement>();
 
         [JsonInclude]
-        public int NumAwardedToUserHardcore { get; private set; }
-
-        [JsonInclude]
-        public IDictionary<string, UserProgressAchievement> Achievements { get; private set; } = new Dictionary<string, UserProgressAchievement>();
-
-        [JsonInclude]
-        public int ForumTopicID { get; private set; }
-
-        [JsonInclude]
-        public int Flags { get; private set; }
+        [JsonPropertyName("ForumTopicID")]
+        public int ForumTopicId { get; private set; }
 
         [JsonInclude]
         public string ImageIcon { get; private set; } = string.Empty;
@@ -70,12 +62,17 @@ namespace RetroAchievements.Api.Response.Users
         public string Genre { get; private set; } = string.Empty;
 
         [JsonInclude]
-        public string Released { get; private set; } = string.Empty;
+        [JsonConverter(typeof(DateTimeCustomApiFormatConverter))]
+        public DateTime Released { get; private set; }
 
         [JsonInclude]
+        [JsonConverter(typeof(NumberApiToBooleanConverter))]
         public bool IsFinal { get; private set; }
 
         [JsonInclude]
         public string RichPresencePatch { get; private set; } = string.Empty;
+
+        [JsonInclude]
+        public IEnumerable<GameClaim> Claims { get; private set; } = new List<GameClaim>();
     }
 }

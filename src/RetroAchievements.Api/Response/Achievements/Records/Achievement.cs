@@ -1,7 +1,7 @@
 ﻿using RetroAchievements.Api.Internal.Json.Converters;
 using System.Text.Json.Serialization;
 
-namespace RetroAchievements.Api.Response.Users.Records
+namespace RetroAchievements.Api.Response.Achievements.Records
 {
     public record Achievement
     {
@@ -32,24 +32,5 @@ namespace RetroAchievements.Api.Response.Users.Records
         [JsonConverter(typeof(DateTimeCustomApiFormatConverter))]
         public DateTime DateModified { get; private set; }
 
-        [JsonInclude]
-        public int NumAwarded { get; private set; }
-
-        [JsonInclude]
-        public int NumAwardedHardcore { get; private set; }
-
-        [JsonInclude]
-        public int DisplayOrder { get; private set; }
-
-        [JsonInclude]
-        public string MemAddr { get; private set; } = string.Empty;
-
-        [JsonInclude]
-        [JsonConverter(typeof(DateTimeCustomApiFormatConverter))]
-        public DateTime DateEarned { get; private set; }
-
-        [JsonInclude]
-        [JsonConverter(typeof(DateTimeCustomApiFormatConverter))]
-        public DateTime DateEarnedHardcore { get; private set; }
     }
 }

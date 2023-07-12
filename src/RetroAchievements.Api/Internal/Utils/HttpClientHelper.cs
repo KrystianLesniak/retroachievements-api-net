@@ -71,7 +71,7 @@ namespace RetroAchievements.Api.Internal.Utils
                 var enumerable = (IEnumerable)propertyValue;
 
                 var preparedPropList = new List<string>();
-                foreach(var enumerableItem in enumerable)
+                foreach (var enumerableItem in enumerable)
                 {
                     if (enumerableItem != null)
                         preparedPropList.Add(GetMemberStringValue(enumerableItem.GetType(), enumerableItem, option));

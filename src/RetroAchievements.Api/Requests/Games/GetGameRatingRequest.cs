@@ -4,11 +4,11 @@ using RetroAchievements.Api.Response.Games;
 
 namespace RetroAchievements.Api.Requests.Games
 {
-    public record GetAchievementCountRequest : IRetroAchievementsRequest<GetAchievementCountResponse>
+    public record GetGameRatingRequest : IRetroAchievementsRequest<GetGameRatingResponse>
     {
-        public string RequestEndpoint => "API_GetAchievementCount";
+        public string RequestEndpoint => "API_GetGameRating";
 
-        public GetAchievementCountRequest(int gameId)
+        public GetGameRatingRequest(int gameId)
         {
             ArgumentNullException.ThrowIfNull(gameId);
 

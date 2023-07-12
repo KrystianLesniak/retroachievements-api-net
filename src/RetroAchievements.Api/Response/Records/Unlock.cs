@@ -11,11 +11,12 @@ namespace RetroAchievements.Api.Response.Records
         [JsonInclude]
         public int RAPoints { get; private set; }
 
-        [JsonConverter(typeof(DateTimeCustomApiFormatConverter))]
         [JsonInclude]
+        [JsonConverter(typeof(DateTimeCustomApiFormatConverter))]
         public DateTime DateAwarded { get; private set; }
 
         [JsonInclude]
-        public int HardcoreMode { get; private set; }
+        [JsonConverter(typeof(NumberApiToBooleanConverter))]
+        public bool HardcoreMode { get; private set; }
     }
 }

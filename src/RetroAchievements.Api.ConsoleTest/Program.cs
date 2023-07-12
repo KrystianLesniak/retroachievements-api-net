@@ -2,7 +2,6 @@
 
 using Microsoft.Extensions.Configuration;
 using RetroAchievements.Api;
-using RetroAchievements.Api.Requests.Users;
 using RetroAchievements.Api.Response;
 using System.Diagnostics;
 
@@ -45,5 +44,5 @@ using (var client = new RetroAchievementsHttpClient(authData))
     //    await Task.Delay(500);
 
     //}
-    var response = await client.GetUserRecentAchievementsAsync(userName, 400);
+    var response = await client.GetAchievementTicketDataAsync(26345);
 };

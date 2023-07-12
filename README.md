@@ -1,19 +1,12 @@
-<h1 align="center">RetroAchievements API .NET<br/><p style="color:red">Work In Progress ⏳ Experimental use only</p></h1>
+# RetroAchievements API .NET
+## Work In Progress ⏳ Experimental use only. <br> Property and method names may change before stable release.
 
-<p align="center">
-  <i>A C# .NET library that lets you get achievement, user, and game data from RetroAchievements.</i>
-  <br /> <br />
-  <img alt="GitHub Workflow Status (with event)" src="https://img.shields.io/github/actions/workflow/status/KrystianLesniak/retroachievements-api-net/publish.yml?label=verification">
-  <a href="https://github.com/KrystianLesniak/retroachievements-api-net/blob/main/LICENSE">
-    <img alt="GitHub" src="https://img.shields.io/github/license/KrystianLesniak/retroachievements-api-net">
-  </a>
-  <a href="https://www.nuget.org/packages/RetroAchievements.Api/">
-    <img alt="Nuget" src="https://img.shields.io/nuget/dt/RetroAchievements.Api">
-    <img alt="Nuget (with prereleases)" src="https://img.shields.io/nuget/vpre/RetroAchievements.Api">
-  </a>
-</p>
+_A C# .NET library that lets you get achievement, user, and game data from RetroAchievements._
+<br><br>
+![GitHub Workflow Status (with event)](https://img.shields.io/github/actions/workflow/status/KrystianLesniak/retroachievements-api-net/publish.yml?label=verification)
+[![GitHub](https://img.shields.io/github/license/KrystianLesniak/retroachievements-api-net)](https://github.com/KrystianLesniak/retroachievements-api-net/blob/main/LICENSE)
+[![Nuget](https://img.shields.io/nuget/dt/RetroAchievements.Api) ![Nuget](https://img.shields.io/nuget/vpre/RetroAchievements.Api)](https://www.nuget.org/packages/RetroAchievements.Api/)
 
-<hr />
 
 ## Features
 
@@ -21,7 +14,7 @@
 ✅ Aligns 1:1 with the RAWeb API.  
 ✅ Correctly maps types and properties from RAWeb PHP calls.  
 
-<hr />
+******
 
 # Getting started
 
@@ -95,55 +88,52 @@ class Program
 }
 ```
 
-# Project Status - Work In Progress ⏳
+# Requests List
 #### Users
-- ✅ GetAchievementsEarnedBetweenAsync(string user, DateTime from, DateTime to) - Get a list of achievements earned by a user between two dates.
-- ✅ GetAchievementsEarnedOnDayAsync(string user, DateTime date) - Get a list of achievements earned by a user on a given date.
-- ❌ GetGameInfoAndUserProgressAsync() - Temporary disabled: [#46](https://github.com/RetroAchievements/retroachievements-api-js/issues/46) - Get metadata about a game as well as a user's progress on that game.
-- ✅ GetUserAwardsAsync() - Get a list of a user's site awards/badges.
-- ✅ GetUserClaimsAsync() - Get a list of set claims made over the lifetime of a user.
-- ✅ GetUserCompletedGamesAsync() - Get hardcore and softcore completion metadata about games a user has played.
-- ✅ GetUserGameRankAndScoreAsync() - Get metadata about how a user has performed on a given game.
-- ✅ GetUserPointsAsync() - Get a user's total points.
-- ✅ GetUserRankAndScore() - Get a user's total points and rank.
-- ✅ GetUserProgressAsync() - Get a user's progress on a list of specified games.
-- ✅ GetUserRecentAchievementsAsync() - Get a list of achievements recently earned by the user.
-- ❌ GetUserRecentlyPlayedGamesAsync() - Temporary disabled: [#46](https://github.com/RetroAchievements/retroachievements-api-js/issues/46) - Get a list of games a user has recently played.
-- ❌ GetUserSummaryAsync() - Temporary disabled: [#46](https://github.com/RetroAchievements/retroachievements-api-js/issues/46) - Get a user's profile metadata. 
+- GetAchievementsEarnedBetween(string user, DateTime from, DateTime to) - Get a list of achievements earned by a user between two dates.
+- GetAchievementsEarnedOnDay(string user, DateTime date) - Get a list of achievements earned by a user on a given date.
+- ❌ GetGameInfoAndUserProgress() - Temporary disabled: [#46](https://github.com/RetroAchievements/retroachievements-api-js/issues/46) - Get metadata about a game as well as a user's progress on that game.
+- GetUserAwards(string username) - Get a list of a user's site awards/badges.
+- GetUserClaims(string username) - Get a list of set claims made over the lifetime of a user.
+- GetUserCompletedGames(string username) - Get hardcore and softcore completion metadata about games a user has played.
+- GetUserGameRankAndScore(string username, int gameId) - Get metadata about how a user has performed on a given game.
+- GetUserPoints(string username) - Get a user's total points.
+- GetUserRankAndScore(string username) - Get a user's total points and rank.
+- GetUserProgress(string username) - Get a user's progress on a list of specified games.
+- GetUserRecentAchievements(string username, IEnumerable<int> gameIds) - Get a list of achievements recently earned by the user.
+- ❌ GetUserRecentlyPlayedGames() - Temporary disabled: [#46](https://github.com/RetroAchievements/retroachievements-api-js/issues/46) - Get a list of games a user has recently played.
+- ❌ GetUserSummary() - Temporary disabled: [#46](https://github.com/RetroAchievements/retroachievements-api-js/issues/46) - Get a user's profile metadata. 
 
 #### Games
-- ⏳ GetAchievementCountAsync() - Get the list of achievement IDs for a game.
-- ⏳ GetAchievementDistributionAsync() - Get how many players have unlocked how many achievements for a game.
-- ⏳ GetGameAsync() - Get basic metadata about a game.
-- ⏳ GetGameExtendedAsync() - Get extended metadata about a game.
-- ⏳ GetGameRankAndScoreAsync() - Get a list of either the latest masters or highest points earners for a game.
-- ⏳ GetGameRatingAsync() - Get how users have rated a game.
+- GetAchievementCount(int gameId) - Get the list of achievement IDs for a game.
+- GetAchievementDistribution(int gameId, bool hardcoreOnly, bool unofficialAchievements) - Get how many players have unlocked how many achievements for a game.
+- GetGame(int gameId) - Get basic metadata about a game.
+- GetGameExtended(int gameId) - Get extended metadata about a game.
+- GetGameRankAndScore(int gameId, RankType rankType) - Get a list of either the latest masters or highest points earners for a game.
+- GetGameRating(int gameId) - Get how users have rated a game.
 
 #### Achievements
-- ⏳ GetAchievementUnlocksAsync() - Get a list of users who have earned an achievement.
+- GetAchievementUnlocks(int achievementId, int offset, int count) - Get a list of users who have earned an achievement.
 
 #### Consoles
-- ⏳ GetConsoleIdsAsync() - Get the complete list of console ID and name pairs on the site.
-- ⏳ GetGameListAsync() - Get the complete list of games for a console.
+- GetConsoleIds() - Get the complete list of console ID and name pairs on the site.
+- GetGameList(int consoleId, bool onlyWithAchievements, bool getHashes) - Get the complete list of games for a console.
 
 #### Feed
-- ✅ GetAchievementOfTheWeekAsync() - Get comprehensive metadata about the current Achievement of the Week.
-- ✅ GetActiveClaimsAsync() - Get all active set claims on the site.
-- ✅ GetClaimsAsync(ClaimKind claimKind)- Get all claims of other kinds on the site.
-- ✅ GetTopTenUsersAsync()-  Get the current top ten users on the site.
+- GetAchievementOfTheWeek() - Get comprehensive metadata about the current Achievement of the Week.
+- GetActiveClaims() - Get all active set claims on the site.
+- GetClaims(ClaimKind claimKind)- Get all claims of other kinds on the site.
+- GetTopTenUsers()-  Get the current top ten users on the site.
 
 #### Tickets
-- ⏳ GetTicketDataAsync() - Get details for a specific ticket.
-- ⏳ GetOpenTicketsAsync() - Get open tickets, starting at the most recent.
-- ⏳ GetGamesWithMostTicketsAsync() - Get games with the most open tickets.
-- ⏳ GetUserTicketDataAsync() -  Get ticket statistics for the specified user.
-- ⏳ GetGameTicketDataAsync() -  Get ticket statistics for the specified game.
-- ⏳ GetAchievementTicketDataAsync() -  Get ticket statistics for the specified achievement.
+- GetTicketData(int ticketId) - Get details for a specific ticket.
+- GetOpenTickets(int offset, int count) - Get open tickets, starting at the most recent.
+- GetGamesWithMostTickets(int offset, int count) - Get games with the most open tickets.
+- GetUserTicketData(string username) -  Get ticket statistics for the specified user.
+- GetGameTicketData(int gameId) -  Get ticket statistics for the specified game.
+- GetAchievementTicketData(int achievementId) -  Get ticket statistics for the specified achievement.
 
 <br />
-
-[External To-Do](docs/ToDo.md)
-
 
 ## Different usages
 
