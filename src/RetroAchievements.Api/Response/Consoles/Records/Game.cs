@@ -41,6 +41,6 @@ namespace RetroAchievements.Api.Response.Consoles.Records
         [JsonPropertyName("ForumTopicID")]
         public int? ForumTopicId { get; private set; }
 
-        public IEnumerable<string> Hashes { get; private set; } = new List<string>();
+        public IReadOnlyCollection<string> Hashes { get; private set; } = new List<string>();
     }
 }

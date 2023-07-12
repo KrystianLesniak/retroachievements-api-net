@@ -7,7 +7,7 @@ namespace RetroAchievements.Api.Response.Tickets
     {
 
         [JsonInclude]
-        public IEnumerable<Ticket> RecentTickets { get; private set; } = new List<Ticket>();
+        public IReadOnlyCollection<Ticket> RecentTickets { get; private set; } = new List<Ticket>();
 
         [JsonInclude]
         [JsonPropertyName("OpenTickets")]

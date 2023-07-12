@@ -38,7 +38,7 @@ namespace RetroAchievements.Api.Response.Achievements
         /// Collection of Unlock data for achievement.
         /// </summary>
         [JsonInclude]
-        public IEnumerable<Unlock> Unlocks { get; private set; } = new List<Unlock>();
+        public IReadOnlyCollection<Unlock> Unlocks { get; private set; } = new List<Unlock>();
 
     }
 }
