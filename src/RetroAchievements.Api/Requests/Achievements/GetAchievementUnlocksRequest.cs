@@ -5,7 +5,7 @@ using RetroAchievements.Api.Response.Achievements;
 namespace RetroAchievements.Api.Requests.Achievements
 {
     /// <summary>
-    /// TODO:
+    /// Get Unlocks for specified Achievement
     /// </summary>
     public record GetAchievementUnlocksRequest : IRetroAchievementsRequest<GetAchievementUnlocksResponse>
     {
@@ -26,19 +26,19 @@ namespace RetroAchievements.Api.Requests.Achievements
         }
 
         /// <summary>
-        /// TODO:
+        /// RetroAchievements Achievement Identifier
         /// </summary>
         [ApiInputKey("a")]
         public int AchievementId { get; init; }
 
         /// <summary>
-        /// TODO:
+        /// Number of entries to skip (default: <see langword="0"/>)
         /// </summary>
         [ApiInputKey("o")]
         public int Offset { get; init; }
 
         /// <summary>
-        /// TODO:
+        /// Number of entries to return (default: <see langword="50"/>, max: <see langword="500"/>)
         /// </summary>
         [ApiInputKey("c")]
         public int Count { get; init; }

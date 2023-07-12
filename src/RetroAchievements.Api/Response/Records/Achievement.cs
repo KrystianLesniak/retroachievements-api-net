@@ -1,12 +1,12 @@
 ﻿using RetroAchievements.Api.Internal.Json.Converters;
 using System.Text.Json.Serialization;
 
-namespace RetroAchievements.Api.Response.Feed.Records
+namespace RetroAchievements.Api.Response.Users.Records
 {
     /// <summary>
     /// Data about the achievement.
     /// </summary>
-    public record FeedAchievement
+    public record Achievement
     {
         /// <summary>
         /// Unique identifier of the achievement.
