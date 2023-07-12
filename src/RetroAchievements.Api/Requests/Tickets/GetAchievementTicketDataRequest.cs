@@ -4,6 +4,9 @@ using RetroAchievements.Api.Response.Tickets;
 
 namespace RetroAchievements.Api.Requests.Tickets
 {
+    /// <summary>
+    /// TODO:
+    /// </summary>
     public record GetAchievementTicketDataRequest : IRetroAchievementsRequest<GetAchievementTicketDataResponse>
     {
         public string RequestEndpoint => "API_GetTicketData";

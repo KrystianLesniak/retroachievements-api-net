@@ -6,13 +6,16 @@ namespace RetroAchievements.Api
     public static class GamesApi
     {
         #region GetAchievementCount
-        public static async Task<GetAchievementCountResponse> GetAchievementCountAsync(this RetroAchievementsHttpClient client, int gameId, RetroAchievementsAuthenticationData? authenticationData = null)
+        /// <inheritdoc cref="GetAchievementIdentifiersRequest(int)"/>
+        public static async Task<GetAchievementIdentifiersResponse> GetAchievementIdentifiersAsync(this RetroAchievementsHttpClient client, int gameId, RetroAchievementsAuthenticationData? authenticationData = null)
         {
-            return await client.SendAsync(new GetAchievementCountRequest(gameId), authenticationData);
+            return await client.SendAsync(new GetAchievementIdentifiersRequest(gameId), authenticationData);
         }
-        public static GetAchievementCountResponse GetAchievementCount(this RetroAchievementsHttpClient client, int gameId, RetroAchievementsAuthenticationData? authenticationData = null)
+
+        /// <inheritdoc cref="GetAchievementIdentifiersRequest(int)"/>
+        public static GetAchievementIdentifiersResponse GetAchievementIdentifiers(this RetroAchievementsHttpClient client, int gameId, RetroAchievementsAuthenticationData? authenticationData = null)
         {
-            return client.Send(new GetAchievementCountRequest(gameId), authenticationData);
+            return client.Send(new GetAchievementIdentifiersRequest(gameId), authenticationData);
         }
         #endregion GetAchievementCount
 

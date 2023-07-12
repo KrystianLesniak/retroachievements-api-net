@@ -4,6 +4,9 @@ using RetroAchievements.Api.Response.Games;
 
 namespace RetroAchievements.Api.Requests.Games
 {
+    /// <summary>
+    /// TODO:
+    /// </summary>
     public record GetGameRequest : IRetroAchievementsRequest<GetGameResponse>
     {
         public string RequestEndpoint => "API_GetGame";

@@ -105,7 +105,7 @@ class Program
 - ❌ GetUserSummary() - Temporary disabled: [#46](https://github.com/RetroAchievements/retroachievements-api-js/issues/46) - Get a user's profile metadata. 
 
 #### Games
-- GetAchievementCount(int gameId) - Get the list of achievement IDs for a game.
+- GetAchievementIdentifiers(int gameId) - Get the list of achievement IDs for a game.
 - GetAchievementDistribution(int gameId, bool hardcoreOnly, bool unofficialAchievements) - Get how many players have unlocked how many achievements for a game.
 - GetGame(int gameId) - Get basic metadata about a game.
 - GetGameExtended(int gameId) - Get extended metadata about a game.

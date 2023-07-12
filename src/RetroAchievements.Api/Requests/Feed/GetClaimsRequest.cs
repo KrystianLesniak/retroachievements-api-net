@@ -4,6 +4,9 @@ using RetroAchievements.Api.Response.Users;
 
 namespace RetroAchievements.Api.Requests.Users
 {
+    /// <summary>
+    /// TODO:
+    /// </summary>
     public record GetClaimsRequest : IRetroAchievementsRequest<GetClaimsResponse>
     {
         public string RequestEndpoint => "API_GetClaims";
