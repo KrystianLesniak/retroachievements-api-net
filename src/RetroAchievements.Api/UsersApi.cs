@@ -6,14 +6,16 @@ namespace RetroAchievements.Api
     public static class UsersApi
     {
         #region GetAchievementsEarnedBetween
-        public static async Task<GetAchievementsEarnedBetweenResponse> GetAchievementsEarnedBetweenAsync(this RetroAchievementsHttpClient client, string user, DateTime from, DateTime to, RetroAchievementsAuthenticationData? authenticationData = null)
+        /// <inheritdoc cref="GetAchievementsEarnedBetweenRequest(string, DateTime, DateTime)"/>
+        public static async Task<GetAchievementsEarnedBetweenResponse> GetAchievementsEarnedBetweenAsync(this RetroAchievementsHttpClient client, string username, DateTime from, DateTime to, RetroAchievementsAuthenticationData? authenticationData = null)
         {
-            return await client.SendAsync(new GetAchievementsEarnedBetweenRequest(user, from, to), authenticationData);
+            return await client.SendAsync(new GetAchievementsEarnedBetweenRequest(username, from, to), authenticationData);
         }
 
-        public static GetAchievementsEarnedBetweenResponse GetAchievementsEarnedBetween(this RetroAchievementsHttpClient client, string user, DateTime from, DateTime to, RetroAchievementsAuthenticationData? authenticationData = null)
+        /// <inheritdoc cref="GetAchievementsEarnedBetweenRequest(string, DateTime, DateTime)"/>
+        public static GetAchievementsEarnedBetweenResponse GetAchievementsEarnedBetween(this RetroAchievementsHttpClient client, string username, DateTime from, DateTime to, RetroAchievementsAuthenticationData? authenticationData = null)
         {
-            return client.Send(new GetAchievementsEarnedBetweenRequest(user, from, to), authenticationData);
+            return client.Send(new GetAchievementsEarnedBetweenRequest(username, from, to), authenticationData);
         }
         #endregion GetAchievementsEarnedBetween
 
