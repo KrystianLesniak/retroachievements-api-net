@@ -1,5 +1,5 @@
 # RetroAchievements API .NET
-## Work In Progress ⏳ Experimental use only. <br> Property and method names may change before stable release.
+## Work In Progress ⏳ Experimental use only.
 
 _A C# .NET library that lets you get achievement, user, and game data from RetroAchievements._
 <br><br>
