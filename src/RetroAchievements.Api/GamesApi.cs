@@ -37,16 +37,16 @@ namespace RetroAchievements.Api
         #endregion GetAchievementDistribution
 
         #region GetGame
-        /// <inheritdoc cref="GetGameRequest(int)"/>
-        public static async Task<GetGameResponse> GetGameAsync(this RetroAchievementsHttpClient client, int gameId, RetroAchievementsAuthenticationData? authenticationData = null)
+        /// <inheritdoc cref="GetGameDataRequest(int)"/>
+        public static async Task<GetGameDataResponse> GetGameDataAsync(this RetroAchievementsHttpClient client, int gameId, RetroAchievementsAuthenticationData? authenticationData = null)
         {
-            return await client.SendAsync(new GetGameRequest(gameId), authenticationData);
+            return await client.SendAsync(new GetGameDataRequest(gameId), authenticationData);
         }
 
-        /// <inheritdoc cref="GetGameRequest(int)"/>
-        public static GetGameResponse GetGame(this RetroAchievementsHttpClient client, int gameId, RetroAchievementsAuthenticationData? authenticationData = null)
+        /// <inheritdoc cref="GetGameDataRequest(int)"/>
+        public static GetGameDataResponse GetGameData(this RetroAchievementsHttpClient client, int gameId, RetroAchievementsAuthenticationData? authenticationData = null)
         {
-            return client.Send(new GetGameRequest(gameId), authenticationData);
+            return client.Send(new GetGameDataRequest(gameId), authenticationData);
         }
         #endregion GetGame
 
