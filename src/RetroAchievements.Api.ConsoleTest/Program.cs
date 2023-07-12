@@ -44,5 +44,5 @@ using (var client = new RetroAchievementsHttpClient(authData))
     //    await Task.Delay(500);
 
     //}
-    var response = await client.GetAchievementTicketDataAsync(26345);
+    var response = await client.GetGameExtendedDataAsync(12264);
 };

@@ -17,7 +17,8 @@ namespace RetroAchievements.Api.Response.Tickets
         public string AchievementTitle { get; private set; } = string.Empty;
 
         [JsonInclude]
-        public string AchievementDesc { get; private set; } = string.Empty;
+        [JsonPropertyName("AchievementDesc")]
+        public string AchievementDescription { get; private set; } = string.Empty;
 
         [JsonInclude]
         public int Points { get; private set; }
@@ -43,7 +44,8 @@ namespace RetroAchievements.Api.Response.Tickets
 
         [JsonInclude]
         [JsonConverter(typeof(DateTimeCustomApiFormatConverter))]
-        public DateTime ReportedAt { get; private set; }
+        [JsonPropertyName("ReportedAt")]
+        public DateTime ReportedDate { get; private set; }
 
         [JsonInclude]
         public int ReportType { get; private set; }
@@ -59,7 +61,8 @@ namespace RetroAchievements.Api.Response.Tickets
 
         [JsonInclude]
         [JsonConverter(typeof(NumberApiToBooleanConverter))]
-        public bool? Hardcore { get; private set; }
+        [JsonPropertyName("Hardcore")]
+        public bool? IsHardcore { get; private set; }
 
         [JsonInclude]
         public string ReportNotes { get; private set; } = string.Empty;
@@ -69,7 +72,8 @@ namespace RetroAchievements.Api.Response.Tickets
 
         [JsonInclude]
         [JsonConverter(typeof(DateTimeCustomApiFormatConverter))]
-        public DateTime ResolvedAt { get; private set; }
+        [JsonPropertyName("ResolvedAt")]
+        public DateTime ResolvedDate { get; private set; }
 
         [JsonInclude]
         public string ResolvedBy { get; private set; } = string.Empty;

@@ -16,6 +16,21 @@ namespace RetroAchievements.Api.Internal.Json.Converters
             {
                 return parsedDate;
             }
+            else if (DateTime.TryParseExact(reader.GetString(), "yyyy-MM-dd", null,
+                          DateTimeStyles.None, out DateTime parsedDate2))
+            {
+                return parsedDate2;
+            }
+            else if (DateTime.TryParseExact(reader.GetString(), "yyyy-MM", null,
+                          DateTimeStyles.None, out DateTime parsedDate3))
+            {
+                return parsedDate3;
+            }
+            else if (DateTime.TryParseExact(reader.GetString(), "yyyy", null,
+              DateTimeStyles.None, out DateTime parsedDate4))
+            {
+                return parsedDate4;
+            }
             else
             {
                 return DateTime.Parse(reader.GetString()!);

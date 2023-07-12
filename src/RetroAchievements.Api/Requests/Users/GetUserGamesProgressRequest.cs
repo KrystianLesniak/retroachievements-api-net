@@ -5,9 +5,9 @@ using RetroAchievements.Api.Response.Users;
 
 namespace RetroAchievements.Api.Requests.Users
 {
-    public record GetUserProgressRequest : IRetroAchievementsRequest<GetUserProgressResponse>
+    public record GetUserGamesProgressRequest : IRetroAchievementsRequest<GetUserGamesProgressResponse>
     {
-        public GetUserProgressRequest(string username, IEnumerable<int> gameIds)
+        public GetUserGamesProgressRequest(string username, IEnumerable<int> gameIds)
         {
             ArgumentNullException.ThrowIfNull(username, nameof(username));
             ArgumentNullException.ThrowIfNull(gameIds, nameof(gameIds));

@@ -12,7 +12,7 @@ namespace RetroAchievements.Api.Response.Users
     {
         [JsonInclude]
         [JsonPropertyName("1")]
-        public string Name { get; private set; } = String.Empty;
+        public string Username { get; private set; } = String.Empty;
 
         [JsonInclude]
         [JsonPropertyName("2")]

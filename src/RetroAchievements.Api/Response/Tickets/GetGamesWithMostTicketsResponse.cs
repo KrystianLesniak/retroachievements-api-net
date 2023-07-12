@@ -7,7 +7,7 @@ namespace RetroAchievements.Api.Response.Tickets
     {
 
         [JsonInclude]
-        public IEnumerable<Game> MostReportedGames { get; private set; } = new List<Game>();
+        public IReadOnlyCollection<Game> MostReportedGames { get; private set; } = new List<Game>();
 
         [JsonInclude]
         [JsonPropertyName("URL")]

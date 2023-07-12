@@ -16,14 +16,15 @@ namespace RetroAchievements.Api.Response.Tickets
         public string ConsoleName { get; private set; } = string.Empty;
 
         [JsonInclude]
-        public int OpenTickets { get; private set; }
+        [JsonPropertyName("OpenTickets")]
+        public int TicketsCount { get; private set; }
 
         [JsonInclude]
         [JsonPropertyName("URL")]
         public string Url { get; private set; } = string.Empty;
 
         [JsonInclude]
-        public IEnumerable<Ticket> Tickets { get; private set; } = new List<Ticket>();
+        public IReadOnlyCollection<Ticket> Tickets { get; private set; } = new List<Ticket>();
 
     }
 }

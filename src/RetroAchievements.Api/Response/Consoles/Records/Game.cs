@@ -23,10 +23,12 @@ namespace RetroAchievements.Api.Response.Consoles.Records
         public string ImageIcon { get; private set; } = string.Empty;
 
         [JsonInclude]
-        public int NumAchievements { get; private set; }
+        [JsonPropertyName("NumAchievements")]
+        public int AchievementsCount { get; private set; }
 
         [JsonInclude]
-        public int NumLeaderboards { get; private set; }
+        [JsonPropertyName("NumLeaderboards")]
+        public int LeaderboardsCount { get; private set; }
 
         [JsonInclude]
         public int Points { get; private set; }
@@ -39,6 +41,6 @@ namespace RetroAchievements.Api.Response.Consoles.Records
         [JsonPropertyName("ForumTopicID")]
         public int? ForumTopicId { get; private set; }
 
-        public IEnumerable<string> Hashes { get; private set; } = new List<string>();
+        public IReadOnlyCollection<string> Hashes { get; private set; } = new List<string>();
     }
 }

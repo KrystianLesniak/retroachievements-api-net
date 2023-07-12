@@ -5,19 +5,24 @@ namespace RetroAchievements.Api.Response.Tickets
     public record GetUserTicketDataResponse : RetroAchievementsResponse
     {
         [JsonInclude]
-        public string User { get; private set; } = string.Empty;
+        [JsonPropertyName("User")]
+        public string Username { get; private set; } = string.Empty;
 
         [JsonInclude]
-        public int Open { get; private set; }
+        [JsonPropertyName("Open")]
+        public int OpenTicketsCount { get; private set; }
 
         [JsonInclude]
-        public int Closed { get; private set; }
+        [JsonPropertyName("Closed")]
+        public int ClosedTicketsCount { get; private set; }
 
         [JsonInclude]
-        public int Resolved { get; private set; }
+        [JsonPropertyName("Resolved")]
+        public int ResolvedTicketsCount { get; private set; }
 
         [JsonInclude]
-        public int Total { get; private set; }
+        [JsonPropertyName("Total")]
+        public int TotalTicketsCount { get; private set; }
 
         [JsonInclude]
         [JsonPropertyName("URL")]
