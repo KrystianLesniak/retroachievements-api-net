@@ -1,6 +1,5 @@
 ﻿using RetroAchievements.Api.Internal.Json.Converters;
 using RetroAchievements.Api.Response.Records;
-using RetroAchievements.Api.Response.Users.Records;
 using System.Text.Json.Serialization;
 
 namespace RetroAchievements.Api.Response.Users
@@ -10,7 +9,7 @@ namespace RetroAchievements.Api.Response.Users
     /// </summary>
     public record GetAchievementOfTheWeekResponse : RetroAchievementsResponse
     {
-        /// <inheritdoc cref="Records.Achievement"/>
+        /// <inheritdoc cref="Response.Records.Achievement"/>
         [JsonInclude]
         public Achievement Achievement { get; private set; } = new();
 
