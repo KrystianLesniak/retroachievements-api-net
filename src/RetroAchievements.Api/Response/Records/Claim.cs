@@ -1,6 +1,5 @@
 ﻿using RetroAchievements.Api.Internal.Json.Converters;
 using RetroAchievements.Api.Response.Enums;
-using System.Numerics;
 using System.Text.Json.Serialization;
 
 namespace RetroAchievements.Api.Response.Records
