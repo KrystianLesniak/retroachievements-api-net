@@ -4,8 +4,14 @@ using System.Text.Json.Serialization;
 
 namespace RetroAchievements.Api.Response
 {
+    /// <summary>
+    /// RetroAchievements API Map Response Data.
+    /// </summary>
     public record DictionaryRetroAchievementsResponse<TKey, TValue> : RetroAchievementsResponse where TKey : notnull
     {
+        /// <summary>
+        /// Map of items returned from API request call.
+        /// </summary>
         [JsonInclude]
         public IDictionary<TKey, TValue> Items { get; internal set; } = new Dictionary<TKey, TValue>();
     }

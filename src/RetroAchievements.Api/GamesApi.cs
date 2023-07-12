@@ -3,6 +3,9 @@ using RetroAchievements.Api.Response.Games;
 
 namespace RetroAchievements.Api
 {
+    /// <summary>
+    /// Class with extension methods for calling APIs from group "Games"
+    /// </summary>
     public static class GamesApi
     {
         #region GetAchievementCount
@@ -34,10 +37,13 @@ namespace RetroAchievements.Api
         #endregion GetAchievementDistribution
 
         #region GetGame
+        /// <inheritdoc cref="GetGameRequest(int)"/>
         public static async Task<GetGameResponse> GetGameAsync(this RetroAchievementsHttpClient client, int gameId, RetroAchievementsAuthenticationData? authenticationData = null)
         {
             return await client.SendAsync(new GetGameRequest(gameId), authenticationData);
         }
+
+        /// <inheritdoc cref="GetGameRequest(int)"/>
         public static GetGameResponse GetGame(this RetroAchievementsHttpClient client, int gameId, RetroAchievementsAuthenticationData? authenticationData = null)
         {
             return client.Send(new GetGameRequest(gameId), authenticationData);
@@ -45,10 +51,13 @@ namespace RetroAchievements.Api
         #endregion GetGame
 
         #region GetGameExtended
+        /// <inheritdoc cref="GetGameExtendedRequest(int)"/>
         public static async Task<GetGameExtendedResponse> GetGameExtendedAsync(this RetroAchievementsHttpClient client, int gameId, RetroAchievementsAuthenticationData? authenticationData = null)
         {
             return await client.SendAsync(new GetGameExtendedRequest(gameId), authenticationData);
         }
+
+        /// <inheritdoc cref="GetGameExtendedRequest(int)"/>
         public static GetGameExtendedResponse GetGameExtended(this RetroAchievementsHttpClient client, int gameId, RetroAchievementsAuthenticationData? authenticationData = null)
         {
             return client.Send(new GetGameExtendedRequest(gameId), authenticationData);
@@ -56,10 +65,13 @@ namespace RetroAchievements.Api
         #endregion GetGameExtended
 
         #region GetGameRankAndScore
+        /// <inheritdoc cref="GetGameRankAndScoreRequest(int, RankType)"/>
         public static async Task<GetGameRankAndScoreResponse> GetGameRankAndScoreAsync(this RetroAchievementsHttpClient client, int gameId, RankType rankType = RankType.HighScores, RetroAchievementsAuthenticationData? authenticationData = null)
         {
             return await client.SendAsync(new GetGameRankAndScoreRequest(gameId, rankType), authenticationData);
         }
+
+        /// <inheritdoc cref="GetGameRankAndScoreRequest(int, RankType)"/>
         public static GetGameRankAndScoreResponse GetGameRankAndScore(this RetroAchievementsHttpClient client, int gameId, RankType rankType = RankType.HighScores, RetroAchievementsAuthenticationData? authenticationData = null)
         {
             return client.Send(new GetGameRankAndScoreRequest(gameId, rankType), authenticationData);
@@ -67,10 +79,14 @@ namespace RetroAchievements.Api
         #endregion GetGameRankAndScore
 
         #region GetGameRating
+
+        /// <inheritdoc cref="GetGameRatingRequest(int)"/>
         public static async Task<GetGameRatingResponse> GetGameRatingAsync(this RetroAchievementsHttpClient client, int gameId, RetroAchievementsAuthenticationData? authenticationData = null)
         {
             return await client.SendAsync(new GetGameRatingRequest(gameId), authenticationData);
         }
+
+        /// <inheritdoc cref="GetGameRatingRequest(int)"/>
         public static GetGameRatingResponse GetGameRating(this RetroAchievementsHttpClient client, int gameId, RetroAchievementsAuthenticationData? authenticationData = null)
         {
             return client.Send(new GetGameRatingRequest(gameId), authenticationData);
