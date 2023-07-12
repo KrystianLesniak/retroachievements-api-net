@@ -24,7 +24,12 @@ namespace RetroAchievements.Api.Response
 
             using (var jsonDoc = JsonDocument.ParseValue(ref reader))
             {
-                var items = JsonSerializer.Deserialize<IReadOnlyCollection<TItem>>(jsonDoc.RootElement.GetRawText(), options);
+                IReadOnlyCollection<TItem>? items = new List<TItem>();
+
+                if (jsonDoc.RootElement.ValueKind == JsonValueKind.Array && jsonDoc.RootElement.GetArrayLength() > 0)
+                {
+                    items = JsonSerializer.Deserialize<IReadOnlyCollection<TItem>>(jsonDoc.RootElement.GetRawText(), options);
+                }
 
                 return new TResponse
                 {
