@@ -133,8 +133,6 @@ class Program
 - GetGameTicketData(int gameId) -  Get ticket statistics for the specified game.
 - GetAchievementTicketData(int achievementId) -  Get ticket statistics for the specified achievement.
 
-<br />
-
 ## Different usages
 
 TODO
