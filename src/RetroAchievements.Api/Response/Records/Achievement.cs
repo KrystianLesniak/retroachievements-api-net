@@ -1,12 +1,12 @@
 ﻿using RetroAchievements.Api.Internal.Json.Converters;
 using System.Text.Json.Serialization;
 
-namespace RetroAchievements.Api.Response.Games.Records
+namespace RetroAchievements.Api.Response.Records
 {
     /// <summary>
-    /// Informations about achievements associated to the game.
+    /// Data about the achievement.
     /// </summary>
-    public record GameAchievement
+    public record Achievement
     {
         /// <summary>
         /// Unique identifier of the achievement.
@@ -16,13 +16,13 @@ namespace RetroAchievements.Api.Response.Games.Records
         public int Id { get; private set; }
 
         /// <summary>
-        /// Title of the achievement
+        /// Title of the achievement.
         /// </summary>
         [JsonInclude]
         public string Title { get; private set; } = string.Empty;
 
         /// <summary>
-        /// Description of the achievement
+        /// Description of the achievement.
         /// </summary>
         [JsonInclude]
         public string Description { get; private set; } = string.Empty;
@@ -39,32 +39,6 @@ namespace RetroAchievements.Api.Response.Games.Records
         [JsonInclude]
         [JsonPropertyName("TrueRatio")]
         public int TrueRatioPoints { get; private set; }
-
-        /// <summary>
-        /// Unique identifier of the badge image for the achievement,
-        /// </summary>
-        [JsonInclude]
-        public string BadgeName { get; private set; } = string.Empty;
-
-        /// <summary>
-        ///  Number of times the achievement has been awarded.
-        /// </summary>
-        [JsonInclude]
-        [JsonPropertyName("NumAwarded")]
-        public int AwardedCount { get; private set; }
-
-        /// <summary>
-        ///  Number of times the achievement has been awarded in hardcore.
-        /// </summary>
-        [JsonInclude]
-        [JsonPropertyName("NumAwardedHardcore")]
-        public int AwardedHardcoreCount { get; private set; }
-
-        /// <summary>
-        /// Field used for determining which order to display the achievements.
-        /// </summary>
-        [JsonInclude]
-        public int DisplayOrder { get; private set; }
 
         /// <summary>
         /// User who first created the achievement.
@@ -86,6 +60,5 @@ namespace RetroAchievements.Api.Response.Games.Records
         [JsonInclude]
         [JsonConverter(typeof(DateTimeCustomApiFormatConverter))]
         public DateTime DateModified { get; private set; }
-
     }
 }

@@ -3,9 +3,9 @@ using RetroAchievements.Api.Response.Users;
 
 namespace RetroAchievements.Api.Requests.Users
 {
-    public record GetUserCompletedGamesRequest : IRetroAchievementsRequest<GetUserCompletedGamesResponse>
+    public record GetUserAllGamesProgressRequest : IRetroAchievementsRequest<GetUserAllGamesProgressResponse>
     {
-        public GetUserCompletedGamesRequest(string username)
+        public GetUserAllGamesProgressRequest(string username)
         {
             ArgumentNullException.ThrowIfNull(username, nameof(username));
 

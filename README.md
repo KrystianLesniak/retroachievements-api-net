@@ -1,5 +1,5 @@
 # RetroAchievements API .NET
-## Work In Progress ⏳ Experimental use only. <br> Property and method names may change before stable release.
+## Work In Progress ⏳ Experimental use only.
 
 _A C# .NET library that lets you get achievement, user, and game data from RetroAchievements._
 <br><br>
@@ -95,20 +95,20 @@ class Program
 - ❌ GetGameInfoAndUserProgress() - Temporary disabled: [#46](https://github.com/RetroAchievements/retroachievements-api-js/issues/46) - Get metadata about a game as well as a user's progress on that game.
 - GetUserAwards(string username) - Get a list of a user's site awards/badges.
 - GetUserClaims(string username) - Get a list of set claims made over the lifetime of a user.
-- GetUserCompletedGames(string username) - Get hardcore and softcore completion metadata about games a user has played.
+- GetUserAllGamesProgress(string username) - Get hardcore and softcore completion metadata about games a user has played.
 - GetUserGameRankAndScore(string username, int gameId) - Get metadata about how a user has performed on a given game.
 - GetUserPoints(string username) - Get a user's total points.
 - GetUserRankAndScore(string username) - Get a user's total points and rank.
-- GetUserProgress(string username) - Get a user's progress on a list of specified games.
+- GetUserGamesProgress(string username) - Get a user's progress on a list of specified games.
 - GetUserRecentAchievements(string username, IEnumerable<int> gameIds) - Get a list of achievements recently earned by the user.
 - ❌ GetUserRecentlyPlayedGames() - Temporary disabled: [#46](https://github.com/RetroAchievements/retroachievements-api-js/issues/46) - Get a list of games a user has recently played.
 - ❌ GetUserSummary() - Temporary disabled: [#46](https://github.com/RetroAchievements/retroachievements-api-js/issues/46) - Get a user's profile metadata. 
 
 #### Games
-- GetAchievementCount(int gameId) - Get the list of achievement IDs for a game.
+- GetAchievementIdentifiers(int gameId) - Get the list of achievement IDs for a game.
 - GetAchievementDistribution(int gameId, bool hardcoreOnly, bool unofficialAchievements) - Get how many players have unlocked how many achievements for a game.
-- GetGame(int gameId) - Get basic metadata about a game.
-- GetGameExtended(int gameId) - Get extended metadata about a game.
+- GetGameData(int gameId) - Get basic metadata about a game.
+- GetGameExtendedData(int gameId) - Get extended metadata about a game.
 - GetGameRankAndScore(int gameId, RankType rankType) - Get a list of either the latest masters or highest points earners for a game.
 - GetGameRating(int gameId) - Get how users have rated a game.
 
@@ -117,7 +117,7 @@ class Program
 
 #### Consoles
 - GetConsoleIds() - Get the complete list of console ID and name pairs on the site.
-- GetGameList(int consoleId, bool onlyWithAchievements, bool getHashes) - Get the complete list of games for a console.
+- GetGamesList(int consoleId, bool onlyWithAchievements, bool getHashes) - Get the complete list of games for a console.
 
 #### Feed
 - GetAchievementOfTheWeek() - Get comprehensive metadata about the current Achievement of the Week.

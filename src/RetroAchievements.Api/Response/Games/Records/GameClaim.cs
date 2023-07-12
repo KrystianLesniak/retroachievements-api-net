@@ -4,25 +4,42 @@ using System.Text.Json.Serialization;
 
 namespace RetroAchievements.Api.Response.Games.Records
 {
+    /// <summary>
+    /// Claim data associated to the game.
+    /// </summary>
     public record GameClaim
     {
+        /// <summary>
+        /// Username of user who made the claim.
+        /// </summary>
         [JsonInclude]
-        public string User { get; private set; } = string.Empty;
+        [JsonPropertyName("User")]
+        public string Username { get; private set; } = string.Empty;
 
 
+        /// <inheritdoc cref="Enums.ClaimType"/>
         [JsonInclude]
         public ClaimType ClaimType { get; private set; }
 
+        /// <inheritdoc cref="Enums.SetType"/>
         [JsonInclude]
         public SetType SetType { get; private set; }
 
+        /// <summary>
+        /// Date the claim was made.
+        /// </summary>
         [JsonInclude]
         [JsonConverter(typeof(DateTimeCustomApiFormatConverter))]
-        public DateTime Created { get; private set; }
+        [JsonPropertyName("Created")]
+        public DateTime CreatedDate { get; private set; }
 
+        /// <summary>
+        /// Date when the claim will expire.
+        /// </summary>
         [JsonInclude]
         [JsonConverter(typeof(DateTimeCustomApiFormatConverter))]
-        public DateTime Expiration { get; private set; }
+        [JsonPropertyName("Expiration")]
+        public DateTime ExpirationDate { get; private set; }
 
     }
 }

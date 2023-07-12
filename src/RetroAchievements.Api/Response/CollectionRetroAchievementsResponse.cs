@@ -4,8 +4,14 @@ using System.Text.Json.Serialization;
 
 namespace RetroAchievements.Api.Response
 {
+    /// <summary>
+    /// RetroAchievements API Collection Response Data.
+    /// </summary>
     public record CollectionRetroAchievementsResponse<TItem> : RetroAchievementsResponse
     {
+        /// <summary>
+        /// Collection of items returned from API request call.
+        /// </summary>
         [JsonInclude]
         public IEnumerable<TItem> Items { get; internal set; } = new List<TItem>();
     }
