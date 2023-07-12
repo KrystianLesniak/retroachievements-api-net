@@ -5,7 +5,7 @@ using RetroAchievements.Api.Response.Games;
 namespace RetroAchievements.Api.Requests.Games
 {
     ///<summary>
-    /// Returns the achievements associated to a game.
+    /// Get the achievements associated to a game.
     ///</summary>
     public record GetAchievementIdentifiersRequest : IRetroAchievementsRequest<GetAchievementIdentifiersResponse>
     {
@@ -28,8 +28,4 @@ namespace RetroAchievements.Api.Requests.Games
         [ApiInputKey("i")]
         public int GameId { get; init; }
     }
-
-    /// <summary>
-    /// TODO:
-    /// </summary>
 }

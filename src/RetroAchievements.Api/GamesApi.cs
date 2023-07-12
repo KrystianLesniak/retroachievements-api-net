@@ -20,10 +20,13 @@ namespace RetroAchievements.Api
         #endregion GetAchievementCount
 
         #region GetAchievementDistribution
+        /// <inheritdoc cref="GetAchievementDistributionRequest(int, bool, bool)"/>
         public static async Task<GetAchievementDistributionResponse> GetAchievementDistributionAsync(this RetroAchievementsHttpClient client, int gameId, bool hardcoreOnly = false, bool unofficialAchievements = false, RetroAchievementsAuthenticationData? authenticationData = null)
         {
             return await client.SendAsync(new GetAchievementDistributionRequest(gameId, hardcoreOnly, unofficialAchievements), authenticationData);
         }
+
+        /// <inheritdoc cref="GetAchievementDistributionRequest(int, bool, bool)"/>
         public static GetAchievementDistributionResponse GetAchievementDistribution(this RetroAchievementsHttpClient client, int gameId, bool hardcoreOnly = false, bool unofficialAchievements = false, RetroAchievementsAuthenticationData? authenticationData = null)
         {
             return client.Send(new GetAchievementDistributionRequest(gameId, hardcoreOnly, unofficialAchievements), authenticationData);
