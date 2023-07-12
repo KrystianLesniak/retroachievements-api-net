@@ -23,15 +23,19 @@ namespace RetroAchievements.Api.Response.Users.Records
         public string ConsoleName { get; private set; } = string.Empty;
 
         [JsonInclude]
-        public int MaxPossible { get; private set; }
+        [JsonPropertyName("MaxPossible")]
+        public int GameAchievementsCount { get; private set; }
 
         [JsonInclude]
         [JsonNumberHandling(JsonNumberHandling.AllowReadingFromString)]
-        public int NumAwarded { get; private set; }
+        [JsonPropertyName("NumAwarded")]
+
+        public int AwardedAchievementsCount { get; private set; }
 
         [JsonInclude]
         [JsonNumberHandling(JsonNumberHandling.AllowReadingFromString)]
-        public float PctWon { get; private set; }
+        [JsonPropertyName("PctWon")]
+        public float EarnedAchievementsPercentage { get; private set; }
 
         [JsonInclude]
         [JsonConverter(typeof(NumberApiToBooleanConverter))]

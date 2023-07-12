@@ -24,15 +24,15 @@ namespace RetroAchievements.Api
 
         #region GetAchievementsEarnedOnDay
         /// <inheritdoc cref="GetAchievementsEarnedOnDayRequest(string, DateTime)"/>
-        public static async Task<GetAchievementsEarnedOnDayResponse> GetAchievementsEarnedOnDayAsync(this RetroAchievementsHttpClient client, string user, DateTime date, RetroAchievementsAuthenticationData? authenticationData = null)
+        public static async Task<GetAchievementsEarnedOnDayResponse> GetAchievementsEarnedOnDayAsync(this RetroAchievementsHttpClient client, string username, DateTime date, RetroAchievementsAuthenticationData? authenticationData = null)
         {
-            return await client.SendAsync(new GetAchievementsEarnedOnDayRequest(user, date), authenticationData);
+            return await client.SendAsync(new GetAchievementsEarnedOnDayRequest(username, date), authenticationData);
         }
 
         /// <inheritdoc cref="GetAchievementsEarnedOnDayRequest(string, DateTime)"/>
-        public static GetAchievementsEarnedOnDayResponse GetAchievementsEarnedOnDay(this RetroAchievementsHttpClient client, string user, DateTime date, RetroAchievementsAuthenticationData? authenticationData = null)
+        public static GetAchievementsEarnedOnDayResponse GetAchievementsEarnedOnDay(this RetroAchievementsHttpClient client, string username, DateTime date, RetroAchievementsAuthenticationData? authenticationData = null)
         {
-            return client.Send(new GetAchievementsEarnedOnDayRequest(user, date), authenticationData);
+            return client.Send(new GetAchievementsEarnedOnDayRequest(username, date), authenticationData);
         }
         #endregion GetAchievementsEarnedOnDay
 
