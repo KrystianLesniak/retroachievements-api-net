@@ -53,5 +53,17 @@ namespace RetroAchievements.Api
             return client.Send(new GetUserTicketDataRequest(username), authenticationData);
         }
         #endregion GetUserTicketData
+
+        #region GetGameTicketData
+        public static async Task<GetGameTicketDataResponse> GetGameTicketDataAsync(this RetroAchievementsHttpClient client, int gameId, RetroAchievementsAuthenticationData? authenticationData = null)
+        {
+            return await client.SendAsync(new GetGameTicketDataRequest(gameId), authenticationData);
+        }
+
+        public static GetGameTicketDataResponse GetGameTicketData(this RetroAchievementsHttpClient client, int gameId, RetroAchievementsAuthenticationData? authenticationData = null)
+        {
+            return client.Send(new GetGameTicketDataRequest(gameId), authenticationData);
+        }
+        #endregion GetGameTicketData
     }
 }

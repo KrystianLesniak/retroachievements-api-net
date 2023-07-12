@@ -24,6 +24,6 @@ namespace RetroAchievements.Api.Requests.Tickets
         public int Count { get; init; }
 
         [ApiInputKey("f")]
-        public int ApiFlag { get; init; } = 1;
+        public int ConstApiFlag { get; init; } = 1;
     }
 }
