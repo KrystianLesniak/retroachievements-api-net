@@ -5,16 +5,16 @@ using RetroAchievements.Api.Response.Games;
 namespace RetroAchievements.Api.Requests.Games
 {
     /// <summary>
-    /// Get information data about the game.
+    /// Get extended information data about the game.
     /// </summary>
-    public record GetGameDataRequest : IRetroAchievementsRequest<GetGameDataResponse>
+    public record GetGameExtendedDataRequest : IRetroAchievementsRequest<GetGameExtendedDataResponse>
     {
         /// <inheritdoc />
-        public string RequestEndpoint => "API_GetGame";
+        public string RequestEndpoint => "API_GetGameExtended";
 
-        ///<inheritdoc cref="GetGameDataRequest" />
+        ///<inheritdoc cref="GetGameExtendedDataRequest" />
         ///<param name="gameId"><inheritdoc cref="GameId" path="/summary/node()"/></param>
-        public GetGameDataRequest(int gameId)
+        public GetGameExtendedDataRequest(int gameId)
         {
             ArgumentNullException.ThrowIfNull(gameId);
 
@@ -26,5 +26,6 @@ namespace RetroAchievements.Api.Requests.Games
         ///</summary>
         [ApiInputKey("i")]
         public int GameId { get; init; }
+
     }
 }

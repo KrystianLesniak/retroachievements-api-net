@@ -51,16 +51,16 @@ namespace RetroAchievements.Api
         #endregion GetGame
 
         #region GetGameExtended
-        /// <inheritdoc cref="GetGameExtendedRequest(int)"/>
-        public static async Task<GetGameExtendedResponse> GetGameExtendedAsync(this RetroAchievementsHttpClient client, int gameId, RetroAchievementsAuthenticationData? authenticationData = null)
+        /// <inheritdoc cref="GetGameExtendedDataRequest(int)"/>
+        public static async Task<GetGameExtendedDataResponse> GetGameExtendedDataAsync(this RetroAchievementsHttpClient client, int gameId, RetroAchievementsAuthenticationData? authenticationData = null)
         {
-            return await client.SendAsync(new GetGameExtendedRequest(gameId), authenticationData);
+            return await client.SendAsync(new GetGameExtendedDataRequest(gameId), authenticationData);
         }
 
-        /// <inheritdoc cref="GetGameExtendedRequest(int)"/>
-        public static GetGameExtendedResponse GetGameExtended(this RetroAchievementsHttpClient client, int gameId, RetroAchievementsAuthenticationData? authenticationData = null)
+        /// <inheritdoc cref="GetGameExtendedDataRequest(int)"/>
+        public static GetGameExtendedDataResponse GetGameExtendedData(this RetroAchievementsHttpClient client, int gameId, RetroAchievementsAuthenticationData? authenticationData = null)
         {
-            return client.Send(new GetGameExtendedRequest(gameId), authenticationData);
+            return client.Send(new GetGameExtendedDataRequest(gameId), authenticationData);
         }
         #endregion GetGameExtended
 

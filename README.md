@@ -107,8 +107,8 @@ class Program
 #### Games
 - GetAchievementIdentifiers(int gameId) - Get the list of achievement IDs for a game.
 - GetAchievementDistribution(int gameId, bool hardcoreOnly, bool unofficialAchievements) - Get how many players have unlocked how many achievements for a game.
-- GetGame(int gameId) - Get basic metadata about a game.
-- GetGameExtended(int gameId) - Get extended metadata about a game.
+- GetGameData(int gameId) - Get basic metadata about a game.
+- GetGameExtendedData(int gameId) - Get extended metadata about a game.
 - GetGameRankAndScore(int gameId, RankType rankType) - Get a list of either the latest masters or highest points earners for a game.
 - GetGameRating(int gameId) - Get how users have rated a game.
 

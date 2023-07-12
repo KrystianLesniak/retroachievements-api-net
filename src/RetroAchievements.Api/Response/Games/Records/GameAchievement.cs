@@ -3,43 +3,86 @@ using System.Text.Json.Serialization;
 
 namespace RetroAchievements.Api.Response.Games.Records
 {
+    /// <summary>
+    /// Informations about achievements associated to the game.
+    /// </summary>
     public record GameAchievement
     {
+        /// <summary>
+        /// Unique identifier of the achievement.
+        /// </summary>
         [JsonInclude]
         [JsonPropertyName("ID")]
         public int Id { get; private set; }
 
+        /// <summary>
+        /// Title of the achievement
+        /// </summary>
         [JsonInclude]
         public string Title { get; private set; } = string.Empty;
 
+        /// <summary>
+        /// Description of the achievement
+        /// </summary>
         [JsonInclude]
         public string Description { get; private set; } = string.Empty;
 
+        /// <summary>
+        /// Number of points the achievement is worth.
+        /// </summary>
         [JsonInclude]
         public int Points { get; private set; }
 
+        /// <summary>
+        /// Number of "white" points the achievement is worth.
+        /// </summary>
         [JsonInclude]
-        public int TrueRatio { get; private set; }
+        [JsonPropertyName("TrueRatio")]
+        public int TrueRatioPoints { get; private set; }
 
+        /// <summary>
+        /// Unique identifier of the badge image for the achievement,
+        /// </summary>
         [JsonInclude]
         public string BadgeName { get; private set; } = string.Empty;
 
+        /// <summary>
+        ///  Number of times the achievement has been awarded.
+        /// </summary>
         [JsonInclude]
-        public int NumAwarded { get; private set; }
+        [JsonPropertyName("NumAwarded")]
+        public int AwardedCount { get; private set; }
 
+        /// <summary>
+        ///  Number of times the achievement has been awarded in hardcore.
+        /// </summary>
         [JsonInclude]
-        public int NumAwardedHardcore { get; private set; }
+        [JsonPropertyName("NumAwardedHardcore")]
+        public int AwardedHardcoreCount { get; private set; }
 
+        /// <summary>
+        /// Field used for determining which order to display the achievements.
+        /// </summary>
         [JsonInclude]
         public int DisplayOrder { get; private set; }
 
+        /// <summary>
+        /// User who first created the achievement.
+        /// </summary>
         [JsonInclude]
-        public string Author { get; private set; } = string.Empty;
+        [JsonPropertyName("Author")]
+        public string AuthorUsername { get; private set; } = string.Empty;
 
+        /// <summary>
+        /// When the achievement was created.
+        /// </summary>
         [JsonInclude]
         [JsonConverter(typeof(DateTimeCustomApiFormatConverter))]
         public DateTime DateCreated { get; private set; }
 
+        /// <summary>
+        /// When the achievement was last modified.
+        /// </summary>
         [JsonInclude]
         [JsonConverter(typeof(DateTimeCustomApiFormatConverter))]
         public DateTime DateModified { get; private set; }
