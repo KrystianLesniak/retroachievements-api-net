@@ -5,9 +5,6 @@ using RetroAchievements.Api.Response.Tickets;
 
 namespace RetroAchievements.Api.Requests.Tickets
 {
-    /// <summary>
-    /// TODO:
-    /// </summary>
     public record GetOpenTicketsRequest : IRetroAchievementsRequest<GetOpenTicketsResponse>
     {
         public string RequestEndpoint => "API_GetTicketData";

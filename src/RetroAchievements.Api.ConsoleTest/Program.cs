@@ -45,5 +45,5 @@ using (var client = new RetroAchievementsHttpClient(authData))
     //    await Task.Delay(500);
 
     //}
-    var response = await client.GetAchievementIdentifiersAsync(1);
+    //var response = await client.GetUser(userName);
 };

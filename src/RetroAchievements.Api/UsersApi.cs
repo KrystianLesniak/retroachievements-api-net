@@ -36,18 +36,6 @@ namespace RetroAchievements.Api
         }
         #endregion GetAchievementsEarnedOnDay
 
-        //#region GetGameInfoAndUserProgress
-        //public static async Task<GetGameInfoAndUserProgressResponse> GetGameInfoAndUserProgressAsync(this RetroAchievementsHttpClient client, int gameId, string username, RetroAchievementsAuthenticationData? authenticationData = null)
-        //{
-        //    return await client.SendAsync(new GetGameInfoAndUserProgressRequest(gameId, username), authenticationData);
-        //}
-
-        //public static GetGameInfoAndUserProgressResponse GetGameInfoAndUserProgress(this RetroAchievementsHttpClient client, int gameId, string username, RetroAchievementsAuthenticationData? authenticationData = null)
-        //{
-        //    return client.Send(new GetGameInfoAndUserProgressRequest(gameId, username), authenticationData);
-        //}
-        //#endregion GetGameInfoAndUserProgress
-
         #region GetUserAwards
         /// <inheritdoc cref="GetUserAwardsRequest(string)"/>
         public static async Task<GetUserAwardsResponse> GetUserAwardsAsync(this RetroAchievementsHttpClient client, string username, RetroAchievementsAuthenticationData? authenticationData = null)
@@ -76,19 +64,19 @@ namespace RetroAchievements.Api
         }
         #endregion GetUserClaims
 
-        #region GetUserCompletedGames
-        /// <inheritdoc cref="GetUserCompletedGamesRequest(string)"/>
-        public static async Task<GetUserCompletedGamesResponse> GetUserCompletedGamesAsync(this RetroAchievementsHttpClient client, string username, RetroAchievementsAuthenticationData? authenticationData = null)
+        #region GetUserAllGamesProgress
+        /// <inheritdoc cref="GetUserAllGamesProgressRequest(string)"/>
+        public static async Task<GetUserAllGamesProgressResponse> GetUserAllGamesProgressAsync(this RetroAchievementsHttpClient client, string username, RetroAchievementsAuthenticationData? authenticationData = null)
         {
-            return await client.SendAsync(new GetUserCompletedGamesRequest(username), authenticationData);
+            return await client.SendAsync(new GetUserAllGamesProgressRequest(username), authenticationData);
         }
 
-        /// <inheritdoc cref="GetUserCompletedGamesRequest(string)"/>
-        public static GetUserCompletedGamesResponse GetUserCompletedGames(this RetroAchievementsHttpClient client, string username, RetroAchievementsAuthenticationData? authenticationData = null)
+        /// <inheritdoc cref="GetUserAllGamesProgressRequest(string)"/>
+        public static GetUserAllGamesProgressResponse GetUserAllGamesProgress(this RetroAchievementsHttpClient client, string username, RetroAchievementsAuthenticationData? authenticationData = null)
         {
-            return client.Send(new GetUserCompletedGamesRequest(username), authenticationData);
+            return client.Send(new GetUserAllGamesProgressRequest(username), authenticationData);
         }
-        #endregion GetUserCompletedGames
+        #endregion GetUserAllGamesProgress
 
         #region GetUserGameRankAndScore
         /// <inheritdoc cref="GetUserGameRankAndScoreRequest(string, int)"/>
@@ -132,19 +120,19 @@ namespace RetroAchievements.Api
         }
         #endregion GetUserRankAndPoints
 
-        #region GetUserProgress
-        /// <inheritdoc cref="GetUserProgressRequest(string ,IEnumerable{int})"/>
-        public static async Task<GetUserProgressResponse> GetUserProgressAsync(this RetroAchievementsHttpClient client, string username, IEnumerable<int> gameIds, RetroAchievementsAuthenticationData? authenticationData = null)
+        #region GetUserGamesProgress
+        /// <inheritdoc cref="GetUserGamesProgressRequest(string ,IEnumerable{int})"/>
+        public static async Task<GetUserGamesProgressResponse> GetUserGamesProgressAsync(this RetroAchievementsHttpClient client, string username, IEnumerable<int> gameIds, RetroAchievementsAuthenticationData? authenticationData = null)
         {
-            return await client.SendAsync(new GetUserProgressRequest(username, gameIds), authenticationData);
+            return await client.SendAsync(new GetUserGamesProgressRequest(username, gameIds), authenticationData);
         }
 
-        /// <inheritdoc cref="GetUserProgressRequest(string ,IEnumerable{int})"/>
-        public static GetUserProgressResponse GetUserProgress(this RetroAchievementsHttpClient client, string username, IEnumerable<int> gameIds, RetroAchievementsAuthenticationData? authenticationData = null)
+        /// <inheritdoc cref="GetUserGamesProgressRequest(string ,IEnumerable{int})"/>
+        public static GetUserGamesProgressResponse GetUserGamesProgress(this RetroAchievementsHttpClient client, string username, IEnumerable<int> gameIds, RetroAchievementsAuthenticationData? authenticationData = null)
         {
-            return client.Send(new GetUserProgressRequest(username, gameIds), authenticationData);
+            return client.Send(new GetUserGamesProgressRequest(username, gameIds), authenticationData);
         }
-        #endregion GetUserProgress
+        #endregion GetUserGamesProgress
 
         #region GetUserRecentAchievements
         /// <inheritdoc cref="GetUserRecentAchievementsRequest(string, int)"/>
@@ -160,27 +148,5 @@ namespace RetroAchievements.Api
         }
         #endregion GetUserRecentAchievements
 
-        //#region GetUserRecentlyPlayedGames
-        //public static async Task<GetUserRecentlyPlayedGamesResponse> GetUserRecentlyPlayedGamesAsync(this RetroAchievementsHttpClient client, RetroAchievementsAuthenticationData? authenticationData = null)
-        //{
-        //    return await client.SendAsync(new GetUserRecentlyPlayedGamesRequest(), authenticationData);
-        //}
-        //public static GetUserRecentlyPlayedGamesResponse GetUserRecentlyPlayedGames(this RetroAchievementsHttpClient client, RetroAchievementsAuthenticationData? authenticationData = null)
-        //{
-        //    return client.Send(new GetUserRecentlyPlayedGamesRequest(), authenticationData);
-        //}
-        //#endregion GetUserRecentlyPlayedGames
-
-        //#region GetUserSummary
-        //public static async Task<GetUserSummaryResponse> GetUserSummaryAsync(this RetroAchievementsHttpClient client, RetroAchievementsAuthenticationData? authenticationData = null)
-        //{
-        //    return await client.SendAsync(new GetUserSummaryRequest(), authenticationData);
-        //}
-
-        //public static GetUserSummaryResponse GetUserSummary(this RetroAchievementsHttpClient client, RetroAchievementsAuthenticationData? authenticationData = null)
-        //{
-        //    return client.Send(new GetUserSummaryRequest(), authenticationData);
-        //}
-        //#endregion GetUserSummary
     }
 }

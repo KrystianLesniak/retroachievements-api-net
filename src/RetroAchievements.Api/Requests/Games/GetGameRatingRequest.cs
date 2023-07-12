@@ -4,9 +4,6 @@ using RetroAchievements.Api.Response.Games;
 
 namespace RetroAchievements.Api.Requests.Games
 {
-    /// <summary>
-    /// TODO:
-    /// </summary>
     public record GetGameRatingRequest : IRetroAchievementsRequest<GetGameRatingResponse>
     {
         public string RequestEndpoint => "API_GetGameRating";
