@@ -15,10 +15,12 @@ namespace RetroAchievements.Api.Response.Tickets.Records
         public string GameIcon { get; private set; } = string.Empty;
 
         [JsonInclude]
-        public string Console { get; private set; } = string.Empty;
+        [JsonPropertyName("Console")]
+        public string ConsoleName { get; private set; } = string.Empty;
 
         [JsonInclude]
-        public int OpenTickets { get; private set; }
+        [JsonPropertyName("OpenTickets")]
+        public int OpenTicketsCount { get; private set; }
 
     }
 }

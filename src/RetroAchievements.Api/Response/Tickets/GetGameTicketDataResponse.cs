@@ -16,7 +16,8 @@ namespace RetroAchievements.Api.Response.Tickets
         public string ConsoleName { get; private set; } = string.Empty;
 
         [JsonInclude]
-        public int OpenTickets { get; private set; }
+        [JsonPropertyName("OpenTickets")]
+        public int TicketsCount { get; private set; }
 
         [JsonInclude]
         [JsonPropertyName("URL")]

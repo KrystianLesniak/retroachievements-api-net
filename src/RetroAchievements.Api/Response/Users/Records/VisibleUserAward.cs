@@ -7,7 +7,8 @@ namespace RetroAchievements.Api.Response.Users.Records
     {
         [JsonInclude]
         [JsonConverter(typeof(DateTimeCustomApiFormatConverter))]
-        public DateTime AwardedAt { get; private set; }
+        [JsonPropertyName("AwardedAt")]
+        public DateTime AwardedDate { get; private set; }
 
         [JsonInclude]
         public string AwardType { get; private set; } = string.Empty;

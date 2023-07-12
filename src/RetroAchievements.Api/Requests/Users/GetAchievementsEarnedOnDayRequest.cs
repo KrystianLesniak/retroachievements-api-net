@@ -12,13 +12,13 @@ namespace RetroAchievements.Api.Requests.Users
         public string RequestEndpoint => "API_GetAchievementsEarnedOnDay";
 
         ///<inheritdoc cref="GetAchievementsEarnedOnDayRequest" />
-        ///<param name="user"><inheritdoc cref="User" path="/summary/node()"/></param>
+        ///<param name="username"><inheritdoc cref="Username" path="/summary/node()"/></param>
         ///<param name="date"><inheritdoc cref="Date" path="/summary/node()"/></param>
-        public GetAchievementsEarnedOnDayRequest(string user, DateTime date)
+        public GetAchievementsEarnedOnDayRequest(string username, DateTime date)
         {
-            ArgumentNullException.ThrowIfNull(user);
+            ArgumentNullException.ThrowIfNull(username);
 
-            User = user;
+            Username = username;
             Date = date;
         }
 
@@ -26,7 +26,7 @@ namespace RetroAchievements.Api.Requests.Users
         /// Username of a user.
         /// </summary>
         [ApiInputKey("u")]
-        public string User { get; init; }
+        public string Username { get; init; }
 
         /// <summary>
         /// Date when achievements was earned.
