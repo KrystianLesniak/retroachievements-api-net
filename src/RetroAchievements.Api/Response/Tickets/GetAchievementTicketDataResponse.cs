@@ -1,5 +1,4 @@
-﻿using RetroAchievements.Api.Response.Records;
-using System.Text.Json.Serialization;
+﻿using System.Text.Json.Serialization;
 
 namespace RetroAchievements.Api.Response.Tickets
 {
