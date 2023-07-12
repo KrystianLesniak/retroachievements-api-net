@@ -4,7 +4,7 @@ using RetroAchievements.Api.Response.Consoles;
 namespace RetroAchievements.Api.Requests.Consoles
 {
     /// <summary>
-    /// TODO:
+    /// Get data collection of known consoles.
     /// </summary>
     public record GetConsoleIdsRequest : IRetroAchievementsRequest<GetConsoleIdsResponse>
     {

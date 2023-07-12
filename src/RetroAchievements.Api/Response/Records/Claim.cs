@@ -114,7 +114,8 @@ namespace RetroAchievements.Api.Response.Records
         /// </summary>
         [JsonInclude]
         [JsonConverter(typeof(NumberApiToBooleanConverter))]
-        public bool UserIsJrDev { get; private set; }
+        [JsonPropertyName("UserIsJrDev")]
+        public bool UserIsJuniorDev { get; private set; }
 
         /// <summary>
         /// Time in minutes left until the claim expires.
