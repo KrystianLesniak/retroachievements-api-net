@@ -2,6 +2,9 @@
 
 namespace RetroAchievements.Api.Response.Consoles.Records
 {
+    /// <summary>
+    /// Data about known console.
+    /// </summary>
     public record Console
     {
         /// <summary>

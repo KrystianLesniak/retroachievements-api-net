@@ -3,6 +3,9 @@ using RetroAchievements.Api.Response.Consoles;
 
 namespace RetroAchievements.Api.Requests.Consoles
 {
+    /// <summary>
+    /// Get list of known games for specified console
+    /// </summary>
     public record GetGamesListRequest : IRetroAchievementsRequest<GetGamesListResponse>
     {
         /// <inheritdoc />
@@ -19,12 +22,21 @@ namespace RetroAchievements.Api.Requests.Consoles
             GetHashes = getHashes ? 1 : 0;
         }
 
+        /// <summary>
+        /// Console Identifier
+        /// </summary>
         [ApiInputKey("i")]
         public int ConsoleId { get; init; }
 
+        /// <summary>
+        /// Only return games that contains achievements
+        /// </summary>
         [ApiInputKey("f")]
         public int OnlyWithAchievements { get; init; }
 
+        /// <summary>
+        /// Also return game hashes
+        /// </summary>
         [ApiInputKey("h")]
         public int GetHashes { get; init; }
     }

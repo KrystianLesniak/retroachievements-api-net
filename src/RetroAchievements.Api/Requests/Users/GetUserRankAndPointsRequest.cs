@@ -3,8 +3,16 @@ using RetroAchievements.Api.Response.Users;
 
 namespace RetroAchievements.Api.Requests.Users
 {
+    /// <summary>
+    /// Get information about user number of points and rank.
+    /// </summary>
     public record GetUserRankAndPointsRequest : IRetroAchievementsRequest<GetUserRankAndPointsResponse>
     {
+        /// <inheritdoc />
+        public string RequestEndpoint => "API_GetUserRankAndScore";
+
+        ///<inheritdoc cref="GetUserRankAndPointsRequest" />
+        ///<param name="username"><inheritdoc cref="Username" path="/summary/node()"/></param>
         public GetUserRankAndPointsRequest(string username)
         {
             ArgumentNullException.ThrowIfNull(username, nameof(username));
@@ -12,7 +20,9 @@ namespace RetroAchievements.Api.Requests.Users
             Username = username;
         }
 
-        public string RequestEndpoint => "API_GetUserRankAndScore";
+        /// <summary>
+        /// Username of the user.
+        /// </summary>
 
         [ApiInputKey("u")]
         public string Username { get; init; }
