@@ -2,6 +2,9 @@
 
 namespace RetroAchievements.Api.Response.Tickets
 {
+    /// <summary>
+    /// Ticket statistics data for the specified user.
+    /// </summary>
     public record GetUserTicketDataResponse : RetroAchievementsResponse
     {
         /// <summary>

@@ -2,6 +2,9 @@
 
 namespace RetroAchievements.Api.Response.Tickets.Records
 {
+    /// <summary>
+    /// Information data about game and ticket statistic.
+    /// </summary>
     public record Game
     {
         /// <summary>

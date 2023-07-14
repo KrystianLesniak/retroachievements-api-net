@@ -3,7 +3,10 @@ using System.Text.Json.Serialization;
 
 namespace RetroAchievements.Api.Response.Users.Records
 {
-    public record Game
+    /// <summary>
+    /// Game progress data for user.
+    /// </summary>
+    public record GameProgress
     {
         /// <summary>
         /// Unique identifier of the game.

@@ -6,8 +6,8 @@ namespace RetroAchievements.Api.Response.Users
     /// <summary>
     /// Collection of game progress data for user.
     /// </summary>
-    [JsonConverter(typeof(CollectionRetroAchievementsResponseConverter<Game, GetUserAllGamesProgressResponse>))]
-    public record GetUserAllGamesProgressResponse : CollectionRetroAchievementsResponse<Game>
+    [JsonConverter(typeof(CollectionRetroAchievementsResponseConverter<GameProgress, GetUserAllGamesProgressResponse>))]
+    public record GetUserAllGamesProgressResponse : CollectionRetroAchievementsResponse<GameProgress>
     {
     }
 }

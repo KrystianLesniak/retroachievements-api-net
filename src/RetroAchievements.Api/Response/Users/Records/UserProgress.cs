@@ -2,6 +2,9 @@
 
 namespace RetroAchievements.Api.Response.Users.Records
 {
+    /// <summary>
+    /// Data about user progress for game.
+    /// </summary>
     public record UserProgress
     {
         /// <summary>
