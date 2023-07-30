@@ -8,13 +8,30 @@
         {
             if(HttpClient == null)
             {
-                if(authData == null)
-                    HttpClient = new RetroAchievementsHttpClient(TestAuthenticationData.CreateFromSecrets());
+                var netHttpClient = HttpClientFactory.Create(new HttpClientHandler()
+                {
+                    MaxConnectionsPerServer = 1
+                }, 
+                new DelayHandler());
+
+                if (authData == null)
+                    HttpClient = new RetroAchievementsHttpClient(netHttpClient, TestAuthenticationData.CreateFromSecrets());
                 else
-                    HttpClient = new RetroAchievementsHttpClient(authData);
+                    HttpClient = new RetroAchievementsHttpClient(netHttpClient, authData);
             }
 
             return HttpClient;
+        }
+
+
+    }
+
+    public class DelayHandler : DelegatingHandler
+    {
+        protected override async Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
+        {
+            await Task.Delay(100, cancellationToken);
+            return await base.SendAsync(request, cancellationToken);
         }
     }
 }
