@@ -7,7 +7,7 @@ using System.Diagnostics;
 
 var configuration = new ConfigurationBuilder()
      .AddJsonFile($"appsettings.json")
-     .AddJsonFile($"appsettings.secrets.json", optional: true)
+     .AddJsonFile(Path.GetFullPath($"../../../../secrets.json"), optional: true)
      .Build();
 
 var userName = configuration["Username"];
