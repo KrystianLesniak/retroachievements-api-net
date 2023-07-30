@@ -3,9 +3,15 @@
 name: Publish
 on:
   workflow_dispatch:
-  pull_request:
+  push:
     branches:
       - 'main'
+    paths:
+      - src/*
+      - src/**  
+  pull_request:
+    branches:
+      - 'develop'
   release:
     types:
       - published
@@ -99,9 +105,7 @@ jobs:
       - name: Setup .NET Core
         uses: actions/setup-dotnet@v3
 
-      # Publish all NuGet packages to NuGet.org
       # Use --skip-duplicate to prevent errors if a package with the same version already exists.
-      # If you retry a failed workflow, already published packages will be skipped without error.
       - name: Publish NuGet package
         run: |
           foreach($file in (Get-ChildItem "${{ env.NuGetDirectory }}" -Recurse -Include *.nupkg)) {
