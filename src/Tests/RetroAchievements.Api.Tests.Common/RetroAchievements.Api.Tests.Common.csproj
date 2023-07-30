@@ -7,6 +7,10 @@
     <UserSecretsId>7ab8ce70-e920-41d4-98db-09e6e63aa601</UserSecretsId>
   </PropertyGroup>
 
+   <ItemGroup>
+	<AssemblyAttribute Include="System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverageAttribute" />
+   </ItemGroup>
+
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNet.WebApi.Client" Version="5.2.9" />
     <PackageReference Include="Microsoft.Extensions.Configuration" Version="7.0.0" />
