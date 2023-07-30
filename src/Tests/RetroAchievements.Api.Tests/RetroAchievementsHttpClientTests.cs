@@ -56,9 +56,11 @@ namespace RetroAchievements.Api.Tests
             {
                 httpClient.Send(new GetAchievementUnlocksRequest(1));
             });
-
-            Assert.That(exAsync.Message, Is.EqualTo("No Authentication Data for RetroAchievements Web API provided. Please provide API and username via RetroAchievementsHttpClient constructor or as parameter when calling a request."));
-            Assert.That(ex.Message, Is.EqualTo("No Authentication Data for RetroAchievements Web API provided. Please provide API and username via RetroAchievementsHttpClient constructor or as parameter when calling a request."));
+            Assert.Multiple(() =>
+            {
+                Assert.That(exAsync.Message, Is.EqualTo("No Authentication Data for RetroAchievements Web API provided. Please provide API and username via RetroAchievementsHttpClient constructor or as parameter when calling a request."));
+                Assert.That(ex.Message, Is.EqualTo("No Authentication Data for RetroAchievements Web API provided. Please provide API and username via RetroAchievementsHttpClient constructor or as parameter when calling a request."));
+            });
         }
 
         [Test]

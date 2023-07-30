@@ -4,7 +4,7 @@ namespace RetroAchievements.Api.Achievements.Tests
 {
     public class AchievementsApi
     {
-        public RetroAchievementsHttpClient HttpClient = new(TestAuthenticationData.Create()); 
+        public RetroAchievementsHttpClient HttpClient = new(TestAuthenticationData.CreateFromSecrets()); 
 
         [Test]
         public async Task GetAchievementUnlocks_ReturnsProperResponse()

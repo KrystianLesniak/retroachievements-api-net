@@ -1,26 +1,12 @@
 ﻿// See https://aka.ms/new-console-template for more information
 
-using Microsoft.Extensions.Configuration;
 using RetroAchievements.Api;
 using RetroAchievements.Api.Response;
+using RetroAchievements.Api.Tests.Common;
 using System.Diagnostics;
 
-var configuration = new ConfigurationBuilder()
-     .AddJsonFile($"appsettings.json")
-     .AddJsonFile(Path.GetFullPath($"../../../../secrets.json"), optional: true)
-     .Build();
 
-var userName = configuration["Username"];
-var webApiKey = configuration["WebApiKey"];
-
-if (string.IsNullOrWhiteSpace(userName))
-    throw new ArgumentNullException(userName, nameof(userName));
-
-if (string.IsNullOrWhiteSpace(webApiKey))
-    throw new ArgumentNullException(webApiKey, nameof(webApiKey));
-
-
-var authData = new RetroAchievementsAuthenticationData(userName, webApiKey);
+var authData = TestAuthenticationData.CreateFromSecrets();
 
 
 using (var client = new RetroAchievementsHttpClient(authData))
