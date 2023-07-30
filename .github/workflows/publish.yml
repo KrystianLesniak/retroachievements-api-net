@@ -73,7 +73,7 @@ jobs:
         dotnet user-secrets set "WebApiKey" "${{ secrets.RA_WEBAPI_KEY }}"
     - name: Setup ReportGenerator
       working-directory: ${{ env.SlnFolderPath }}
-      run: dotnet tool install --global dotnet-reportgenerator-globaltool --version <version-number>
+      run: dotnet tool install --global dotnet-reportgenerator-globaltool
     - name: Run tests
       working-directory: ${{ env.SlnFolderPath }}
       run: |
