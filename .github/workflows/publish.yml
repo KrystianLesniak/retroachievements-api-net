@@ -78,12 +78,12 @@ jobs:
       working-directory: ${{ env.SlnFolderPath }}
       run: |
         dotnet test --configuration Release --collect:"XPlat Code Coverage"
-        reportgenerator -reports:./**/coverage.cobertura.xml -targetdir:/CoverageReport -reporttypes:lcov
+        reportgenerator -reports:./**/coverage.cobertura.xml -targetdir:./ -reporttypes:lcov
     - name: Publish coverage report to coveralls.io   
       uses: coverallsapp/github-action@master   
       with:
         github-token: ${{ secrets.GITHUB_TOKEN }} 
-        path-to-lcov: ${{ env.SlnFolderPath }}/CoverageReport/lcov.info 
+        path-to-lcov: ${{ env.SlnFolderPath }}/lcov.info 
 
   deploy:
     # Publish only when creating a GitHub Release
