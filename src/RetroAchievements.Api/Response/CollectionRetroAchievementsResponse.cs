@@ -13,7 +13,7 @@ namespace RetroAchievements.Api.Response
         /// Collection of items returned from API request call.
         /// </summary>
         [JsonInclude]
-        public IReadOnlyCollection<TItem> Items { get; internal set; } = new List<TItem>();
+        public IReadOnlyCollection<TItem> Items { get; internal set; } = Array.Empty<TItem>();
     }
 
     internal class CollectionRetroAchievementsResponseConverter<TItem, TResponse> : JsonConverter<TResponse> where TResponse : CollectionRetroAchievementsResponse<TItem>, new()
@@ -24,7 +24,7 @@ namespace RetroAchievements.Api.Response
 
             using (var jsonDoc = JsonDocument.ParseValue(ref reader))
             {
-                IReadOnlyCollection<TItem>? items = new List<TItem>();
+                IReadOnlyCollection<TItem>? items = Array.Empty<TItem>();
 
                 if (jsonDoc.RootElement.ValueKind == JsonValueKind.Array && jsonDoc.RootElement.GetArrayLength() > 0)
                 {
@@ -33,7 +33,7 @@ namespace RetroAchievements.Api.Response
 
                 return new TResponse
                 {
-                    Items = items ?? new List<TItem>()
+                    Items = items ?? Array.Empty<TItem>()
                 };
             }
 

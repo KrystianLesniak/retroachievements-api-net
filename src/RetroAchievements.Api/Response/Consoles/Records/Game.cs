@@ -77,6 +77,6 @@ namespace RetroAchievements.Api.Response.Consoles.Records
         /// <summary>
         /// List of RetroAchievements hashes associated to the game.
         /// </summary>
-        public IReadOnlyCollection<string> Hashes { get; private set; } = new List<string>();
+        public IReadOnlyCollection<string> Hashes { get; private set; } = Array.Empty<string>();
     }
 }

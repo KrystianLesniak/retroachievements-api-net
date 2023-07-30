@@ -13,7 +13,7 @@ namespace RetroAchievements.Api.Response.Tickets
         /// Recent open tickets collection.
         /// </summary>
         [JsonInclude]
-        public IReadOnlyCollection<Ticket> RecentTickets { get; private set; } = new List<Ticket>();
+        public IReadOnlyCollection<Ticket> RecentTickets { get; private set; } = Array.Empty<Ticket>();
 
         /// <summary>
         /// Count of open tickets.

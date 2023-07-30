@@ -143,6 +143,6 @@ namespace RetroAchievements.Api.Response.Games
         /// Claims collection for specified game.
         /// </summary>
         [JsonInclude]
-        public IReadOnlyCollection<GameClaim> Claims { get; private set; } = new List<GameClaim>();
+        public IReadOnlyCollection<GameClaim> Claims { get; private set; } = Array.Empty<GameClaim>();
     }
 }
