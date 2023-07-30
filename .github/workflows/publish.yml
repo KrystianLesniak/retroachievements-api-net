@@ -3,12 +3,6 @@
 name: Publish
 on:
   workflow_dispatch:
-  push:
-    branches:
-      - 'main'
-    paths:
-      - src/*
-      - src/**  
   pull_request:
     branches:
       - 'main'
@@ -77,9 +71,19 @@ jobs:
       run: |
         dotnet user-secrets set "Username" "${{ secrets.RA_USERNAME }}"
         dotnet user-secrets set "WebApiKey" "${{ secrets.RA_WEBAPI_KEY }}"
+    - name: Setup ReportGenerator
+      working-directory: ${{ env.SlnFolderPath }}
+      run: dotnet tool install --global dotnet-reportgenerator-globaltool
     - name: Run tests
       working-directory: ${{ env.SlnFolderPath }}
-      run: dotnet test --configuration Release
+      run: |
+        dotnet test --configuration Release --collect:"XPlat Code Coverage"
+        reportgenerator -reports:./**/coverage.cobertura.xml -targetdir:./ -reporttypes:lcov
+    - name: Publish coverage report to coveralls.io   
+      uses: coverallsapp/github-action@master   
+      with:
+        github-token: ${{ secrets.GITHUB_TOKEN }} 
+        path-to-lcov: ${{ env.SlnFolderPath }}/lcov.info 
 
   deploy:
     # Publish only when creating a GitHub Release
