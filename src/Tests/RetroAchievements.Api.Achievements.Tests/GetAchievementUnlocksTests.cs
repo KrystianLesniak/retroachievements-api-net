@@ -2,7 +2,7 @@ using RetroAchievements.Api.Requests.Achievements;
 
 namespace RetroAchievements.Api.Achievements.Tests
 {
-    public class AchievementsApi
+    public class GetAchievementUnlocksTests
     {
         public RetroAchievementsHttpClient HttpClient = new(TestAuthenticationData.CreateFromSecrets()); 
 
