@@ -131,8 +131,8 @@ class Program
 
 ## Different usages
 
+### With IHttpClientFactory as Typed Client
 TODO
-
 
 
 ## About
