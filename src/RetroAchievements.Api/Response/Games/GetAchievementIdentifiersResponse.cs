@@ -19,6 +19,6 @@ namespace RetroAchievements.Api.Response.Games
         /// </summary>
         [JsonInclude]
         [JsonPropertyName("AchievementIDs")]
-        public IReadOnlyCollection<int> AchievementIds { get; private set; } = new List<int>();
+        public IReadOnlyCollection<int> AchievementIds { get; private set; } = Array.Empty<int>();
     }
 }

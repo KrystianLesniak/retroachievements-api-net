@@ -48,6 +48,6 @@ namespace RetroAchievements.Api.Response.Users
         /// Collection of visible user awards.
         /// </summary>
         [JsonInclude]
-        public IReadOnlyCollection<VisibleUserAward> VisibleUserAwards { get; private set; } = new List<VisibleUserAward>();
+        public IReadOnlyCollection<VisibleUserAward> VisibleUserAwards { get; private set; } = Array.Empty<VisibleUserAward>();
     }
 }

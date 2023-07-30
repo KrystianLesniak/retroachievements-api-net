@@ -41,6 +41,6 @@ namespace RetroAchievements.Api.Response.Users
         /// List of achievement unlocks data.
         /// </summary>
         [JsonInclude]
-        public IReadOnlyCollection<Unlock> Unlocks { get; private set; } = new List<Unlock>();
+        public IReadOnlyCollection<Unlock> Unlocks { get; private set; } = Array.Empty<Unlock>();
     }
 }
