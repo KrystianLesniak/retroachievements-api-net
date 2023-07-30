@@ -4,9 +4,7 @@
     {
         public MissingAuthenticationDataException() :
             base(
-                "No Authentication Data for RetroAchievements Web API provided." +
-                $"{Environment.NewLine}" +
-                $"Please provide API and username via {nameof(RetroAchievementsHttpClient)} constructor or as parameter when calling a request.")
+                $"No Authentication Data for RetroAchievements Web API provided. Please provide API and username via {nameof(RetroAchievementsHttpClient)} constructor or as parameter when calling a request.")
         { }
 
     }
