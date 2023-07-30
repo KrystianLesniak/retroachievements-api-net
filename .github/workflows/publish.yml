@@ -3,12 +3,6 @@
 name: Publish
 on:
   workflow_dispatch:
-  push:
-    branches:
-      - 'main'
-    paths:
-      - src/*
-      - src/**  
   pull_request:
     branches:
       - 'main'
