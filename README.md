@@ -132,7 +132,7 @@ class Program
 ## Different usages
 
 ### With IHttpClientFactory as Typed Client
-TODO
+TODO: Provide example
 
 
 ## About
