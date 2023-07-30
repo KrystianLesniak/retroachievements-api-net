@@ -45,7 +45,7 @@ namespace RetroAchievements.Api.Response.Tickets
         /// Collection of details on open tickets.
         /// </summary>
         [JsonInclude]
-        public IReadOnlyCollection<Ticket> Tickets { get; private set; } = new List<Ticket>();
+        public IReadOnlyCollection<Ticket> Tickets { get; private set; } = Array.Empty<Ticket>();
 
     }
 }

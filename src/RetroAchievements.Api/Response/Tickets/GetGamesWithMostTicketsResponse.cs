@@ -13,7 +13,7 @@ namespace RetroAchievements.Api.Response.Tickets
         /// Collection of most reported games.
         /// </summary>
         [JsonInclude]
-        public IReadOnlyCollection<Game> MostReportedGames { get; private set; } = new List<Game>();
+        public IReadOnlyCollection<Game> MostReportedGames { get; private set; } = Array.Empty<Game>();
 
         /// <summary>
         /// URL to the list of games with the most tickets.

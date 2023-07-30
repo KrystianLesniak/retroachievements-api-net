@@ -11,7 +11,7 @@ on:
       - src/**  
   pull_request:
     branches:
-      - '*'
+      - 'main'
   release:
     types:
       - published
@@ -73,6 +73,9 @@ jobs:
     - name: Setup .NET
       uses: actions/setup-dotnet@v3
     - name: Run tests
+      env:
+        Username: ${{ secrets.RA_USERNAME }}
+        WebApiKey: ${{ secrets.RA_WEBAPI_KEY }}
       working-directory: ${{ env.SlnFolderPath }}
       run: dotnet test --configuration Release
 
