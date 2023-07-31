@@ -2,9 +2,10 @@ using RetroAchievements.Api.Requests.Achievements;
 
 namespace RetroAchievements.Api.Achievements.Tests
 {
+    [TestFixture]
     public class GetAchievementUnlocksTests
     {
-        public RetroAchievementsHttpClient HttpClient = TestHttpClient.GetRetroAchievementsApiClient(); 
+        private readonly RetroAchievementsHttpClient HttpClient = TestHttpClient.GetRetroAchievementsApiClient(); 
 
         [Test]
         public async Task GetAchievementUnlocks_ReturnsProperResponse()
