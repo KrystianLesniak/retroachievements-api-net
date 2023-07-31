@@ -96,7 +96,7 @@ class Program
 - GetUserGameRankAndScore(string username, int gameId) - Get metadata about how a user has performed on a given game.
 - GetUserPoints(string username) - Get a user's total points.
 - GetUserRankAndScore(string username) - Get a user's total points and rank.
-- GetUserGamesProgress(string username) - Get a user's progress on a list of specified games.
+- GetUserGamesProgress(string username, int[] gameIds) - Get a user's progress on a list of specified games.
 - GetUserRecentAchievements(string username, IEnumerable<int> gameIds) - Get a list of achievements recently earned by the user.
 - ❌ GetUserRecentlyPlayedGames() - Temporary disabled: [#46](https://github.com/RetroAchievements/retroachievements-api-js/issues/46) - Get a list of games a user has recently played.
 - ❌ GetUserSummary() - Temporary disabled: [#46](https://github.com/RetroAchievements/retroachievements-api-js/issues/46) - Get a user's profile metadata. 
