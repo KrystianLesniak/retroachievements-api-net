@@ -2,9 +2,10 @@ using RetroAchievements.Api.Requests.Consoles;
 
 namespace RetroAchievements.Api.Consoles.Tests
 {
+    [TestFixture]
     public class GetGamesListTests
     {
-        public RetroAchievementsHttpClient HttpClient = TestHttpClient.GetRetroAchievementsApiClient();
+        private readonly RetroAchievementsHttpClient HttpClient = TestHttpClient.GetRetroAchievementsApiClient();
 
         [Test]
         public async Task GetGamesList_ReturnsProperResponse()
