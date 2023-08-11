@@ -11,9 +11,9 @@ namespace RetroAchievements.Api
     {
         #region GetAchievementOfTheWeek
         /// <inheritdoc cref="GetAchievementOfTheWeekRequest()"/>
-        public static async Task<GetAchievementOfTheWeekResponse> GetAchievementOfTheWeekAsync(this RetroAchievementsHttpClient client, RetroAchievementsAuthenticationData? authenticationData = null)
+        public static async Task<GetAchievementOfTheWeekResponse> GetAchievementOfTheWeekAsync(this RetroAchievementsHttpClient client, RetroAchievementsAuthenticationData? authenticationData = null, CancellationToken cancellationToken = default)
         {
-            return await client.SendAsync(new GetAchievementOfTheWeekRequest(), authenticationData);
+            return await client.SendAsync(new GetAchievementOfTheWeekRequest(), authenticationData, cancellationToken);
         }
 
         /// <inheritdoc cref="GetAchievementOfTheWeekRequest()"/>
@@ -25,9 +25,9 @@ namespace RetroAchievements.Api
 
         #region GetActiveClaims
         /// <inheritdoc cref="GetActiveClaimsRequest()"/>
-        public static async Task<GetActiveClaimsResponse> GetActiveClaimsAsync(this RetroAchievementsHttpClient client, RetroAchievementsAuthenticationData? authenticationData = null)
+        public static async Task<GetActiveClaimsResponse> GetActiveClaimsAsync(this RetroAchievementsHttpClient client, RetroAchievementsAuthenticationData? authenticationData = null, CancellationToken cancellationToken = default)
         {
-            return await client.SendAsync(new GetActiveClaimsRequest(), authenticationData);
+            return await client.SendAsync(new GetActiveClaimsRequest(), authenticationData, cancellationToken);
         }
 
         /// <inheritdoc cref="GetActiveClaimsRequest()"/>
@@ -39,9 +39,9 @@ namespace RetroAchievements.Api
 
         #region GetClaims
         /// <inheritdoc cref="GetClaimsRequest(ClaimKind)"/>
-        public static async Task<GetClaimsResponse> GetClaimsAsync(this RetroAchievementsHttpClient client, ClaimKind claimKind = ClaimKind.Completed, RetroAchievementsAuthenticationData? authenticationData = null)
+        public static async Task<GetClaimsResponse> GetClaimsAsync(this RetroAchievementsHttpClient client, ClaimKind claimKind = ClaimKind.Completed, RetroAchievementsAuthenticationData? authenticationData = null, CancellationToken cancellationToken = default)
         {
-            return await client.SendAsync(new GetClaimsRequest(claimKind), authenticationData);
+            return await client.SendAsync(new GetClaimsRequest(claimKind), authenticationData, cancellationToken);
         }
 
         /// <inheritdoc cref="GetClaimsRequest(ClaimKind)"/>
@@ -53,9 +53,9 @@ namespace RetroAchievements.Api
 
         #region GetTopTenUsers
         /// <inheritdoc cref="GetTopTenUsersRequest()"/>
-        public static async Task<GetTopTenUsersResponse> GetTopTenUsersAsync(this RetroAchievementsHttpClient client, RetroAchievementsAuthenticationData? authenticationData = null)
+        public static async Task<GetTopTenUsersResponse> GetTopTenUsersAsync(this RetroAchievementsHttpClient client, RetroAchievementsAuthenticationData? authenticationData = null, CancellationToken cancellationToken = default)
         {
-            return await client.SendAsync(new GetTopTenUsersRequest(), authenticationData);
+            return await client.SendAsync(new GetTopTenUsersRequest(), authenticationData, cancellationToken);
         }
 
         /// <inheritdoc cref="GetTopTenUsersRequest()"/>

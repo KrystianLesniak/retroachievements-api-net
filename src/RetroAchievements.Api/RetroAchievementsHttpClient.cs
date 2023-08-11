@@ -64,16 +64,16 @@ namespace RetroAchievements.Api
             AuthenticationData = null;
         }
 
-        internal async Task<TResponse> HandleRequestCallAsync<TResponse>(IRetroAchievementsRequest<TResponse> request, IRetroAchievementsAuthenticationData? authenticationData) where TResponse : RetroAchievementsResponse, new()
+        internal async Task<TResponse> HandleRequestCallAsync<TResponse>(IRetroAchievementsRequest<TResponse> request, IRetroAchievementsAuthenticationData? authenticationData, CancellationToken ct) where TResponse : RetroAchievementsResponse, new()
         {
             ArgumentNullException.ThrowIfNull(request, nameof(request));
 
             using var httpRequest = CreateHttpRequest(request, authenticationData);
 
-            using var response = await _httpClient.SendAsync(httpRequest);
-            using var contentStream = await response.Content.ReadAsStreamAsync();
+            using var response = await _httpClient.SendAsync(httpRequest, ct);
+            using var contentStream = await response.Content.ReadAsStreamAsync(ct);
 
-            return await ResponseBuilder.FromResponseAsync<TResponse>(contentStream, response.StatusCode);
+            return await ResponseBuilder.FromResponseAsync<TResponse>(contentStream, response.StatusCode, ct);
         }
 
         internal TResponse HandleRequestCall<TResponse>(IRetroAchievementsRequest<TResponse> request, IRetroAchievementsAuthenticationData? authenticationData) where TResponse : RetroAchievementsResponse, new()
