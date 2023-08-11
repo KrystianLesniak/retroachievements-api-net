@@ -44,7 +44,6 @@ namespace RetroAchievements.Api
         private IRetroAchievementsAuthenticationData? AuthenticationData { get; set; }
 
         private readonly HttpClient _httpClient;
-        private readonly ResponseBuilder responseBuilder = new();
 
         /// <summary>
         /// Set RetroAchievements authentication data required for API calls.
@@ -68,36 +67,37 @@ namespace RetroAchievements.Api
         internal async Task<TResponse> HandleRequestCallAsync<TResponse>(IRetroAchievementsRequest<TResponse> request, IRetroAchievementsAuthenticationData? authenticationData) where TResponse : RetroAchievementsResponse, new()
         {
             ArgumentNullException.ThrowIfNull(request, nameof(request));
-            var auth = ValidateAuthenticationData(authenticationData);
 
-            var queries = HttpClientHelper.PrepareRequestQueries(auth, request);
-            var url = HttpClientHelper.PrepareRequestUrl(request.RequestEndpoint);
+            using var httpRequest = CreateHttpRequest(request, authenticationData);
 
-            using var response = await _httpClient.GetWithQueryStringAsync(url, queries);
+            using var response = await _httpClient.SendAsync(httpRequest);
             using var contentStream = await response.Content.ReadAsStreamAsync();
 
-            return await responseBuilder.FromResponseAsync<TResponse>(contentStream, response.StatusCode);
+            return await ResponseBuilder.FromResponseAsync<TResponse>(contentStream, response.StatusCode);
         }
 
         internal TResponse HandleRequestCall<TResponse>(IRetroAchievementsRequest<TResponse> request, IRetroAchievementsAuthenticationData? authenticationData) where TResponse : RetroAchievementsResponse, new()
         {
             ArgumentNullException.ThrowIfNull(request, nameof(request));
-            var auth = ValidateAuthenticationData(authenticationData);
 
-            var queries = HttpClientHelper.PrepareRequestQueries(auth, request);
-            var url = HttpClientHelper.PrepareRequestUrl(request.RequestEndpoint);
+            using var httpRequest = CreateHttpRequest(request, authenticationData);
 
-            using var response = _httpClient.GetWithQueryString(url, queries);
+            using var response = _httpClient.Send(httpRequest);
             using var contentStream = response.Content.ReadAsStream();
 
-            return responseBuilder.FromResponse<TResponse>(contentStream, response.StatusCode);
+            return ResponseBuilder.FromResponse<TResponse>(contentStream, response.StatusCode);
         }
 
-        private IRetroAchievementsAuthenticationData ValidateAuthenticationData(IRetroAchievementsAuthenticationData? authenticationData)
+        private HttpRequestMessage CreateHttpRequest<TResponse>(IRetroAchievementsRequest<TResponse> request, IRetroAchievementsAuthenticationData? authenticationData) where TResponse : RetroAchievementsResponse, new()
         {
-            return authenticationData
+            var authData = authenticationData
                 ?? AuthenticationData
                 ?? throw new MissingAuthenticationDataException();
+
+            var queries = RequestHelper.GetQueries(authData, request);
+            var url = UrlBuilder.PrepareRequestUrlWithQuery(request.RequestEndpoint, queries);
+
+            return new HttpRequestMessage(HttpMethod.Get, url);
         }
 
         /// <inheritdoc cref="HttpClient.Dispose(bool)"/>

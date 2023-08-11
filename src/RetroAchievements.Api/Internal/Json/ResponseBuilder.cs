@@ -6,7 +6,7 @@ namespace RetroAchievements.Api.Internal.Json
 {
     internal class ResponseBuilder
     {
-        internal async Task<TResponse> FromResponseAsync<TResponse>(Stream content, HttpStatusCode status) where TResponse : RetroAchievementsResponse, new()
+        internal static async Task<TResponse> FromResponseAsync<TResponse>(Stream content, HttpStatusCode status) where TResponse : RetroAchievementsResponse, new()
         {
             TResponse? responseInstance;
 
@@ -33,7 +33,7 @@ namespace RetroAchievements.Api.Internal.Json
             return responseInstance;
         }
 
-        internal TResponse FromResponse<TResponse>(Stream content, HttpStatusCode status) where TResponse : RetroAchievementsResponse, new()
+        internal static TResponse FromResponse<TResponse>(Stream content, HttpStatusCode status) where TResponse : RetroAchievementsResponse, new()
         {
 
             TResponse? responseInstance;
