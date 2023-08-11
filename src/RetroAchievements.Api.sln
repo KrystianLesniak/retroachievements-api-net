@@ -5,8 +5,6 @@ VisualStudioVersion = 17.6.33815.320
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RetroAchievements.Api", "RetroAchievements.Api\RetroAchievements.Api.csproj", "{4F26A8C5-40F7-480B-9C10-8BDC6E67326A}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RetroAchievements.Api.ConsoleTest", "RetroAchievements.Api.ConsoleTest\RetroAchievements.Api.ConsoleTest.csproj", "{6A504A8B-C82D-43F2-B585-738D24CCA5E1}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{5FA32EE1-8CE7-4DAC-8EAD-F7C1EE7FAA21}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RetroAchievements.Api.Tests.Common", "Tests\RetroAchievements.Api.Tests.Common\RetroAchievements.Api.Tests.Common.csproj", "{2670E3AB-C4F5-46A3-A2D5-DD4504909F9B}"
@@ -17,7 +15,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RetroAchievements.Api.Tests
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RetroAchievements.Api.Consoles.Tests", "Tests\RetroAchievements.Api.Consoles.Tests\RetroAchievements.Api.Consoles.Tests.csproj", "{DFCC4CC2-87E8-45D0-94E4-E9006D019D48}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RetroAchievements.Api.Users.Tests", "Tests\RetroAchievements.Api.Users.Tests\RetroAchievements.Api.Users.Tests.csproj", "{314E81CA-EA4E-459C-9F0F-8E65FD7B9B97}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RetroAchievements.Api.Users.Tests", "Tests\RetroAchievements.Api.Users.Tests\RetroAchievements.Api.Users.Tests.csproj", "{314E81CA-EA4E-459C-9F0F-8E65FD7B9B97}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,10 +27,6 @@ Global
 		{4F26A8C5-40F7-480B-9C10-8BDC6E67326A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4F26A8C5-40F7-480B-9C10-8BDC6E67326A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4F26A8C5-40F7-480B-9C10-8BDC6E67326A}.Release|Any CPU.Build.0 = Release|Any CPU
-		{6A504A8B-C82D-43F2-B585-738D24CCA5E1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{6A504A8B-C82D-43F2-B585-738D24CCA5E1}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{6A504A8B-C82D-43F2-B585-738D24CCA5E1}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{6A504A8B-C82D-43F2-B585-738D24CCA5E1}.Release|Any CPU.Build.0 = Release|Any CPU
 		{2670E3AB-C4F5-46A3-A2D5-DD4504909F9B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{2670E3AB-C4F5-46A3-A2D5-DD4504909F9B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2670E3AB-C4F5-46A3-A2D5-DD4504909F9B}.Release|Any CPU.ActiveCfg = Release|Any CPU
