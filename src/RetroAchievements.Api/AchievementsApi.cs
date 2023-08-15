@@ -11,13 +11,13 @@ namespace RetroAchievements.Api
     {
         #region GetAchievementUnlocks
         /// <inheritdoc cref="GetAchievementUnlocksRequest(int, int, int)"/>
-        public static async Task<GetAchievementUnlocksResponse> GetAchievementUnlocksAsync(this RetroAchievementsHttpClient client, int achievementId, int offset = 0, int count = 50, RetroAchievementsAuthenticationData? authenticationData = null, CancellationToken cancellationToken = default)
+        public static async Task<GetAchievementUnlocksResponse> GetAchievementUnlocksAsync(this IRetroAchievementsHttpClient client, int achievementId, int offset = 0, int count = 50, RetroAchievementsAuthenticationData? authenticationData = null, CancellationToken cancellationToken = default)
         {
             return await client.SendAsync(new GetAchievementUnlocksRequest(achievementId, offset, count), authenticationData, cancellationToken);
         }
 
         /// <inheritdoc cref="GetAchievementUnlocksRequest(int, int, int)"/>
-        public static GetAchievementUnlocksResponse GetAchievementUnlocks(this RetroAchievementsHttpClient client, int achievementId, int offset = 0, int count = 50, RetroAchievementsAuthenticationData? authenticationData = null)
+        public static GetAchievementUnlocksResponse GetAchievementUnlocks(this IRetroAchievementsHttpClient client, int achievementId, int offset = 0, int count = 50, RetroAchievementsAuthenticationData? authenticationData = null)
         {
             return client.Send(new GetAchievementUnlocksRequest(achievementId, offset, count), authenticationData);
         }

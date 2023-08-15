@@ -6,10 +6,8 @@ using RetroAchievements.Api.Response;
 
 namespace RetroAchievements.Api
 {
-    /// <summary>
-    /// Provides a class for sending HTTP requests and receiving HTTP responses from a RetroAchievements API resources.
-    /// </summary>
-    public class RetroAchievementsHttpClient : IDisposable
+    /// <inheritdoc cref="IRetroAchievementsHttpClient"/>
+    public class RetroAchievementsHttpClient : IDisposable, IRetroAchievementsHttpClient
     {
         /// <summary>
         /// Initializes a new instance of <see cref="RetroAchievementsHttpClient"/> using a <see cref="HttpClient"/> that is disposed when this instance is disposed.
@@ -45,10 +43,7 @@ namespace RetroAchievements.Api
 
         private readonly HttpClient _httpClient;
 
-        /// <summary>
-        /// Set RetroAchievements authentication data required for API calls.
-        /// </summary>
-        /// <param name="authenticationData">RetroAchievements authentication data required for API calls.</param>
+        /// <inheritdoc />
         public void SetAuthenticationData(IRetroAchievementsAuthenticationData authenticationData)
         {
             ArgumentNullException.ThrowIfNull(authenticationData, nameof(authenticationData));
@@ -56,15 +51,14 @@ namespace RetroAchievements.Api
             AuthenticationData = authenticationData;
         }
 
-        /// <summary>
-        /// Remove previously set RetroAchievements authentication data.
-        /// </summary>
+        /// <inheritdoc />
         public void RemoveAuthenticationData()
         {
             AuthenticationData = null;
         }
 
-        internal async Task<TResponse> HandleRequestCallAsync<TResponse>(IRetroAchievementsRequest<TResponse> request, IRetroAchievementsAuthenticationData? authenticationData, CancellationToken ct) where TResponse : RetroAchievementsResponse, new()
+        /// <inheritdoc />
+        public async Task<TResponse> SendAsync<TResponse>(IRetroAchievementsRequest<TResponse> request, IRetroAchievementsAuthenticationData? authenticationData = null, CancellationToken ct = default) where TResponse : RetroAchievementsResponse, new()
         {
             ArgumentNullException.ThrowIfNull(request, nameof(request));
 
@@ -76,7 +70,8 @@ namespace RetroAchievements.Api
             return await ResponseBuilder.FromResponseAsync<TResponse>(contentStream, response.StatusCode, ct);
         }
 
-        internal TResponse HandleRequestCall<TResponse>(IRetroAchievementsRequest<TResponse> request, IRetroAchievementsAuthenticationData? authenticationData) where TResponse : RetroAchievementsResponse, new()
+        /// <inheritdoc />
+        public TResponse Send<TResponse>(IRetroAchievementsRequest<TResponse> request, IRetroAchievementsAuthenticationData? authenticationData = null) where TResponse : RetroAchievementsResponse, new()
         {
             ArgumentNullException.ThrowIfNull(request, nameof(request));
 
@@ -100,11 +95,40 @@ namespace RetroAchievements.Api
             return new HttpRequestMessage(HttpMethod.Get, url);
         }
 
-        /// <inheritdoc cref="HttpClient.Dispose(bool)"/>
+        /// <inheritdoc />
         public void Dispose()
         {
             _httpClient.Dispose();
             GC.SuppressFinalize(this);
         }
+    }
+
+    /// <summary>
+    /// Provides a class for sending HTTP requests and receiving HTTP responses from a RetroAchievements API resources.
+    /// </summary>
+    public interface IRetroAchievementsHttpClient
+    {
+        /// <inheritdoc cref="HttpClient.Dispose(bool)"/>
+        void Dispose();
+
+        /// <summary>
+        /// Remove previously set RetroAchievements authentication data.
+        /// </summary>
+        void RemoveAuthenticationData();
+
+        /// <inheritdoc cref="SendAsync{TResponse}(IRetroAchievementsRequest{TResponse}, IRetroAchievementsAuthenticationData?, CancellationToken)"/>
+        TResponse Send<TResponse>(IRetroAchievementsRequest<TResponse> request, IRetroAchievementsAuthenticationData? authenticationData = null) where TResponse : RetroAchievementsResponse, new();
+
+        /// <summary>
+        /// Calls passed RetroAchievements API request.
+        /// </summary>
+        /// <returns>Response data of called request.</returns>
+        Task<TResponse> SendAsync<TResponse>(IRetroAchievementsRequest<TResponse> request, IRetroAchievementsAuthenticationData? authenticationData = null, CancellationToken ct = default) where TResponse : RetroAchievementsResponse, new();
+
+        /// <summary>
+        /// Set RetroAchievements authentication data required for API calls.
+        /// </summary>
+        /// <param name="authenticationData">RetroAchievements authentication data required for API calls.</param>
+        void SetAuthenticationData(IRetroAchievementsAuthenticationData authenticationData);
     }
 }
