@@ -7,14 +7,11 @@ _A C# .NET library that lets you get achievement, user, and game data from Retro
 [![GitHub](https://img.shields.io/github/license/KrystianLesniak/retroachievements-api-net)](https://github.com/KrystianLesniak/retroachievements-api-net/blob/main/LICENSE)
 [![Nuget](https://img.shields.io/nuget/dt/RetroAchievements.Api) ![Nuget](https://img.shields.io/nuget/vpre/RetroAchievements.Api)](https://www.nuget.org/packages/RetroAchievements.Api/)
 
-
-## Features
-
-✅ No external dependencies.  
-✅ Aligns 1:1 with the RAWeb API.  
-✅ Correctly maps types and properties from RAWeb PHP calls.   
-✅ CancellationToken support.   
-✅ [IHttpClientFactory Typed Clients support](#different-usages).
+* No external dependencies.  
+* Aligns 1:1 with the RAWeb API.  
+* Correctly maps types and properties from RAWeb PHP calls.   
+* CancellationToken support.   
+* [IHttpClientFactory Typed Clients support](#different-usages).
 
 ******
 
