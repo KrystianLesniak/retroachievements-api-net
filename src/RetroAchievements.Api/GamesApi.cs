@@ -10,13 +10,13 @@ namespace RetroAchievements.Api
     {
         #region GetAchievementCount
         /// <inheritdoc cref="GetAchievementIdentifiersRequest(int)"/>
-        public static async Task<GetAchievementIdentifiersResponse> GetAchievementIdentifiersAsync(this RetroAchievementsHttpClient client, int gameId, RetroAchievementsAuthenticationData? authenticationData = null, CancellationToken cancellationToken = default)
+        public static async Task<GetAchievementIdentifiersResponse> GetAchievementIdentifiersAsync(this IRetroAchievementsHttpClient client, int gameId, RetroAchievementsAuthenticationData? authenticationData = null, CancellationToken cancellationToken = default)
         {
             return await client.SendAsync(new GetAchievementIdentifiersRequest(gameId), authenticationData, cancellationToken);
         }
 
         /// <inheritdoc cref="GetAchievementIdentifiersRequest(int)"/>
-        public static GetAchievementIdentifiersResponse GetAchievementIdentifiers(this RetroAchievementsHttpClient client, int gameId, RetroAchievementsAuthenticationData? authenticationData = null)
+        public static GetAchievementIdentifiersResponse GetAchievementIdentifiers(this IRetroAchievementsHttpClient client, int gameId, RetroAchievementsAuthenticationData? authenticationData = null)
         {
             return client.Send(new GetAchievementIdentifiersRequest(gameId), authenticationData);
         }
@@ -24,13 +24,13 @@ namespace RetroAchievements.Api
 
         #region GetAchievementDistribution
         /// <inheritdoc cref="GetAchievementDistributionRequest(int, bool, bool)"/>
-        public static async Task<GetAchievementDistributionResponse> GetAchievementDistributionAsync(this RetroAchievementsHttpClient client, int gameId, bool hardcoreOnly = false, bool unofficialAchievements = false, RetroAchievementsAuthenticationData? authenticationData = null, CancellationToken cancellationToken = default)
+        public static async Task<GetAchievementDistributionResponse> GetAchievementDistributionAsync(this IRetroAchievementsHttpClient client, int gameId, bool hardcoreOnly = false, bool unofficialAchievements = false, RetroAchievementsAuthenticationData? authenticationData = null, CancellationToken cancellationToken = default)
         {
             return await client.SendAsync(new GetAchievementDistributionRequest(gameId, hardcoreOnly, unofficialAchievements), authenticationData, cancellationToken);
         }
 
         /// <inheritdoc cref="GetAchievementDistributionRequest(int, bool, bool)"/>
-        public static GetAchievementDistributionResponse GetAchievementDistribution(this RetroAchievementsHttpClient client, int gameId, bool hardcoreOnly = false, bool unofficialAchievements = false, RetroAchievementsAuthenticationData? authenticationData = null)
+        public static GetAchievementDistributionResponse GetAchievementDistribution(this IRetroAchievementsHttpClient client, int gameId, bool hardcoreOnly = false, bool unofficialAchievements = false, RetroAchievementsAuthenticationData? authenticationData = null)
         {
             return client.Send(new GetAchievementDistributionRequest(gameId, hardcoreOnly, unofficialAchievements), authenticationData);
         }
@@ -38,13 +38,13 @@ namespace RetroAchievements.Api
 
         #region GetGame
         /// <inheritdoc cref="GetGameDataRequest(int)"/>
-        public static async Task<GetGameDataResponse> GetGameDataAsync(this RetroAchievementsHttpClient client, int gameId, RetroAchievementsAuthenticationData? authenticationData = null, CancellationToken cancellationToken = default)
+        public static async Task<GetGameDataResponse> GetGameDataAsync(this IRetroAchievementsHttpClient client, int gameId, RetroAchievementsAuthenticationData? authenticationData = null, CancellationToken cancellationToken = default)
         {
             return await client.SendAsync(new GetGameDataRequest(gameId), authenticationData, cancellationToken);
         }
 
         /// <inheritdoc cref="GetGameDataRequest(int)"/>
-        public static GetGameDataResponse GetGameData(this RetroAchievementsHttpClient client, int gameId, RetroAchievementsAuthenticationData? authenticationData = null)
+        public static GetGameDataResponse GetGameData(this IRetroAchievementsHttpClient client, int gameId, RetroAchievementsAuthenticationData? authenticationData = null)
         {
             return client.Send(new GetGameDataRequest(gameId), authenticationData);
         }
@@ -52,13 +52,13 @@ namespace RetroAchievements.Api
 
         #region GetGameExtended
         /// <inheritdoc cref="GetGameExtendedDataRequest(int)"/>
-        public static async Task<GetGameExtendedDataResponse> GetGameExtendedDataAsync(this RetroAchievementsHttpClient client, int gameId, RetroAchievementsAuthenticationData? authenticationData = null, CancellationToken cancellationToken = default)
+        public static async Task<GetGameExtendedDataResponse> GetGameExtendedDataAsync(this IRetroAchievementsHttpClient client, int gameId, RetroAchievementsAuthenticationData? authenticationData = null, CancellationToken cancellationToken = default)
         {
             return await client.SendAsync(new GetGameExtendedDataRequest(gameId), authenticationData, cancellationToken);
         }
 
         /// <inheritdoc cref="GetGameExtendedDataRequest(int)"/>
-        public static GetGameExtendedDataResponse GetGameExtendedData(this RetroAchievementsHttpClient client, int gameId, RetroAchievementsAuthenticationData? authenticationData = null)
+        public static GetGameExtendedDataResponse GetGameExtendedData(this IRetroAchievementsHttpClient client, int gameId, RetroAchievementsAuthenticationData? authenticationData = null)
         {
             return client.Send(new GetGameExtendedDataRequest(gameId), authenticationData);
         }
@@ -66,13 +66,13 @@ namespace RetroAchievements.Api
 
         #region GetGameRankAndScore
         /// <inheritdoc cref="GetGameRankAndScoreRequest(int, RankType)"/>
-        public static async Task<GetGameRankAndScoreResponse> GetGameRankAndScoreAsync(this RetroAchievementsHttpClient client, int gameId, RankType rankType = RankType.HighScores, RetroAchievementsAuthenticationData? authenticationData = null, CancellationToken cancellationToken = default)
+        public static async Task<GetGameRankAndScoreResponse> GetGameRankAndScoreAsync(this IRetroAchievementsHttpClient client, int gameId, RankType rankType = RankType.HighScores, RetroAchievementsAuthenticationData? authenticationData = null, CancellationToken cancellationToken = default)
         {
             return await client.SendAsync(new GetGameRankAndScoreRequest(gameId, rankType), authenticationData, cancellationToken);
         }
 
         /// <inheritdoc cref="GetGameRankAndScoreRequest(int, RankType)"/>
-        public static GetGameRankAndScoreResponse GetGameRankAndScore(this RetroAchievementsHttpClient client, int gameId, RankType rankType = RankType.HighScores, RetroAchievementsAuthenticationData? authenticationData = null)
+        public static GetGameRankAndScoreResponse GetGameRankAndScore(this IRetroAchievementsHttpClient client, int gameId, RankType rankType = RankType.HighScores, RetroAchievementsAuthenticationData? authenticationData = null)
         {
             return client.Send(new GetGameRankAndScoreRequest(gameId, rankType), authenticationData);
         }
@@ -81,13 +81,13 @@ namespace RetroAchievements.Api
         #region GetGameRating
 
         /// <inheritdoc cref="GetGameRatingRequest(int)"/>
-        public static async Task<GetGameRatingResponse> GetGameRatingAsync(this RetroAchievementsHttpClient client, int gameId, RetroAchievementsAuthenticationData? authenticationData = null, CancellationToken cancellationToken = default)
+        public static async Task<GetGameRatingResponse> GetGameRatingAsync(this IRetroAchievementsHttpClient client, int gameId, RetroAchievementsAuthenticationData? authenticationData = null, CancellationToken cancellationToken = default)
         {
             return await client.SendAsync(new GetGameRatingRequest(gameId), authenticationData, cancellationToken);
         }
 
         /// <inheritdoc cref="GetGameRatingRequest(int)"/>
-        public static GetGameRatingResponse GetGameRating(this RetroAchievementsHttpClient client, int gameId, RetroAchievementsAuthenticationData? authenticationData = null)
+        public static GetGameRatingResponse GetGameRating(this IRetroAchievementsHttpClient client, int gameId, RetroAchievementsAuthenticationData? authenticationData = null)
         {
             return client.Send(new GetGameRatingRequest(gameId), authenticationData);
         }

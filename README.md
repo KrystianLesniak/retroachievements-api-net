@@ -12,8 +12,9 @@ _A C# .NET library that lets you get achievement, user, and game data from Retro
 
 ✅ No external dependencies.  
 ✅ Aligns 1:1 with the RAWeb API.  
-✅ Correctly maps types and properties from RAWeb PHP calls. 
-✅ CancellationToken support
+✅ Correctly maps types and properties from RAWeb PHP calls.   
+✅ CancellationToken support.   
+✅ [IHttpClientFactory Typed Clients support](#different-usages).
 
 ******
 
@@ -86,6 +87,28 @@ class Program
 }
 ```
 
+
+## Different usages
+
+<details>
+    <summary>Use with IHttpClientFactory as Typed Client</summary>
+
+.NET documentation about using typed clients in your code can be found [here.](https://learn.microsoft.com/en-us/dotnet/architecture/microservices/implement-resilient-applications/use-httpclientfactory-to-implement-resilient-http-requests#how-to-use-typed-clients-with-ihttpclientfactory)
+
+To register HttpClient in DI container together with authentcation data you can use specified code:
+```csharp
+builder.Services.AddHttpClient<IRetroAchievementsHttpClient, RetroAchievementsHttpClient>(httpClient =>
+{
+    var authData = new RetroAchievementsAuthenticationData("Username", "WebApiKey");
+    return new RetroAchievementsHttpClient(httpClient, authData);
+});
+```
+
+After that ```IRetroAchievementsHttpClient``` can be injected into Controllers to be used like [in this example.](src/Examples/RetroAchievements.Api.WebApi/Controllers/RetroAchievementsController.cs)
+
+</details>
+
+
 # Requests List
 #### Users
 - GetAchievementsEarnedBetween(string user, DateTime from, DateTime to) - Get a list of achievements earned by a user between two dates.
@@ -130,11 +153,6 @@ class Program
 - GetUserTicketData(string username) -  Get ticket statistics for the specified user.
 - GetGameTicketData(int gameId) -  Get ticket statistics for the specified game.
 - GetAchievementTicketData(int achievementId) -  Get ticket statistics for the specified achievement.
-
-## Different usages
-
-### With IHttpClientFactory as Typed Client
-TODO: Provide example
 
 
 ## About
