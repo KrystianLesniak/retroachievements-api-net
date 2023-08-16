@@ -5,23 +5,18 @@ namespace RetroAchievements.Api.Users.Tests
     [TestFixture]
     public class GetUserGamesProgressTests
     {
-        private string _topUserUsername;
-        private IEnumerable<int> _topUserFiveGameIds;
+        private string _topUserUsername = string.Empty;
+        private IEnumerable<int> _topUserFiveGameIds = Array.Empty<int>();
 
         private readonly RetroAchievementsHttpClient HttpClient = TestHttpClient.GetRetroAchievementsApiClient();
 
-        [SetUp]
-        public async Task Setup()
-        {
-            var topTenUsers = (await HttpClient.GetTopTenUsersAsync()).Items;
-
-            _topUserUsername = topTenUsers.First(x => x.TotalPoints == topTenUsers.Max(x => x.TotalPoints)).Username;
-            _topUserFiveGameIds = (await HttpClient.GetUserAllGamesProgressAsync(_topUserUsername)).Items.Take(5).Select(x => x.GameId);
-        }
 
         [Test]
+        [ApiTest]
         public async Task GetUserProgress_ReturnsProperResponse()
         {
+            await SetupApiTestUserName();
+
             var responseMethodAsync = await HttpClient.GetUserGamesProgressAsync(_topUserUsername, _topUserFiveGameIds);
             var responseMethodSync = HttpClient.GetUserGamesProgress(_topUserUsername, _topUserFiveGameIds);
             var responseAsync = await HttpClient.SendAsync(new GetUserGamesProgressRequest(_topUserUsername, _topUserFiveGameIds));
@@ -35,6 +30,14 @@ namespace RetroAchievements.Api.Users.Tests
                 Assert.That(responseSync.Items.Any());
                 Assert.That(responseSync.Items.Keys.All(x => _topUserFiveGameIds.Contains(x)));
             });
+        }
+
+        private async Task SetupApiTestUserName()
+        {
+            var topTenUsers = (await HttpClient.GetTopTenUsersAsync()).Items;
+
+            _topUserUsername = topTenUsers.First(x => x.TotalPoints == topTenUsers.Max(x => x.TotalPoints)).Username;
+            _topUserFiveGameIds = (await HttpClient.GetUserAllGamesProgressAsync(_topUserUsername)).Items.Take(5).Select(x => x.GameId);
         }
 
         [Test]

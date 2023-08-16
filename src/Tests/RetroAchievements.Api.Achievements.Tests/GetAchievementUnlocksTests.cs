@@ -8,6 +8,7 @@ namespace RetroAchievements.Api.Achievements.Tests
         private readonly RetroAchievementsHttpClient HttpClient = TestHttpClient.GetRetroAchievementsApiClient(); 
 
         [Test]
+        [ApiTest]
         public async Task GetAchievementUnlocks_ReturnsProperResponse()
         {
             var achievementId = 3159;
@@ -31,6 +32,7 @@ namespace RetroAchievements.Api.Achievements.Tests
         }
 
         [Test]
+        [ApiTest]
         public async Task GetAchievementUnlocks_ReturnsUnsuccessfulResponse()
         {
             var achievementId = 1000000;
