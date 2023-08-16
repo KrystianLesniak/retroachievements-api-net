@@ -8,6 +8,8 @@ namespace RetroAchievements.Api.Consoles.Tests
         private readonly RetroAchievementsHttpClient HttpClient = TestHttpClient.GetRetroAchievementsApiClient();
 
         [Test]
+        [ApiTest]
+
         public async Task GetConsoleIds_ReturnsProperResponse()
         {
             var responseMethodAsync = await HttpClient.GetConsoleIdsAsync();

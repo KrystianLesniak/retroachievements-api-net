@@ -8,6 +8,7 @@ namespace RetroAchievements.Api.Consoles.Tests
         private readonly RetroAchievementsHttpClient HttpClient = TestHttpClient.GetRetroAchievementsApiClient();
 
         [Test]
+        [ApiTest]
         public async Task GetGamesList_ReturnsProperResponse()
         {
             int consoleId = 1;
@@ -27,6 +28,7 @@ namespace RetroAchievements.Api.Consoles.Tests
         }
 
         [Test]
+        [ApiTest]
         public async Task GetGamesList_WithoutHashes_ReturnResponseWithoutHashes()
         {
             int consoleId = 1;
@@ -43,6 +45,7 @@ namespace RetroAchievements.Api.Consoles.Tests
         }
 
         [Test]
+        [ApiTest]
         public async Task GetGamesList_WithHashes_ReturnResponseWithHashes()
         {
             int consoleId = 1;
@@ -59,6 +62,7 @@ namespace RetroAchievements.Api.Consoles.Tests
         }
 
         [Test]
+        [ApiTest]
         public async Task GetGamesList_OnlyWithAchievements_ReturnResponseWithAchievementsOnly()
         {
             int consoleId = 1;
@@ -74,6 +78,7 @@ namespace RetroAchievements.Api.Consoles.Tests
         }
 
         [Test]
+        [ApiTest]
         public async Task GetGamesList_ReturnsEmptyResponse()
         {
             int consoleId = 100000000;
