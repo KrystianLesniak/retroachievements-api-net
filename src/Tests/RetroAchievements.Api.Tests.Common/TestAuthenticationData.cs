@@ -15,14 +15,7 @@ namespace RetroAchievements.Api.Tests.Common
             var userName = Configuration["Username"];
             var webApiKey = Configuration["WebApiKey"];
 
-            if (string.IsNullOrWhiteSpace(userName))
-                throw new ArgumentNullException(userName, nameof(userName));
-
-            if (string.IsNullOrWhiteSpace(webApiKey))
-                throw new ArgumentNullException(webApiKey, nameof(webApiKey));
-
-
-            return new RetroAchievementsAuthenticationData(userName, webApiKey);
+            return new RetroAchievementsAuthenticationData(userName ?? string.Empty, webApiKey ?? string.Empty);
         }
     }
 }

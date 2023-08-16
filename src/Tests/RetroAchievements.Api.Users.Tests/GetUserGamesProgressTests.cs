@@ -46,12 +46,12 @@ namespace RetroAchievements.Api.Users.Tests
             Assert.Throws<ArgumentNullException>(() =>
             {
 #pragma warning disable CS8625 // Cannot convert null literal to non-nullable reference type.
-                _ = new GetUserGamesProgressRequest(_topUserUsername, null);
+                _ = new GetUserGamesProgressRequest("someUsername", null);
             });
 
             Assert.Throws<ArgumentNullException>(() =>
             {
-                _ = new GetUserGamesProgressRequest(null, _topUserFiveGameIds);
+                _ = new GetUserGamesProgressRequest(null, new List<int> {0, 1});
 #pragma warning restore CS8625 // Cannot convert null literal to non-nullable reference type.
             });
 
