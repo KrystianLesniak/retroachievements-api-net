@@ -12,7 +12,8 @@ _A C# .NET library that lets you get achievement, user, and game data from Retro
 
 ✅ No external dependencies.  
 ✅ Aligns 1:1 with the RAWeb API.  
-✅ Correctly maps types and properties from RAWeb PHP calls.  
+✅ Correctly maps types and properties from RAWeb PHP calls. 
+✅ CancellationToken support
 
 ******
 

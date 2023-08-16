@@ -11,9 +11,9 @@ namespace RetroAchievements.Api
     {
         #region GetConsoleIds
         /// <inheritdoc cref="GetConsoleIdsRequest()"/>
-        public static async Task<GetConsoleIdsResponse> GetConsoleIdsAsync(this RetroAchievementsHttpClient client, RetroAchievementsAuthenticationData? authenticationData = null)
+        public static async Task<GetConsoleIdsResponse> GetConsoleIdsAsync(this RetroAchievementsHttpClient client, RetroAchievementsAuthenticationData? authenticationData = null, CancellationToken cancellationToken = default)
         {
-            return await client.SendAsync(new GetConsoleIdsRequest(), authenticationData);
+            return await client.SendAsync(new GetConsoleIdsRequest(), authenticationData, cancellationToken);
         }
 
         /// <inheritdoc cref="GetConsoleIdsRequest()"/>
@@ -25,9 +25,9 @@ namespace RetroAchievements.Api
 
         #region GetGamesList
         /// <inheritdoc cref="GetGamesListRequest(int, bool, bool)"/>
-        public static async Task<GetGamesListResponse> GetGamesListAsync(this RetroAchievementsHttpClient client, int consoleId, bool onlyWithAchievements = false, bool getHashes = false, RetroAchievementsAuthenticationData? authenticationData = null)
+        public static async Task<GetGamesListResponse> GetGamesListAsync(this RetroAchievementsHttpClient client, int consoleId, bool onlyWithAchievements = false, bool getHashes = false, RetroAchievementsAuthenticationData? authenticationData = null, CancellationToken cancellationToken = default)
         {
-            return await client.SendAsync(new GetGamesListRequest(consoleId, onlyWithAchievements, getHashes), authenticationData);
+            return await client.SendAsync(new GetGamesListRequest(consoleId, onlyWithAchievements, getHashes), authenticationData, cancellationToken);
         }
 
         /// <inheritdoc cref="GetGamesListRequest(int, bool, bool)"/>

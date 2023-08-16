@@ -12,12 +12,12 @@ namespace RetroAchievements.Api
         /// Calls passed RetroAchievements API request.
         /// </summary>
         /// <returns>Response data of called request.</returns>
-        public static async Task<TResponse> SendAsync<TResponse>(this RetroAchievementsHttpClient client, IRetroAchievementsRequest<TResponse> request, RetroAchievementsAuthenticationData? authenticationData = null) where TResponse : RetroAchievementsResponse, new()
+        public static async Task<TResponse> SendAsync<TResponse>(this RetroAchievementsHttpClient client, IRetroAchievementsRequest<TResponse> request, RetroAchievementsAuthenticationData? authenticationData = null, CancellationToken cancellationToken = default) where TResponse : RetroAchievementsResponse, new()
         {
-            return await client.HandleRequestCallAsync(request, authenticationData);
+            return await client.HandleRequestCallAsync(request, authenticationData, cancellationToken);
         }
 
-        /// <inheritdoc cref="SendAsync{TResponse}(RetroAchievementsHttpClient, IRetroAchievementsRequest{TResponse}, RetroAchievementsAuthenticationData?)"/>
+        /// <inheritdoc cref="SendAsync{TResponse}(RetroAchievementsHttpClient, IRetroAchievementsRequest{TResponse}, RetroAchievementsAuthenticationData?, CancellationToken)"/>
         public static TResponse Send<TResponse>(this RetroAchievementsHttpClient client, IRetroAchievementsRequest<TResponse> request, RetroAchievementsAuthenticationData? authenticationData = null) where TResponse : RetroAchievementsResponse, new()
         {
             return client.HandleRequestCall(request, authenticationData);
