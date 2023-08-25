@@ -2,7 +2,7 @@
 
 	<!-- Package Metadata -->
 	<PropertyGroup>
-		<Version>1.1.1</Version>
+		<Version>1.2.0</Version>
 		<Authors>Krystian Leśniak</Authors>
 		<Description>C# .NET library for getting achievement, user, and game data from RetroAchievements API</Description>
 		<PackageTags>library, api, retroachievements</PackageTags>
@@ -24,7 +24,7 @@
 	</PropertyGroup>
 	
 	<PropertyGroup>
-		<TargetFramework>net6.0</TargetFramework>
+		<TargetFrameworks>net6.0;net7.0</TargetFrameworks>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
 		<EnablePackageValidation>true</EnablePackageValidation>

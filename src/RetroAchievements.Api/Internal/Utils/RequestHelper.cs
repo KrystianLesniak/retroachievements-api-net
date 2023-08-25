@@ -6,16 +6,9 @@ using System.Reflection;
 
 namespace RetroAchievements.Api.Internal.Utils
 {
-    internal static class HttpClientHelper
+    internal static class RequestHelper
     {
-        private static readonly string baseUrl = "https://retroachievements.org/API/";
-
-        public static string PrepareRequestUrl(string apiUrl)
-        {
-            return string.Concat(baseUrl, apiUrl.Trim().Trim('/'), ".php");
-        }
-
-        public static IDictionary<string, string> PrepareRequestQueries<TResponse>(IRetroAchievementsAuthenticationData auth, IRetroAchievementsRequest<TResponse> request) where TResponse : RetroAchievementsResponse, new()
+        public static IDictionary<string, string> GetQueries<TResponse>(IRetroAchievementsAuthenticationData auth, IRetroAchievementsRequest<TResponse> request) where TResponse : RetroAchievementsResponse, new()
         {
             var values = new Dictionary<string, string>()
             {

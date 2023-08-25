@@ -3,16 +3,16 @@
 _A C# .NET library that lets you get achievement, user, and game data from RetroAchievements._
 <br><br>
 ![GitHub Workflow Status (with event)](https://img.shields.io/github/actions/workflow/status/KrystianLesniak/retroachievements-api-net/publish.yml?label=verification)
-[![Coverage Status](https://coveralls.io/repos/github/KrystianLesniak/retroachievements-api-net/badge.svg)](https://coveralls.io/github/KrystianLesniak/retroachievements-api-net)
+[![Coverage Status](https://coveralls.io/repos/github/KrystianLesniak/retroachievements-api-net/badge.svg?service=github&kill_cache=1)](https://coveralls.io/github/KrystianLesniak/retroachievements-api-net)
 [![GitHub](https://img.shields.io/github/license/KrystianLesniak/retroachievements-api-net)](https://github.com/KrystianLesniak/retroachievements-api-net/blob/main/LICENSE)
 [![Nuget](https://img.shields.io/nuget/dt/RetroAchievements.Api) ![Nuget](https://img.shields.io/nuget/vpre/RetroAchievements.Api)](https://www.nuget.org/packages/RetroAchievements.Api/)
 
-
-## Features
-
-✅ No external dependencies.  
-✅ Aligns 1:1 with the RAWeb API.  
-✅ Correctly maps types and properties from RAWeb PHP calls.  
+* No external dependencies.  
+* Supported frameworks: .NET 6.0, .NET 7.0.
+* Aligns 1:1 with the RAWeb API.  
+* Correctly maps types and properties from RAWeb PHP calls.   
+* CancellationToken support.   
+* [IHttpClientFactory Typed Clients support](#different-usages).
 
 ******
 
@@ -85,6 +85,28 @@ class Program
 }
 ```
 
+
+## Different usages
+
+<details>
+    <summary>Use with IHttpClientFactory as Typed Client</summary>
+
+.NET documentation about using typed clients in your code can be found [here.](https://learn.microsoft.com/en-us/dotnet/architecture/microservices/implement-resilient-applications/use-httpclientfactory-to-implement-resilient-http-requests#how-to-use-typed-clients-with-ihttpclientfactory)
+
+To register HttpClient in DI container together with authentcation data you can use specified code:
+```csharp
+builder.Services.AddHttpClient<IRetroAchievementsHttpClient, RetroAchievementsHttpClient>(httpClient =>
+{
+    var authData = new RetroAchievementsAuthenticationData("Username", "WebApiKey");
+    return new RetroAchievementsHttpClient(httpClient, authData);
+});
+```
+
+After that ```IRetroAchievementsHttpClient``` can be injected into Controllers to be used like [in this example.](src/Examples/RetroAchievements.Api.WebApi/Controllers/RetroAchievementsController.cs)
+
+</details>
+
+
 # Requests List
 #### Users
 - GetAchievementsEarnedBetween(string user, DateTime from, DateTime to) - Get a list of achievements earned by a user between two dates.
@@ -129,11 +151,6 @@ class Program
 - GetUserTicketData(string username) -  Get ticket statistics for the specified user.
 - GetGameTicketData(int gameId) -  Get ticket statistics for the specified game.
 - GetAchievementTicketData(int achievementId) -  Get ticket statistics for the specified achievement.
-
-## Different usages
-
-### With IHttpClientFactory as Typed Client
-TODO: Provide example
 
 
 ## About
