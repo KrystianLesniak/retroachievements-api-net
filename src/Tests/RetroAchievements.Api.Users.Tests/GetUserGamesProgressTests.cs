@@ -38,7 +38,7 @@ namespace RetroAchievements.Api.Users.Tests
 
             _topUserUsername = topTenUsers.First(x => x.TotalPoints == topTenUsers.Max(x => x.TotalPoints)).Username;
 
-            if(!_topUserFiveGameIds.Any())
+            if (!_topUserFiveGameIds.Any())
                 _topUserFiveGameIds = (await HttpClient.GetUserAllGamesProgressAsync(_topUserUsername)).Items.Take(5).Select(x => x.GameId);
         }
 
@@ -53,7 +53,7 @@ namespace RetroAchievements.Api.Users.Tests
 
             Assert.Throws<ArgumentNullException>(() =>
             {
-                _ = new GetUserGamesProgressRequest(null, new List<int> {0, 1});
+                _ = new GetUserGamesProgressRequest(null, new List<int> { 0, 1 });
 #pragma warning restore CS8625 // Cannot convert null literal to non-nullable reference type.
             });
 

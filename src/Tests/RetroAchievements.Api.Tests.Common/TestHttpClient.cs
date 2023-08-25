@@ -6,7 +6,7 @@
 
         public static RetroAchievementsHttpClient GetRetroAchievementsApiClient(IRetroAchievementsAuthenticationData? authData = null)
         {
-            if(HttpClient == null)
+            if (HttpClient == null)
             {
                 var netHttpClient = HttpClientFactory.Create(new DelayHandler());
 
@@ -34,7 +34,7 @@
 
         protected override async Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
         {
-            while(IsRequestOngoing)
+            while (IsRequestOngoing)
             {
                 await Task.Delay(RequestAwaitMilisecond, cancellationToken);
             }

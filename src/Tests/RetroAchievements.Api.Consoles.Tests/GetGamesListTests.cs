@@ -73,7 +73,7 @@ namespace RetroAchievements.Api.Consoles.Tests
             {
                 Assert.That(response.HttpStatusCode, Is.EqualTo(HttpStatusCode.OK));
                 Assert.That(response.FailedResponseString, Is.EqualTo(null));
-                Assert.That(response.Items.All(x=> x.AchievementsCount > 0));
+                Assert.That(response.Items.All(x => x.AchievementsCount > 0));
             });
         }
 
