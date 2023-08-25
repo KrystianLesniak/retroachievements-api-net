@@ -34,10 +34,12 @@ namespace RetroAchievements.Api.Users.Tests
 
         private async Task SetupApiTestUserName()
         {
-            var topTenUsers = (await HttpClient.GetTopTenUsersAsync()).Items;
+            var topTenUsers = await ApiLazyTestData.GetTopTenUsers(HttpClient);
 
             _topUserUsername = topTenUsers.First(x => x.TotalPoints == topTenUsers.Max(x => x.TotalPoints)).Username;
-            _topUserFiveGameIds = (await HttpClient.GetUserAllGamesProgressAsync(_topUserUsername)).Items.Take(5).Select(x => x.GameId);
+
+            if(!_topUserFiveGameIds.Any())
+                _topUserFiveGameIds = (await HttpClient.GetUserAllGamesProgressAsync(_topUserUsername)).Items.Take(5).Select(x => x.GameId);
         }
 
         [Test]
