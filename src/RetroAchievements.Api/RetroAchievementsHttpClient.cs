@@ -58,16 +58,16 @@ namespace RetroAchievements.Api
         }
 
         /// <inheritdoc />
-        public async Task<TResponse> SendAsync<TResponse>(IRetroAchievementsRequest<TResponse> request, IRetroAchievementsAuthenticationData? authenticationData = null, CancellationToken ct = default) where TResponse : RetroAchievementsResponse, new()
+        public async Task<TResponse> SendAsync<TResponse>(IRetroAchievementsRequest<TResponse> request, IRetroAchievementsAuthenticationData? authenticationData = null, CancellationToken cancellationToken = default) where TResponse : RetroAchievementsResponse, new()
         {
             ArgumentNullException.ThrowIfNull(request, nameof(request));
 
             using var httpRequest = CreateHttpRequest(request, authenticationData);
 
-            using var response = await _httpClient.SendAsync(httpRequest, ct);
-            using var contentStream = await response.Content.ReadAsStreamAsync(ct);
+            using var response = await _httpClient.SendAsync(httpRequest, cancellationToken);
+            using var contentStream = await response.Content.ReadAsStreamAsync(cancellationToken);
 
-            return await ResponseBuilder.FromResponseAsync<TResponse>(contentStream, response.StatusCode, ct);
+            return await ResponseBuilder.FromResponseAsync<TResponse>(contentStream, response.StatusCode, cancellationToken);
         }
 
         /// <inheritdoc />
@@ -123,7 +123,7 @@ namespace RetroAchievements.Api
         /// Calls passed RetroAchievements API request.
         /// </summary>
         /// <returns>Response data of called request.</returns>
-        Task<TResponse> SendAsync<TResponse>(IRetroAchievementsRequest<TResponse> request, IRetroAchievementsAuthenticationData? authenticationData = null, CancellationToken ct = default) where TResponse : RetroAchievementsResponse, new();
+        Task<TResponse> SendAsync<TResponse>(IRetroAchievementsRequest<TResponse> request, IRetroAchievementsAuthenticationData? authenticationData = null, CancellationToken cancellationToken = default) where TResponse : RetroAchievementsResponse, new();
 
         /// <summary>
         /// Set RetroAchievements authentication data required for API calls.
