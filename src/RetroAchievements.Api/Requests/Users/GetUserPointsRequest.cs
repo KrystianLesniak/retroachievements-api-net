@@ -1,4 +1,5 @@
-﻿using RetroAchievements.Api.Request;
+﻿using RetroAchievements.Api.Exceptions;
+using RetroAchievements.Api.Request;
 using RetroAchievements.Api.Response.Users;
 
 namespace RetroAchievements.Api.Requests.Users
@@ -12,11 +13,11 @@ namespace RetroAchievements.Api.Requests.Users
         public string RequestEndpoint => "API_GetUserPoints";
 
 
-        ///<inheritdoc cref="GetUserGameRankAndScoreRequest" />
+        ///<inheritdoc cref="GetUserPointsRequest" />
         ///<param name="username"><inheritdoc cref="Username" path="/summary/node()"/></param>
         public GetUserPointsRequest(string username)
         {
-            ArgumentNullException.ThrowIfNull(username, nameof(username));
+            ArgumentExceptionGuard.ThrowIfNullOrWhitespace(username, nameof(username));
 
             Username = username;
         }

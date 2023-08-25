@@ -5,7 +5,7 @@ namespace RetroAchievements.Api.Achievements.Tests
     [TestFixture]
     public class GetAchievementUnlocksTests
     {
-        private readonly RetroAchievementsHttpClient HttpClient = TestHttpClient.GetRetroAchievementsApiClient(); 
+        private readonly RetroAchievementsHttpClient HttpClient = TestHttpClient.GetRetroAchievementsApiClient();
 
         [Test]
         [ApiTest]

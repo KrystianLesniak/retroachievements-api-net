@@ -23,7 +23,7 @@ namespace RetroAchievements.Api.Consoles.Tests
                 Assert.That(responseMethodAsync.HttpStatusCode, Is.EqualTo(HttpStatusCode.OK));
                 Assert.That(responseMethodAsync.FailedResponseString, Is.EqualTo(null));
                 Assert.That(responseSync.Items.Any());
-                Assert.That(responseSync.Items.Any(x=> x.Id == 1));
+                Assert.That(responseSync.Items.Any(x => x.Id == 1));
             });
         }
     }
