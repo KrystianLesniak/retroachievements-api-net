@@ -1,3 +1,6 @@
+> [!WARNING]  
+> API has been temporarily disabled. More informations here: https://github.com/RetroAchievements/retroachievements-api-js/issues/46
+
 # RetroAchievements API .NET
 
 _A C# .NET library that lets you get achievement, user, and game data from RetroAchievements._
