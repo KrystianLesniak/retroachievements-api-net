@@ -33,7 +33,7 @@ namespace RetroAchievements.Api.Achievements.Tests
 
         [Test]
         [ApiTest]
-        public async Task GetAchievementUnlocks_ReturnsUnsuccessfulResponse()
+        public async Task GetAchievementUnlocksWithNonExistentAchievement_ReturnsNotFoundResponse()
         {
             var achievementId = 1000000;
 
@@ -45,7 +45,7 @@ namespace RetroAchievements.Api.Achievements.Tests
             AssertResponses.AreEqual(responseMethodAsync, responseMethodSync, responseAsync, responseSync);
             Assert.Multiple(() =>
             {
-                Assert.That(responseMethodAsync.HttpStatusCode, Is.EqualTo(HttpStatusCode.InternalServerError));
+                Assert.That(responseMethodAsync.HttpStatusCode, Is.EqualTo(HttpStatusCode.NotFound));
                 Assert.That(responseMethodAsync.FailedResponseString, Is.Not.EqualTo(string.Empty));
                 Assert.That(responseMethodAsync.FailedResponseString, Is.Not.EqualTo(null));
                 Assert.That(responseSync.Game.Id, Is.EqualTo(0));
