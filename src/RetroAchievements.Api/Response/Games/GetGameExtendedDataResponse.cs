@@ -92,7 +92,8 @@ namespace RetroAchievements.Api.Response.Games
         /// Site-relative path to the game's in-game image.
         /// </summary>
         [JsonInclude]
-        public string ImageIngame { get; private set; } = string.Empty;
+        [JsonPropertyName("ImageIngame")]
+        public string ImageInGame { get; private set; } = string.Empty;
 
         /// <summary>
         /// Site-relative path to the game's box art image.

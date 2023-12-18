@@ -78,6 +78,20 @@ namespace RetroAchievements.Api
         }
         #endregion GetUserAllGamesProgress
 
+        #region GetGameDataAndUserProgress
+        /// <inheritdoc cref="GetGameDataAndUserProgressRequest(int, string)"/>
+        public static async Task<GetGameDataAndUserProgressResponse> GetGameDataAndUserProgressAsync(this IRetroAchievementsHttpClient client, int gameId, string username, IRetroAchievementsAuthenticationData? authenticationData = null, CancellationToken cancellationToken = default)
+        {
+            return await client.SendAsync(new GetGameDataAndUserProgressRequest(gameId, username), authenticationData, cancellationToken);
+        }
+
+        /// <inheritdoc cref="GetGameDataAndUserProgressRequest(int, string)"/>
+        public static GetGameDataAndUserProgressResponse GetGameDataAndUserProgress(this IRetroAchievementsHttpClient client, int gameId, string username, IRetroAchievementsAuthenticationData? authenticationData = null)
+        {
+            return client.Send(new GetGameDataAndUserProgressRequest(gameId, username), authenticationData);
+        }
+        #endregion GetGameDataAndUserProgress
+
         #region GetUserGameRankAndScore
         /// <inheritdoc cref="GetUserGameRankAndScoreRequest(string, int)"/>
         public static async Task<GetUserGameRankAndScoreResponse> GetUserGameRankAndScoreAsync(this IRetroAchievementsHttpClient client, string username, int gameId, IRetroAchievementsAuthenticationData? authenticationData = null, CancellationToken cancellationToken = default)

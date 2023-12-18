@@ -1,6 +1,3 @@
-> [!WARNING]  
-> API has been temporarily disabled. More informations here: https://github.com/RetroAchievements/retroachievements-api-js/issues/46
-
 # RetroAchievements API .NET
 
 _A C# .NET library that lets you get achievement, user, and game data from RetroAchievements._
@@ -114,7 +111,7 @@ After that ```IRetroAchievementsHttpClient``` can be injected into Controllers t
 #### Users
 - GetAchievementsEarnedBetween(string user, DateTime from, DateTime to) - Get a list of achievements earned by a user between two dates.
 - GetAchievementsEarnedOnDay(string user, DateTime date) - Get a list of achievements earned by a user on a given date.
-- ❌ GetGameInfoAndUserProgress() - Temporary disabled: [#46](https://github.com/RetroAchievements/retroachievements-api-js/issues/46) - Get metadata about a game as well as a user's progress on that game.
+- GetGameDataAndUserProgress(int gameId, string username) - Get extended data about a game as well as a user's progress on that game.
 - GetUserAwards(string username) - Get a list of a user's site awards/badges.
 - GetUserClaims(string username) - Get a list of set claims made over the lifetime of a user.
 - GetUserAllGamesProgress(string username) - Get hardcore and softcore completion metadata about games a user has played.
