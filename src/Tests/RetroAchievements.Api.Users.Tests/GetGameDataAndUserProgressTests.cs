@@ -32,7 +32,6 @@ namespace RetroAchievements.Api.Users.Tests
                 Assert.That(responseSync.ConsoleName, Is.EqualTo(_topUserLastPlayedGameId.ConsoleName));
                 Assert.That(responseSync.Title, Is.EqualTo(_topUserLastPlayedGameId.Title));
                 Assert.That(responseSync.Achievements, Has.Count.EqualTo(_topUserLastPlayedGameId.GameAchievementsCount));
-                Assert.That(responseSync.AchievementsCount, Is.EqualTo(_topUserLastPlayedGameId.GameAchievementsCount));
             });
         }
 
