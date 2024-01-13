@@ -36,7 +36,7 @@ namespace RetroAchievements.Api.Users.Tests
         }
 
         [Test]
-        public void GetUserAwardsRequest_ThrowsException_WhenArgumentsAreWhitespaceOrNull()
+        public void GetUserRecentAchievementsRequest_ThrowsException_WhenArgumentsAreWhitespaceOrNull()
         {
             Assert.Throws<ArgumentException>(() =>
             {
