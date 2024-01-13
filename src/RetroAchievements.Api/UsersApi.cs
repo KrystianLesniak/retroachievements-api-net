@@ -128,7 +128,7 @@ namespace RetroAchievements.Api
         }
 
         /// <inheritdoc cref="GetUserRankAndPointsRequest(string)"/>
-        public static GetUserRankAndPointsResponse GetRankAndPointsPoints(this IRetroAchievementsHttpClient client, string username, IRetroAchievementsAuthenticationData? authenticationData = null)
+        public static GetUserRankAndPointsResponse GetUserRankAndPoints(this IRetroAchievementsHttpClient client, string username, IRetroAchievementsAuthenticationData? authenticationData = null)
         {
             return client.Send(new GetUserRankAndPointsRequest(username), authenticationData);
         }
