@@ -175,5 +175,19 @@ namespace RetroAchievements.Api
             return client.Send(new GetUserRecentlyPlayedGamesRequest(username, offset, count), authenticationData);
         }
         #endregion GetUserRecentlyPlayedGames
+
+        #region GetUserSummary
+        /// <inheritdoc cref="GetUserSummaryRequest(string, int, int)"/>
+        public static async Task<GetUserSummaryResponse> GetUserSummaryAsync(this IRetroAchievementsHttpClient client, string username, int recentGamesToReturn = 0, int recentAchievementsToReturn = 10, IRetroAchievementsAuthenticationData? authenticationData = null, CancellationToken cancellationToken = default)
+        {
+            return await client.SendAsync(new GetUserSummaryRequest(username, recentGamesToReturn, recentAchievementsToReturn), authenticationData, cancellationToken);
+        }
+
+        /// <inheritdoc cref="GetUserSummaryRequest(string, int, int)"/>
+        public static GetUserSummaryResponse GetUserSummary(this IRetroAchievementsHttpClient client, string username, int recentGamesToReturn = 0, int recentAchievementsToReturn = 10, IRetroAchievementsAuthenticationData? authenticationData = null)
+        {
+            return client.Send(new GetUserSummaryRequest(username, recentGamesToReturn, recentAchievementsToReturn), authenticationData);
+        }
+        #endregion GetUserSummary
     }
 }

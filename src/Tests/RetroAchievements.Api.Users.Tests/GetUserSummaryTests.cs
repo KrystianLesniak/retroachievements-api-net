@@ -3,7 +3,7 @@ using RetroAchievements.Api.Requests.Users;
 namespace RetroAchievements.Api.Users.Tests
 {
     [TestFixture]
-    public class GetUserRecentlyPlayedGamesTests
+    public class GetUserSummaryTests
     {
         private string _topUserUsername = string.Empty;
 
@@ -11,21 +11,20 @@ namespace RetroAchievements.Api.Users.Tests
 
         [Test]
         [ApiTest]
-        public async Task GetUserRecentlyPlayedGames_ReturnsProperResponse()
+        public async Task GetUserSummary_ReturnsProperResponse()
         {
             await SetupApiTestUserName();
 
-            var responseMethodAsync = await HttpClient.GetUserRecentlyPlayedGamesAsync(_topUserUsername);
-            var responseMethodSync = HttpClient.GetUserRecentlyPlayedGames(_topUserUsername);
-            var responseAsync = await HttpClient.SendAsync(new GetUserRecentlyPlayedGamesRequest(_topUserUsername));
-            var responseSync = HttpClient.Send(new GetUserRecentlyPlayedGamesRequest(_topUserUsername));
+            var responseMethodAsync = await HttpClient.GetUserSummaryAsync("Sarconius");
+            var responseMethodSync = HttpClient.GetUserSummary(_topUserUsername);
+            var responseAsync = await HttpClient.SendAsync(new GetUserSummaryRequest(_topUserUsername));
+            var responseSync = HttpClient.Send(new GetUserSummaryRequest(_topUserUsername));
 
             AssertResponses.AreEqual(responseMethodAsync, responseMethodSync, responseAsync, responseSync);
             Assert.Multiple(() =>
             {
                 Assert.That(responseMethodAsync.HttpStatusCode, Is.EqualTo(HttpStatusCode.OK));
                 Assert.That(responseMethodAsync.FailedResponseString, Is.EqualTo(null));
-                Assert.That(responseSync.Items.Any());
             });
         }
 
@@ -42,18 +41,13 @@ namespace RetroAchievements.Api.Users.Tests
             Assert.Throws<ArgumentException>(() =>
             {
 #pragma warning disable CS8625 // Cannot convert null literal to non-nullable reference type.
-                _ = new GetUserRecentlyPlayedGamesRequest(null);
+                _ = new GetUserSummaryRequest(null);
 #pragma warning restore CS8625 // Cannot convert null literal to non-nullable reference type.
             });
 
             Assert.Throws<ArgumentException>(() =>
             {
-                _ = new GetUserRecentlyPlayedGamesRequest(string.Empty);
-            });
-
-            Assert.Throws<ArgumentException>(() =>
-            {
-                _ = new GetUserRecentlyPlayedGamesRequest(string.Empty, 0, 51);
+                _ = new GetUserSummaryRequest(string.Empty);
             });
         }
     }
