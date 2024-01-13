@@ -12,7 +12,7 @@ namespace RetroAchievements.Api.Response.Users.Records
         /// </summary>
         [JsonInclude]
         [JsonPropertyName("NumPossibleAchievements")]
-        public int PossibleAchievements { get; private set; }
+        public int PossibleAchievementsCount { get; private set; }
 
         /// <summary>
         /// Maximum number of points that can be earned from the game.

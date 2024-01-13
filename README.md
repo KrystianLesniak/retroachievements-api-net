@@ -1,6 +1,3 @@
-> [!WARNING]  
-> API has been temporarily disabled. More informations here: https://github.com/RetroAchievements/retroachievements-api-js/issues/46
-
 # RetroAchievements API .NET
 
 _A C# .NET library that lets you get achievement, user, and game data from RetroAchievements._
@@ -11,7 +8,7 @@ _A C# .NET library that lets you get achievement, user, and game data from Retro
 [![Nuget](https://img.shields.io/nuget/dt/RetroAchievements.Api) ![Nuget](https://img.shields.io/nuget/vpre/RetroAchievements.Api)](https://www.nuget.org/packages/RetroAchievements.Api/)
 
 * No external dependencies.  
-* Supported frameworks: .NET 6.0, .NET 7.0.
+* Supported frameworks: .NET 6.0, .NET 7.0, .NET 8.0.
 * Aligns 1:1 with the RAWeb API.  
 * Correctly maps types and properties from RAWeb PHP calls.   
 * CancellationToken support.   
@@ -114,7 +111,7 @@ After that ```IRetroAchievementsHttpClient``` can be injected into Controllers t
 #### Users
 - GetAchievementsEarnedBetween(string user, DateTime from, DateTime to) - Get a list of achievements earned by a user between two dates.
 - GetAchievementsEarnedOnDay(string user, DateTime date) - Get a list of achievements earned by a user on a given date.
-- ❌ GetGameInfoAndUserProgress() - Temporary disabled: [#46](https://github.com/RetroAchievements/retroachievements-api-js/issues/46) - Get metadata about a game as well as a user's progress on that game.
+- GetGameDataAndUserProgress(int gameId, string username) - Get extended data about a game as well as a user's progress on that game.
 - GetUserAwards(string username) - Get a list of a user's site awards/badges.
 - GetUserClaims(string username) - Get a list of set claims made over the lifetime of a user.
 - GetUserAllGamesProgress(string username) - Get hardcore and softcore completion metadata about games a user has played.
@@ -123,8 +120,8 @@ After that ```IRetroAchievementsHttpClient``` can be injected into Controllers t
 - GetUserRankAndScore(string username) - Get a user's total points and rank.
 - GetUserGamesProgress(string username, int[] gameIds) - Get a user's progress on a list of specified games.
 - GetUserRecentAchievements(string username, IEnumerable<int> gameIds) - Get a list of achievements recently earned by the user.
-- ❌ GetUserRecentlyPlayedGames() - Temporary disabled: [#46](https://github.com/RetroAchievements/retroachievements-api-js/issues/46) - Get a list of games a user has recently played.
-- ❌ GetUserSummary() - Temporary disabled: [#46](https://github.com/RetroAchievements/retroachievements-api-js/issues/46) - Get a user's profile metadata. 
+- GetUserRecentlyPlayedGames(string username, int offset, int count) - Get a list of games an user has recently played.
+- GetUserSummary(string username, int recentGamesToReturn, int recentAchievementsToReturn) - Get a user profile metadata. 
 
 #### Games
 - GetAchievementIdentifiers(int gameId) - Get the list of achievement IDs for a game.

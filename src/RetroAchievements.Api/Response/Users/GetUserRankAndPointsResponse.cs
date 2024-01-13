@@ -30,7 +30,8 @@ namespace RetroAchievements.Api.Response.Users
         /// Total number of ranked users.
         /// </summary>
         [JsonInclude]
-        public int TotalRanked { get; private set; }
+        [JsonPropertyName("TotalRanked")]
+        public int TotalRankedUsersCount { get; private set; }
 
     }
 }

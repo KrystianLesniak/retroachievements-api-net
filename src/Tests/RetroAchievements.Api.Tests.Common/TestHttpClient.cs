@@ -4,16 +4,13 @@
     {
         private static RetroAchievementsHttpClient? HttpClient;
 
-        public static RetroAchievementsHttpClient GetRetroAchievementsApiClient(IRetroAchievementsAuthenticationData? authData = null)
+        public static RetroAchievementsHttpClient GetRetroAchievementsApiClient()
         {
             if (HttpClient == null)
             {
                 var netHttpClient = HttpClientFactory.Create(new DelayHandler());
 
-                if (authData == null)
-                    HttpClient = new RetroAchievementsHttpClient(netHttpClient, TestAuthenticationData.CreateFromSecrets());
-                else
-                    HttpClient = new RetroAchievementsHttpClient(netHttpClient, authData);
+                HttpClient = new RetroAchievementsHttpClient(netHttpClient, TestAuthenticationData.CreateFromSecrets());
             }
 
             return HttpClient;
@@ -29,7 +26,7 @@
     {
         private bool IsRequestOngoing = false;
 
-        private const int RequestDelayMiliseconds = 75;
+        private const int RequestDelayMiliseconds = 100;
         private readonly int RequestAwaitMilisecond = RequestDelayMiliseconds / Environment.ProcessorCount;
 
         protected override async Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
@@ -42,8 +39,11 @@
             IsRequestOngoing = true;
 
             var response = await base.SendAsync(request, cancellationToken);
-
-            await Task.Delay(RequestDelayMiliseconds, cancellationToken);
+            while(response.StatusCode == System.Net.HttpStatusCode.TooManyRequests)
+            {
+                await Task.Delay(RequestDelayMiliseconds, cancellationToken);
+                response = base.Send(request, cancellationToken);
+            }
 
             IsRequestOngoing = false;
             return response;
@@ -59,8 +59,11 @@
             IsRequestOngoing = true;
 
             var response = base.Send(request, cancellationToken);
-
-            Thread.Sleep(RequestDelayMiliseconds);
+            while (response.StatusCode == System.Net.HttpStatusCode.TooManyRequests)
+            {
+                Thread.Sleep(RequestDelayMiliseconds);
+                response = base.Send(request, cancellationToken);
+            }
 
             IsRequestOngoing = false;
 
