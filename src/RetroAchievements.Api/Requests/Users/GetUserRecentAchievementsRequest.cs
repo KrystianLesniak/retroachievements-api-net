@@ -1,4 +1,5 @@
-﻿using RetroAchievements.Api.Request;
+﻿using RetroAchievements.Api.Exceptions;
+using RetroAchievements.Api.Request;
 using RetroAchievements.Api.Response.Users;
 
 namespace RetroAchievements.Api.Requests.Users
@@ -16,7 +17,7 @@ namespace RetroAchievements.Api.Requests.Users
         ///<param name="minutesToLookBack"><inheritdoc cref="MinutesToLookBack" path="/summary/node()"/></param>
         public GetUserRecentAchievementsRequest(string username, int minutesToLookBack = 60)
         {
-            ArgumentNullException.ThrowIfNull(username, nameof(username));
+            ArgumentExceptionGuard.ThrowIfNullOrWhitespace(username, nameof(username));
 
             Username = username;
             MinutesToLookBack = minutesToLookBack;
