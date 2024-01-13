@@ -10,7 +10,7 @@ namespace RetroAchievements.Api.Response.Users
         /// Unique identifier of the user.
         /// </summary>
         [JsonInclude]
-        [JsonPropertyName("UserID")]
+        [JsonPropertyName("ID")]
         public int UserId { get; private set; }
 
         /// <summary>
