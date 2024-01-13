@@ -121,7 +121,7 @@ After that ```IRetroAchievementsHttpClient``` can be injected into Controllers t
 - GetUserGamesProgress(string username, int[] gameIds) - Get a user's progress on a list of specified games.
 - GetUserRecentAchievements(string username, IEnumerable<int> gameIds) - Get a list of achievements recently earned by the user.
 - GetUserRecentlyPlayedGames(string username, int offset, int count) - Get a list of games an user has recently played.
-- ❌ GetUserSummary() - Temporary disabled: [#46](https://github.com/RetroAchievements/retroachievements-api-js/issues/46) - Get a user's profile metadata. 
+- GetUserSummary(string username, int recentGamesToReturn, int recentAchievementsToReturn) - Get a user profile metadata. 
 
 #### Games
 - GetAchievementIdentifiers(int gameId) - Get the list of achievement IDs for a game.

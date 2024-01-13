@@ -15,7 +15,7 @@ namespace RetroAchievements.Api.Users.Tests
         {
             await SetupApiTestUserName();
 
-            var responseMethodAsync = await HttpClient.GetUserSummaryAsync("Sarconius");
+            var responseMethodAsync = await HttpClient.GetUserSummaryAsync(_topUserUsername);
             var responseMethodSync = HttpClient.GetUserSummary(_topUserUsername);
             var responseAsync = await HttpClient.SendAsync(new GetUserSummaryRequest(_topUserUsername));
             var responseSync = HttpClient.Send(new GetUserSummaryRequest(_topUserUsername));
