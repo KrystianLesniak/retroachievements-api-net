@@ -78,6 +78,20 @@ namespace RetroAchievements.Api
         }
         #endregion GetUserAllGamesProgress
 
+        #region GetGameDataAndUserProgress
+        /// <inheritdoc cref="GetGameDataAndUserProgressRequest(int, string)"/>
+        public static async Task<GetGameDataAndUserProgressResponse> GetGameDataAndUserProgressAsync(this IRetroAchievementsHttpClient client, int gameId, string username, IRetroAchievementsAuthenticationData? authenticationData = null, CancellationToken cancellationToken = default)
+        {
+            return await client.SendAsync(new GetGameDataAndUserProgressRequest(gameId, username), authenticationData, cancellationToken);
+        }
+
+        /// <inheritdoc cref="GetGameDataAndUserProgressRequest(int, string)"/>
+        public static GetGameDataAndUserProgressResponse GetGameDataAndUserProgress(this IRetroAchievementsHttpClient client, int gameId, string username, IRetroAchievementsAuthenticationData? authenticationData = null)
+        {
+            return client.Send(new GetGameDataAndUserProgressRequest(gameId, username), authenticationData);
+        }
+        #endregion GetGameDataAndUserProgress
+
         #region GetUserGameRankAndScore
         /// <inheritdoc cref="GetUserGameRankAndScoreRequest(string, int)"/>
         public static async Task<GetUserGameRankAndScoreResponse> GetUserGameRankAndScoreAsync(this IRetroAchievementsHttpClient client, string username, int gameId, IRetroAchievementsAuthenticationData? authenticationData = null, CancellationToken cancellationToken = default)
@@ -148,5 +162,32 @@ namespace RetroAchievements.Api
         }
         #endregion GetUserRecentAchievements
 
+        #region GetUserRecentlyPlayedGames
+        /// <inheritdoc cref="GetUserRecentlyPlayedGamesRequest(string, int, int)"/>
+        public static async Task<GetUserRecentlyPlayedGamesResponse> GetUserRecentlyPlayedGamesAsync(this IRetroAchievementsHttpClient client, string username, int offset = 0, int count = 10, IRetroAchievementsAuthenticationData? authenticationData = null, CancellationToken cancellationToken = default)
+        {
+            return await client.SendAsync(new GetUserRecentlyPlayedGamesRequest(username, offset, count), authenticationData, cancellationToken);
+        }
+
+        /// <inheritdoc cref="GetUserRecentlyPlayedGamesRequest(string, int, int)"/>
+        public static GetUserRecentlyPlayedGamesResponse GetUserRecentlyPlayedGames(this IRetroAchievementsHttpClient client, string username, int offset = 0, int count = 10, IRetroAchievementsAuthenticationData? authenticationData = null)
+        {
+            return client.Send(new GetUserRecentlyPlayedGamesRequest(username, offset, count), authenticationData);
+        }
+        #endregion GetUserRecentlyPlayedGames
+
+        #region GetUserSummary
+        /// <inheritdoc cref="GetUserSummaryRequest(string, int, int)"/>
+        public static async Task<GetUserSummaryResponse> GetUserSummaryAsync(this IRetroAchievementsHttpClient client, string username, int recentGamesToReturn = 0, int recentAchievementsToReturn = 10, IRetroAchievementsAuthenticationData? authenticationData = null, CancellationToken cancellationToken = default)
+        {
+            return await client.SendAsync(new GetUserSummaryRequest(username, recentGamesToReturn, recentAchievementsToReturn), authenticationData, cancellationToken);
+        }
+
+        /// <inheritdoc cref="GetUserSummaryRequest(string, int, int)"/>
+        public static GetUserSummaryResponse GetUserSummary(this IRetroAchievementsHttpClient client, string username, int recentGamesToReturn = 0, int recentAchievementsToReturn = 10, IRetroAchievementsAuthenticationData? authenticationData = null)
+        {
+            return client.Send(new GetUserSummaryRequest(username, recentGamesToReturn, recentAchievementsToReturn), authenticationData);
+        }
+        #endregion GetUserSummary
     }
 }

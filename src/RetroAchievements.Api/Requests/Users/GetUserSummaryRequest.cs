@@ -1,28 +1,46 @@
-﻿//using RetroAchievements.Api.Request;
+﻿using RetroAchievements.Api.Exceptions;
+using RetroAchievements.Api.Request;
+using RetroAchievements.Api.Response.Users;
 
-//namespace RetroAchievements.Api.Requests.Users
-//{
-//    TODO: Request disabled until issue will be resolved: https://github.com/RetroAchievements/retroachievements-api-js/issues/46
-//    public record GetUserSummaryRequest : IRetroAchievementsRequest
-//    {
-//        public GetUserSummaryRequest(string username, int recentGamesToReturn = 5, int recentAchievementsToReturn = 10)
-//        {
-//            ArgumentNullException.ThrowIfNull(username, nameof(username));
+namespace RetroAchievements.Api.Requests.Users
+{
+    /// <summary>
+    /// Get summary information about a given user, targeted by username.
+    /// </summary>
+    public record GetUserSummaryRequest : IRetroAchievementsRequest<GetUserSummaryResponse>
+    {
+        /// <inheritdoc />
+        public string RequestEndpoint => "API_GetUserSummary";
 
-//            Username = username;
-//            RecentGamesToReturn = recentGamesToReturn;
-//            RecentAchievementsToReturn = recentAchievementsToReturn;
-//        }
+        ///<inheritdoc cref="GetUserSummaryRequest" />
+        ///<param name="username"><inheritdoc cref="Username" path="/summary/node()"/></param>
+        ///<param name="recentGamesToReturn"><inheritdoc cref="RecentGamesToReturn" path="/summary/node()"/></param>
+        ///<param name="recentAchievementsToReturn"><inheritdoc cref="RecentAchievementsToReturn" path="/summary/node()"/></param>
+        public GetUserSummaryRequest(string username, int recentGamesToReturn = 0, int recentAchievementsToReturn = 10)
+        {
+            ArgumentExceptionGuard.ThrowIfNullOrWhitespace(username, nameof(username));
 
-//        public string RequestEndpoint => "API_GetUserSummary";
+            Username = username;
+            RecentGamesToReturn = recentGamesToReturn;
+            RecentAchievementsToReturn = recentAchievementsToReturn;
+        }
 
-//        [ApiInputKey("u")]
-//        public string Username { get; init; }
+        /// <summary>
+        /// Username of an user to seek data for.
+        /// </summary>
+        [ApiInputKey("u")]
+        public string Username { get; init; }
 
-//        [ApiInputKey("g")]
-//        public int RecentGamesToReturn { get; init; }
+        /// <summary>
+        /// Number of recent games to return (default: <see langword="0"/>)
+        /// </summary>
+        [ApiInputKey("g")]
+        public int RecentGamesToReturn { get; init; }
 
-//        [ApiInputKey("a")]
-//        public int RecentAchievementsToReturn { get; init; }
-//    }
-//}
+        /// <summary>
+        /// Number of recent achievements to return (default: <see langword="10"/>)
+        /// </summary>
+        [ApiInputKey("a")]
+        public int RecentAchievementsToReturn { get; init; }
+    }
+}
