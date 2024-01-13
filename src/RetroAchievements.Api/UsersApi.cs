@@ -162,5 +162,18 @@ namespace RetroAchievements.Api
         }
         #endregion GetUserRecentAchievements
 
+        #region GetUserRecentlyPlayedGames
+        /// <inheritdoc cref="GetUserRecentlyPlayedGamesRequest(string, int, int)"/>
+        public static async Task<GetUserRecentlyPlayedGamesResponse> GetUserRecentlyPlayedGamesAsync(this IRetroAchievementsHttpClient client, string username, int offset = 0, int count = 10, IRetroAchievementsAuthenticationData? authenticationData = null, CancellationToken cancellationToken = default)
+        {
+            return await client.SendAsync(new GetUserRecentlyPlayedGamesRequest(username, offset, count), authenticationData, cancellationToken);
+        }
+
+        /// <inheritdoc cref="GetUserRecentlyPlayedGamesRequest(string, int, int)"/>
+        public static GetUserRecentlyPlayedGamesResponse GetUserRecentlyPlayedGames(this IRetroAchievementsHttpClient client, string username, int offset = 0, int count = 10, IRetroAchievementsAuthenticationData? authenticationData = null)
+        {
+            return client.Send(new GetUserRecentlyPlayedGamesRequest(username, offset, count), authenticationData);
+        }
+        #endregion GetUserRecentlyPlayedGames
     }
 }
