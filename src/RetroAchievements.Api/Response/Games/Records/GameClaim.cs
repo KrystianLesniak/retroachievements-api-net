@@ -41,5 +41,18 @@ namespace RetroAchievements.Api.Response.Games.Records
         [JsonPropertyName("Expiration")]
         public DateTime ExpirationDate { get; private set; }
 
+        /// <summary>
+        /// Unique, stable identifier (ULID) of the user.
+        /// </summary>
+        [JsonInclude]
+        [JsonPropertyName("ULID")]
+        public string? Ulid { get; private set; }
+
+        /// <summary>
+        /// Unique identifier of the claimed game.
+        /// </summary>
+        [JsonInclude]
+        [JsonPropertyName("GameID")]
+        public int GameId { get; private set; }
     }
 }

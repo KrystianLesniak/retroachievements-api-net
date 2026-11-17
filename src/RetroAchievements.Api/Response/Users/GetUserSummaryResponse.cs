@@ -4,6 +4,9 @@ using System.Text.Json.Serialization;
 
 namespace RetroAchievements.Api.Response.Users
 {
+    /// <summary>
+    /// Summary information about the user.
+    /// </summary>
     public record GetUserSummaryResponse : RetroAchievementsResponse
     {
         /// <summary>
@@ -157,6 +160,28 @@ namespace RetroAchievements.Api.Response.Users
         [JsonInclude]
         [JsonPropertyName("ContribYield")]
         public int ContributionYield { get; private set; }
+
+        /// <summary>
+        /// Username of the user.
+        /// </summary>
+        [JsonInclude]
+        [JsonPropertyName("User")]
+        public string Username { get; private set; } = string.Empty;
+
+        /// <summary>
+        /// Unique, stable identifier (ULID) of the user.
+        /// </summary>
+        [JsonInclude]
+        [JsonPropertyName("ULID")]
+        public string? Ulid { get; private set; }
+
+        /// <summary>
+        /// Date of the last rich presence message update.
+        /// </summary>
+        [JsonInclude]
+        [JsonConverter(typeof(DateTimeCustomApiFormatConverter))]
+        [JsonPropertyName("RichPresenceMsgDate")]
+        public DateTime? RichPresenceMessageDate { get; private set; }
     }
 
     /// <summary>
@@ -223,6 +248,18 @@ namespace RetroAchievements.Api.Response.Users
         [JsonConverter(typeof(NumberApiToBooleanConverter))]
         public bool? HardcoreMode { get; private set; }
 
+        /// <summary>
+        /// Type of the achievement (<see langword="progression"/>, <see langword="win_condition"/>, <see langword="missable"/> or <see langword="null"/>).
+        /// </summary>
+        [JsonInclude]
+        public string? Type { get; private set; }
+
+        /// <summary>
+        /// Is the achievement awarded.
+        /// </summary>
+        [JsonInclude]
+        [JsonConverter(typeof(NumberApiToBooleanConverter))]
+        public bool IsAwarded { get; private set; }
     }
 
     /// <summary>
@@ -273,6 +310,13 @@ namespace RetroAchievements.Api.Response.Users
         [JsonInclude]
         [JsonPropertyName("data2")]
         public string? ExtraAdditionalInformation { get; private set; }
+
+        /// <summary>
+        /// Type of the activity.
+        /// </summary>
+        [JsonInclude]
+        [JsonPropertyName("activitytype")]
+        public string? ActivityType { get; private set; }
     }
 
     /// <summary>
@@ -338,6 +382,12 @@ namespace RetroAchievements.Api.Response.Users
         [JsonConverter(typeof(DateTimeCustomApiFormatConverter))]
         [JsonPropertyName("LastPlayed")]
         public DateTime LastPlayedDate { get; private set; }
+
+        /// <summary>
+        /// Total number of achievements in the game.
+        /// </summary>
+        [JsonInclude]
+        public int AchievementsTotal { get; private set; }
     }
 
     /// <summary>
@@ -435,5 +485,17 @@ namespace RetroAchievements.Api.Response.Users
         [JsonInclude]
         [JsonConverter(typeof(NumberApiToBooleanConverter))]
         public bool IsFinal { get; private set; }
+
+        /// <summary>
+        /// Game flags.
+        /// </summary>
+        [JsonInclude]
+        public int? Flags { get; private set; }
+
+        /// <summary>
+        /// Granularity of the release date (<see langword="day"/>, <see langword="month"/> or <see langword="year"/>).
+        /// </summary>
+        [JsonInclude]
+        public string? ReleasedAtGranularity { get; private set; }
     }
 }

@@ -11,7 +11,7 @@ namespace RetroAchievements.Api.Internal.Json.Converters
         {
             Debug.Assert(typeToConvert == typeof(DateTime));
 
-            if (DateTime.TryParseExact(reader.GetString(), "yyyy-MM-dd hh:mm:ss", null,
+            if (DateTime.TryParseExact(reader.GetString(), "yyyy-MM-dd HH:mm:ss", null,
                           DateTimeStyles.None, out DateTime parsedDate))
             {
                 return parsedDate;
@@ -42,7 +42,7 @@ namespace RetroAchievements.Api.Internal.Json.Converters
 
         public override void Write(Utf8JsonWriter writer, DateTime value, JsonSerializerOptions options)
         {
-            writer.WriteStringValue(value.ToString("yyyy-MM-dd hh:mm:ss"));
+            writer.WriteStringValue(value.ToString("yyyy-MM-dd HH:mm:ss"));
         }
     }
 }

@@ -50,6 +50,7 @@ namespace RetroAchievements.Api.Response.Games.Records
         ///  Number of times the achievement has been awarded.
         /// </summary>
         [JsonInclude]
+        [JsonConverter(typeof(NullToDefaultIntConverter))]
         [JsonPropertyName("NumAwarded")]
         public int AwardedCount { get; private set; }
 
@@ -57,6 +58,7 @@ namespace RetroAchievements.Api.Response.Games.Records
         ///  Number of times the achievement has been awarded in hardcore.
         /// </summary>
         [JsonInclude]
+        [JsonConverter(typeof(NullToDefaultIntConverter))]
         [JsonPropertyName("NumAwardedHardcore")]
         public int AwardedHardcoreCount { get; private set; }
 
@@ -87,5 +89,24 @@ namespace RetroAchievements.Api.Response.Games.Records
         [JsonConverter(typeof(DateTimeCustomApiFormatConverter))]
         public DateTime DateModified { get; private set; }
 
+        /// <summary>
+        /// Unique, stable identifier (ULID) of the user who first created the achievement.
+        /// </summary>
+        [JsonInclude]
+        [JsonPropertyName("AuthorULID")]
+        public string? AuthorUlid { get; private set; }
+
+        /// <summary>
+        /// Hash of the achievement logic.
+        /// </summary>
+        [JsonInclude]
+        public string MemAddr { get; private set; } = string.Empty;
+
+        /// <summary>
+        /// Type of the achievement (<see langword="progression"/>, <see langword="win_condition"/>, <see langword="missable"/> or <see langword="null"/>).
+        /// </summary>
+        [JsonInclude]
+        [JsonPropertyName("type")]
+        public string? Type { get; private set; }
     }
 }

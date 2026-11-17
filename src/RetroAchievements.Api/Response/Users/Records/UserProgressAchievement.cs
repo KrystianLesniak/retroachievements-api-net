@@ -108,5 +108,18 @@ namespace RetroAchievements.Api.Response.Users.Records
         [JsonConverter(typeof(DateTimeCustomApiFormatConverter))]
         [JsonPropertyName("DateEarnedHardcore")]
         public DateTime EarnedHardcoreDate { get; private set; }
+
+        /// <summary>
+        /// Unique, stable identifier (ULID) of the user who first created the achievement.
+        /// </summary>
+        [JsonInclude]
+        [JsonPropertyName("AuthorULID")]
+        public string? AuthorUlid { get; private set; }
+
+        /// <summary>
+        /// Type of the achievement (<see langword="progression"/>, <see langword="win_condition"/>, <see langword="missable"/> or <see langword="null"/>).
+        /// </summary>
+        [JsonInclude]
+        public string? Type { get; private set; }
     }
 }

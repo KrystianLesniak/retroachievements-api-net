@@ -33,7 +33,14 @@ namespace RetroAchievements.Api.Response.Games.Records
         /// </summary>
         [JsonInclude]
         [JsonConverter(typeof(DateTimeCustomApiFormatConverter))]
+        [JsonPropertyName("LastAward")]
         public DateTime LastAwardDate { get; private set; }
 
+        /// <summary>
+        /// Unique, stable identifier (ULID) of the user.
+        /// </summary>
+        [JsonInclude]
+        [JsonPropertyName("ULID")]
+        public string? Ulid { get; private set; }
     }
 }

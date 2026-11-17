@@ -30,6 +30,7 @@ namespace RetroAchievements.Api.Response.Tickets
         /// Count of open tickets.
         /// </summary>
         [JsonInclude]
+        [JsonPropertyName("OpenTickets")]
         public int OpenTicketsCount { get; private set; }
 
         /// <summary>
@@ -39,5 +40,10 @@ namespace RetroAchievements.Api.Response.Tickets
         [JsonPropertyName("URL")]
         public string Url { get; private set; } = string.Empty;
 
+        /// <summary>
+        /// Type of the achievement (<see langword="progression"/>, <see langword="win_condition"/>, <see langword="missable"/> or <see langword="null"/>).
+        /// </summary>
+        [JsonInclude]
+        public string? AchievementType { get; private set; }
     }
 }

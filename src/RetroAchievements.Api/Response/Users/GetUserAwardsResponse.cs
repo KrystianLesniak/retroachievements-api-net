@@ -49,5 +49,17 @@ namespace RetroAchievements.Api.Response.Users
         /// </summary>
         [JsonInclude]
         public IReadOnlyCollection<VisibleUserAward> VisibleUserAwards { get; private set; } = Array.Empty<VisibleUserAward>();
+
+        /// <summary>
+        /// Count of hardcore "beaten" awards.
+        /// </summary>
+        [JsonInclude]
+        public int BeatenHardcoreAwardsCount { get; private set; }
+
+        /// <summary>
+        /// Count of softcore "beaten" awards.
+        /// </summary>
+        [JsonInclude]
+        public int BeatenSoftcoreAwardsCount { get; private set; }
     }
 }

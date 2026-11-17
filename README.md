@@ -111,7 +111,7 @@ After that ```IRetroAchievementsHttpClient``` can be injected into Controllers t
 #### Users
 - GetAchievementsEarnedBetween(string user, DateTime from, DateTime to) - Get a list of achievements earned by a user between two dates.
 - GetAchievementsEarnedOnDay(string user, DateTime date) - Get a list of achievements earned by a user on a given date.
-- GetGameDataAndUserProgress(int gameId, string username) - Get extended data about a game as well as a user's progress on that game.
+- GetGameDataAndUserProgress(int gameId, string username, bool includeHighestAward) - Get extended data about a game as well as a user's progress on that game.
 - GetUserAwards(string username) - Get a list of a user's site awards/badges.
 - GetUserClaims(string username) - Get a list of set claims made over the lifetime of a user.
 - GetUserAllGamesProgress(string username) - Get hardcore and softcore completion metadata about games a user has played.
@@ -122,20 +122,28 @@ After that ```IRetroAchievementsHttpClient``` can be injected into Controllers t
 - GetUserRecentAchievements(string username, IEnumerable<int> gameIds) - Get a list of achievements recently earned by the user.
 - GetUserRecentlyPlayedGames(string username, int offset, int count) - Get a list of games an user has recently played.
 - GetUserSummary(string username, int recentGamesToReturn, int recentAchievementsToReturn) - Get a user profile metadata. 
+- GetUserProfile(string username) - Get a user's minimal profile information.
+- GetUserCompletionProgress(string username, int offset, int count) - Get a user's completion progress of all played games.
+- GetUserSetRequests(string username, RequestListType requestListType) - Get a list of set requests made by a user.
+- GetUserWantToPlayList(string username, int offset, int count) - Get a user's "Want to Play Games" list.
+- GetUsersIFollow(int offset, int count) - Get the users the authenticated user is following.
+- GetUsersFollowingMe(int offset, int count) - Get the users that are following the authenticated user.
 
 #### Games
 - GetAchievementIdentifiers(int gameId) - Get the list of achievement IDs for a game.
 - GetAchievementDistribution(int gameId, bool hardcoreOnly, bool unofficialAchievements) - Get how many players have unlocked how many achievements for a game.
 - GetGameData(int gameId) - Get basic metadata about a game.
-- GetGameExtendedData(int gameId) - Get extended metadata about a game.
+- GetGameExtendedData(int gameId, bool unofficialAchievements) - Get extended metadata about a game.
+- GetGameHashes(int gameId) - Get the hashes linked to a game.
+- GetGameProgression(int gameId, bool hardcore) - Get information about the average time to unlock achievements in a game.
 - GetGameRankAndScore(int gameId, RankType rankType) - Get a list of either the latest masters or highest points earners for a game.
-- GetGameRating(int gameId) - Get how users have rated a game.
+- ~~GetGameRating(int gameId)~~ - Obsolete, the endpoint has been removed from RetroAchievements API.
 
 #### Achievements
 - GetAchievementUnlocks(int achievementId, int offset, int count) - Get a list of users who have earned an achievement.
 
 #### Consoles
-- GetConsoleIds() - Get the complete list of console ID and name pairs on the site.
+- GetConsoleIds(bool onlyActive, bool onlyGameSystems) - Get the complete list of console ID and name pairs on the site.
 - GetGamesList(int consoleId, bool onlyWithAchievements, bool getHashes) - Get the complete list of games for a console.
 
 #### Feed
@@ -143,6 +151,16 @@ After that ```IRetroAchievementsHttpClient``` can be injected into Controllers t
 - GetActiveClaims() - Get all active set claims on the site.
 - GetClaims(ClaimKind claimKind)- Get all claims of other kinds on the site.
 - GetTopTenUsers()-  Get the current top ten users on the site.
+- GetRecentGameAwards(DateTime? startDate, int offset, int count, IEnumerable<AwardKind>? awardKinds) - Get all recently granted game awards across the site's userbase.
+
+#### Comments
+- GetComments(int identifier, CommentKind kind, int offset, int count) - Get comments of a game or an achievement.
+- GetComments(string username, int offset, int count) - Get comments posted on a user's wall.
+
+#### Leaderboards
+- GetGameLeaderboards(int gameId, int offset, int count) - Get the leaderboards of a game.
+- GetLeaderboardEntries(int leaderboardId, int offset, int count) - Get the entries of a leaderboard.
+- GetUserGameLeaderboards(int gameId, string username, int offset, int count) - Get a user's entries of a game's leaderboards.
 
 #### Tickets
 - GetTicketData(int ticketId) - Get details for a specific ticket.

@@ -90,5 +90,29 @@ namespace RetroAchievements.Api.Response.Games
         [JsonConverter(typeof(DateTimeCustomApiFormatConverter))]
         [JsonPropertyName("Released")]
         public DateTime ReleasedDate { get; private set; }
+
+        /// <summary>
+        /// Title of the game (same as Title).
+        /// </summary>
+        [JsonInclude]
+        public string GameTitle { get; private set; } = string.Empty;
+
+        /// <summary>
+        /// Name of the console (same as ConsoleName).
+        /// </summary>
+        [JsonInclude]
+        public string Console { get; private set; } = string.Empty;
+
+        /// <summary>
+        /// Game flags.
+        /// </summary>
+        [JsonInclude]
+        public int? Flags { get; private set; }
+
+        /// <summary>
+        /// Granularity of the release date (<see langword="day"/>, <see langword="month"/> or <see langword="year"/>).
+        /// </summary>
+        [JsonInclude]
+        public string? ReleasedAtGranularity { get; private set; }
     }
 }

@@ -114,5 +114,11 @@ namespace RetroAchievements.Api.Response.Users
         [JsonInclude]
         [JsonPropertyName("ScoreAchievedHardcore")]
         public int EarnedScoreHardcore { get; private set; }
+
+        /// <summary>
+        /// Total number of achievements in the game.
+        /// </summary>
+        [JsonInclude]
+        public int AchievementsTotal { get; private set; }
     }
 }

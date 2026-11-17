@@ -42,5 +42,23 @@ namespace RetroAchievements.Api.Response.Users
         /// </summary>
         [JsonInclude]
         public IReadOnlyCollection<Unlock> Unlocks { get; private set; } = Array.Empty<Unlock>();
+
+        /// <summary>
+        /// Number of times the achievement has been unlocked in hardcore mode.
+        /// </summary>
+        [JsonInclude]
+        public int UnlocksHardcoreCount { get; private set; }
+
+        /// <summary>
+        /// Information about the game associated to the achievement.
+        /// </summary>
+        [JsonInclude]
+        public Achievements.Records.AchievementGame Game { get; private set; } = new();
+
+        /// <summary>
+        /// Official forum topic of the achievement of the week event.
+        /// </summary>
+        [JsonInclude]
+        public ForumTopic ForumTopic { get; private set; } = new();
     }
 }

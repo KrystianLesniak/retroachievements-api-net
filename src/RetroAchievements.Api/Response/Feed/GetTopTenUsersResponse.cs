@@ -35,5 +35,12 @@ namespace RetroAchievements.Api.Response.Users
         [JsonInclude]
         [JsonPropertyName("3")]
         public int TotalWhitePoints { get; private set; }
+
+        /// <summary>
+        /// Unique, stable identifier (ULID) of the user.
+        /// </summary>
+        [JsonInclude]
+        [JsonPropertyName("4")]
+        public string? Ulid { get; private set; }
     }
 }

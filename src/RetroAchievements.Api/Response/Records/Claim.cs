@@ -121,5 +121,12 @@ namespace RetroAchievements.Api.Response.Records
         /// </summary>
         [JsonInclude]
         public int MinutesLeft { get; private set; }
+
+        /// <summary>
+        /// Unique, stable identifier (ULID) of the user.
+        /// </summary>
+        [JsonInclude]
+        [JsonPropertyName("ULID")]
+        public string? Ulid { get; private set; }
     }
 }

@@ -105,5 +105,25 @@ namespace RetroAchievements.Api.Response.Users.Records
         [JsonInclude]
         [JsonPropertyName("GameURL")]
         public string GameUrl { get; private set; } = string.Empty;
+
+        /// <summary>
+        /// Unique, stable identifier (ULID) of the user who first created the achievement.
+        /// </summary>
+        [JsonInclude]
+        [JsonPropertyName("AuthorULID")]
+        public string? AuthorUlid { get; private set; }
+
+        /// <summary>
+        /// Type of the achievement (<see langword="progression"/>, <see langword="win_condition"/>, <see langword="missable"/> or <see langword="null"/>).
+        /// </summary>
+        [JsonInclude]
+        public string? Type { get; private set; }
+
+        /// <summary>
+        /// Number of "white" points the achievement is worth.
+        /// </summary>
+        [JsonInclude]
+        [JsonPropertyName("TrueRatio")]
+        public int TrueRatioPoints { get; private set; }
     }
 }
