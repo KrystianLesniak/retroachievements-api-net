@@ -35,5 +35,19 @@ namespace RetroAchievements.Api.Response.Records
         [JsonInclude]
         [JsonConverter(typeof(NumberApiToBooleanConverter))]
         public bool HardcoreMode { get; private set; }
+
+        /// <summary>
+        /// Unique, stable identifier (ULID) of the user.
+        /// </summary>
+        [JsonInclude]
+        [JsonPropertyName("ULID")]
+        public string? Ulid { get; private set; }
+
+        /// <summary>
+        /// Number of RetroAchievements softcore points the user has.
+        /// </summary>
+        [JsonInclude]
+        [JsonPropertyName("RASoftcorePoints")]
+        public int SoftcorePoints { get; private set; }
     }
 }

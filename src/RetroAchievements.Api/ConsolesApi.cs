@@ -10,16 +10,16 @@ namespace RetroAchievements.Api
     public static class ConsolesApi
     {
         #region GetConsoleIds
-        /// <inheritdoc cref="GetConsoleIdsRequest()"/>
-        public static async Task<GetConsoleIdsResponse> GetConsoleIdsAsync(this IRetroAchievementsHttpClient client, IRetroAchievementsAuthenticationData? authenticationData = null, CancellationToken cancellationToken = default)
+        /// <inheritdoc cref="GetConsoleIdsRequest(bool, bool)"/>
+        public static async Task<GetConsoleIdsResponse> GetConsoleIdsAsync(this IRetroAchievementsHttpClient client, bool onlyActive = false, bool onlyGameSystems = false, IRetroAchievementsAuthenticationData? authenticationData = null, CancellationToken cancellationToken = default)
         {
-            return await client.SendAsync(new GetConsoleIdsRequest(), authenticationData, cancellationToken);
+            return await client.SendAsync(new GetConsoleIdsRequest(onlyActive, onlyGameSystems), authenticationData, cancellationToken);
         }
 
-        /// <inheritdoc cref="GetConsoleIdsRequest()"/>
-        public static GetConsoleIdsResponse GetConsoleIds(this IRetroAchievementsHttpClient client, IRetroAchievementsAuthenticationData? authenticationData = null)
+        /// <inheritdoc cref="GetConsoleIdsRequest(bool, bool)"/>
+        public static GetConsoleIdsResponse GetConsoleIds(this IRetroAchievementsHttpClient client, bool onlyActive = false, bool onlyGameSystems = false, IRetroAchievementsAuthenticationData? authenticationData = null)
         {
-            return client.Send(new GetConsoleIdsRequest(), authenticationData);
+            return client.Send(new GetConsoleIdsRequest(onlyActive, onlyGameSystems), authenticationData);
         }
         #endregion GetConsoleIds
 

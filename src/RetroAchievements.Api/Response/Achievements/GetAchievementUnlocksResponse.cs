@@ -40,5 +40,10 @@ namespace RetroAchievements.Api.Response.Achievements
         [JsonInclude]
         public IReadOnlyCollection<Unlock> Unlocks { get; private set; } = Array.Empty<Unlock>();
 
+        /// <summary>
+        /// Count of times the achievement has been unlocked in hardcore mode.
+        /// </summary>
+        [JsonInclude]
+        public int UnlocksHardcoreCount { get; private set; }
     }
 }

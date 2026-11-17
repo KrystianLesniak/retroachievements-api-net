@@ -7,6 +7,7 @@ namespace RetroAchievements.Api.Requests.Games
     /// <summary>
     /// Get the overall rating of the game.
     /// </summary>
+    [Obsolete("API_GetGameRating has been removed from RetroAchievements API (returns HTTP 410 Gone).")]
     public record GetGameRatingRequest : IRetroAchievementsRequest<GetGameRatingResponse>
     {
         /// <inheritdoc />

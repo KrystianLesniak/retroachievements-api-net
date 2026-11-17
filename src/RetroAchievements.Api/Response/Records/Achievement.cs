@@ -60,5 +60,31 @@ namespace RetroAchievements.Api.Response.Records
         [JsonInclude]
         [JsonConverter(typeof(DateTimeCustomApiFormatConverter))]
         public DateTime DateModified { get; private set; }
+
+        /// <summary>
+        /// Unique, stable identifier (ULID) of the user who first created the achievement.
+        /// </summary>
+        [JsonInclude]
+        [JsonPropertyName("AuthorULID")]
+        public string? AuthorUlid { get; private set; }
+
+        /// <summary>
+        /// Type of the achievement (<see langword="progression"/>, <see langword="win_condition"/>, <see langword="missable"/> or <see langword="null"/>).
+        /// </summary>
+        [JsonInclude]
+        public string? Type { get; private set; }
+
+        /// <summary>
+        /// Unique identifier of the badge image for the achievement.
+        /// </summary>
+        [JsonInclude]
+        public string? BadgeName { get; private set; }
+
+        /// <summary>
+        /// Site-relative path to the achievement's badge image.
+        /// </summary>
+        [JsonInclude]
+        [JsonPropertyName("BadgeURL")]
+        public string? BadgeUrl { get; private set; }
     }
 }

@@ -48,5 +48,12 @@ namespace RetroAchievements.Api.Response.Tickets
         [JsonInclude]
         [JsonPropertyName("URL")]
         public string Url { get; private set; } = string.Empty;
+
+        /// <summary>
+        /// Unique, stable identifier (ULID) of the user.
+        /// </summary>
+        [JsonInclude]
+        [JsonPropertyName("ULID")]
+        public string? Ulid { get; private set; }
     }
 }

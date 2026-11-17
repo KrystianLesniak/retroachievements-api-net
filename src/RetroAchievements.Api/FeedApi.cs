@@ -1,5 +1,7 @@
 ﻿using RetroAchievements.Api.Requests.Enums;
+using RetroAchievements.Api.Requests.Feed;
 using RetroAchievements.Api.Requests.Users;
+using RetroAchievements.Api.Response.Feed;
 using RetroAchievements.Api.Response.Users;
 
 namespace RetroAchievements.Api
@@ -64,5 +66,19 @@ namespace RetroAchievements.Api
             return client.Send(new GetTopTenUsersRequest(), authenticationData);
         }
         #endregion GetTopTenUsers
+
+        #region GetRecentGameAwards
+        /// <inheritdoc cref="GetRecentGameAwardsRequest(Nullable{DateTime}, int, int, IEnumerable{AwardKind})"/>
+        public static async Task<GetRecentGameAwardsResponse> GetRecentGameAwardsAsync(this IRetroAchievementsHttpClient client, DateTime? startDate = null, int offset = 0, int count = 25, IEnumerable<AwardKind>? awardKinds = null, IRetroAchievementsAuthenticationData? authenticationData = null, CancellationToken cancellationToken = default)
+        {
+            return await client.SendAsync(new GetRecentGameAwardsRequest(startDate, offset, count, awardKinds), authenticationData, cancellationToken);
+        }
+
+        /// <inheritdoc cref="GetRecentGameAwardsRequest(Nullable{DateTime}, int, int, IEnumerable{AwardKind})"/>
+        public static GetRecentGameAwardsResponse GetRecentGameAwards(this IRetroAchievementsHttpClient client, DateTime? startDate = null, int offset = 0, int count = 25, IEnumerable<AwardKind>? awardKinds = null, IRetroAchievementsAuthenticationData? authenticationData = null)
+        {
+            return client.Send(new GetRecentGameAwardsRequest(startDate, offset, count, awardKinds), authenticationData);
+        }
+        #endregion GetRecentGameAwards
     }
 }

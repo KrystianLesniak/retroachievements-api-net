@@ -58,5 +58,24 @@ namespace RetroAchievements.Api.Response.Users.Records
         [JsonInclude]
         public string ImageIcon { get; private set; } = string.Empty;
 
+        /// <summary>
+        /// Unique identifier of the console associated to the award.
+        /// </summary>
+        [JsonInclude]
+        [JsonPropertyName("ConsoleID")]
+        public int? ConsoleId { get; private set; }
+
+        /// <summary>
+        /// Award flags.
+        /// </summary>
+        [JsonInclude]
+        public int? Flags { get; private set; }
+
+        /// <summary>
+        /// Display tier of the award.
+        /// </summary>
+        [JsonInclude]
+        [JsonPropertyName("display_award_tier")]
+        public int? DisplayAwardTier { get; private set; }
     }
 }

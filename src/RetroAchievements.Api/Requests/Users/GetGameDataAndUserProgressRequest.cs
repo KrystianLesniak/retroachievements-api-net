@@ -15,12 +15,14 @@ namespace RetroAchievements.Api.Requests.Users
         ///<inheritdoc cref="GetGameDataAndUserProgressRequest" />
         ///<param name="username"><inheritdoc cref="Username" path="/summary/node()"/></param>
         ///<param name="gameId"><inheritdoc cref="GameId" path="/summary/node()"/></param>
-        public GetGameDataAndUserProgressRequest(int gameId, string username)
+        ///<param name="includeHighestAward"><inheritdoc cref="IncludeHighestAward" path="/summary/node()"/></param>
+        public GetGameDataAndUserProgressRequest(int gameId, string username, bool includeHighestAward = false)
         {
             ArgumentExceptionGuard.ThrowIfNullOrWhitespace(username, nameof(username));
 
             GameId = gameId;
             Username = username;
+            IncludeHighestAward = includeHighestAward ? 1 : 0;
         }
 
         ///<summary>
@@ -34,5 +36,11 @@ namespace RetroAchievements.Api.Requests.Users
         /// </summary>
         [ApiInputKey("u")]
         public string Username { get; init; }
+
+        /// <summary>
+        /// Also return the user's highest award metadata for the game (HighestAwardKind and HighestAwardDate).
+        /// </summary>
+        [ApiInputKey("a")]
+        public int IncludeHighestAward { get; init; }
     }
 }

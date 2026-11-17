@@ -18,6 +18,7 @@ namespace RetroAchievements.Api.Response.Users
         /// Number of softcore points the user has.
         /// </summary>
         [JsonInclude]
+        [JsonPropertyName("SoftcoreScore")]
         public int SoftcorePoints { get; private set; }
 
         /// <summary>
@@ -32,6 +33,5 @@ namespace RetroAchievements.Api.Response.Users
         [JsonInclude]
         [JsonPropertyName("TotalRanked")]
         public int TotalRankedUsersCount { get; private set; }
-
     }
 }

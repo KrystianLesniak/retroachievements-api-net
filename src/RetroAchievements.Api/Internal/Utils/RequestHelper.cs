@@ -37,6 +37,8 @@ namespace RetroAchievements.Api.Internal.Utils
             if (propertyValue == null)
                 return string.Empty;
 
+            propertyType = Nullable.GetUnderlyingType(propertyType) ?? propertyType;
+
             //Is DateTime
             if (propertyType == typeof(DateTime))
             {

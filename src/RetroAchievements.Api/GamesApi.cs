@@ -51,16 +51,16 @@ namespace RetroAchievements.Api
         #endregion GetGame
 
         #region GetGameExtended
-        /// <inheritdoc cref="GetGameExtendedDataRequest(int)"/>
-        public static async Task<GetGameExtendedDataResponse> GetGameExtendedDataAsync(this IRetroAchievementsHttpClient client, int gameId, IRetroAchievementsAuthenticationData? authenticationData = null, CancellationToken cancellationToken = default)
+        /// <inheritdoc cref="GetGameExtendedDataRequest(int, bool)"/>
+        public static async Task<GetGameExtendedDataResponse> GetGameExtendedDataAsync(this IRetroAchievementsHttpClient client, int gameId, bool unofficialAchievements = false, IRetroAchievementsAuthenticationData? authenticationData = null, CancellationToken cancellationToken = default)
         {
-            return await client.SendAsync(new GetGameExtendedDataRequest(gameId), authenticationData, cancellationToken);
+            return await client.SendAsync(new GetGameExtendedDataRequest(gameId, unofficialAchievements), authenticationData, cancellationToken);
         }
 
-        /// <inheritdoc cref="GetGameExtendedDataRequest(int)"/>
-        public static GetGameExtendedDataResponse GetGameExtendedData(this IRetroAchievementsHttpClient client, int gameId, IRetroAchievementsAuthenticationData? authenticationData = null)
+        /// <inheritdoc cref="GetGameExtendedDataRequest(int, bool)"/>
+        public static GetGameExtendedDataResponse GetGameExtendedData(this IRetroAchievementsHttpClient client, int gameId, bool unofficialAchievements = false, IRetroAchievementsAuthenticationData? authenticationData = null)
         {
-            return client.Send(new GetGameExtendedDataRequest(gameId), authenticationData);
+            return client.Send(new GetGameExtendedDataRequest(gameId, unofficialAchievements), authenticationData);
         }
         #endregion GetGameExtended
 
@@ -81,16 +81,46 @@ namespace RetroAchievements.Api
         #region GetGameRating
 
         /// <inheritdoc cref="GetGameRatingRequest(int)"/>
+        [Obsolete("API_GetGameRating has been removed from RetroAchievements API (returns HTTP 410 Gone).")]
         public static async Task<GetGameRatingResponse> GetGameRatingAsync(this IRetroAchievementsHttpClient client, int gameId, IRetroAchievementsAuthenticationData? authenticationData = null, CancellationToken cancellationToken = default)
         {
             return await client.SendAsync(new GetGameRatingRequest(gameId), authenticationData, cancellationToken);
         }
 
         /// <inheritdoc cref="GetGameRatingRequest(int)"/>
+        [Obsolete("API_GetGameRating has been removed from RetroAchievements API (returns HTTP 410 Gone).")]
         public static GetGameRatingResponse GetGameRating(this IRetroAchievementsHttpClient client, int gameId, IRetroAchievementsAuthenticationData? authenticationData = null)
         {
             return client.Send(new GetGameRatingRequest(gameId), authenticationData);
         }
         #endregion GetGameRating
+
+        #region GetGameHashes
+        /// <inheritdoc cref="GetGameHashesRequest(int)"/>
+        public static async Task<GetGameHashesResponse> GetGameHashesAsync(this IRetroAchievementsHttpClient client, int gameId, IRetroAchievementsAuthenticationData? authenticationData = null, CancellationToken cancellationToken = default)
+        {
+            return await client.SendAsync(new GetGameHashesRequest(gameId), authenticationData, cancellationToken);
+        }
+
+        /// <inheritdoc cref="GetGameHashesRequest(int)"/>
+        public static GetGameHashesResponse GetGameHashes(this IRetroAchievementsHttpClient client, int gameId, IRetroAchievementsAuthenticationData? authenticationData = null)
+        {
+            return client.Send(new GetGameHashesRequest(gameId), authenticationData);
+        }
+        #endregion GetGameHashes
+
+        #region GetGameProgression
+        /// <inheritdoc cref="GetGameProgressionRequest(int, bool)"/>
+        public static async Task<GetGameProgressionResponse> GetGameProgressionAsync(this IRetroAchievementsHttpClient client, int gameId, bool hardcore = false, IRetroAchievementsAuthenticationData? authenticationData = null, CancellationToken cancellationToken = default)
+        {
+            return await client.SendAsync(new GetGameProgressionRequest(gameId, hardcore), authenticationData, cancellationToken);
+        }
+
+        /// <inheritdoc cref="GetGameProgressionRequest(int, bool)"/>
+        public static GetGameProgressionResponse GetGameProgression(this IRetroAchievementsHttpClient client, int gameId, bool hardcore = false, IRetroAchievementsAuthenticationData? authenticationData = null)
+        {
+            return client.Send(new GetGameProgressionRequest(gameId, hardcore), authenticationData);
+        }
+        #endregion GetGameProgression
     }
 }
