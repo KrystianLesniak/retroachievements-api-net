@@ -39,7 +39,7 @@ jobs:
 
     - run: dotnet pack ${{ env.CsProjFilePath }} --configuration Release --output ${{ env.NuGetDirectory }}
 
-    - uses: actions/upload-artifact@v3
+    - uses: actions/upload-artifact@v4
       with:
         name: nuget
         if-no-files-found: error
@@ -72,6 +72,12 @@ jobs:
     - uses: actions/checkout@v3
     - name: Setup .NET
       uses: actions/setup-dotnet@v3
+      with:
+        # runner image no longer ships net6/net7 runtimes needed by the test TFMs
+        dotnet-version: |
+          6.0.x
+          7.0.x
+          8.0.x
     - name: Run tests
       working-directory: ${{ env.SlnFolderPath }}
       run: |
@@ -85,6 +91,12 @@ jobs:
     - uses: actions/checkout@v3
     - name: Setup .NET
       uses: actions/setup-dotnet@v3
+      with:
+        # runner image no longer ships net6/net7 runtimes needed by the test TFMs
+        dotnet-version: |
+          6.0.x
+          7.0.x
+          8.0.x
     - name: Set Secrets
       working-directory: ${{ env.SlnFolderPath }}/Tests/RetroAchievements.Api.Tests.Common
       run: |
