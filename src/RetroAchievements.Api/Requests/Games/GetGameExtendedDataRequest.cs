@@ -14,11 +14,13 @@ namespace RetroAchievements.Api.Requests.Games
 
         ///<inheritdoc cref="GetGameExtendedDataRequest" />
         ///<param name="gameId"><inheritdoc cref="GameId" path="/summary/node()"/></param>
-        public GetGameExtendedDataRequest(int gameId)
+        ///<param name="unofficialAchievements"><inheritdoc cref="AchievementTypesFlag" path="/summary/node()"/></param>
+        public GetGameExtendedDataRequest(int gameId, bool unofficialAchievements = false)
         {
             ArgumentNullException.ThrowIfNull(gameId);
 
             GameId = gameId;
+            AchievementTypesFlag = unofficialAchievements ? 5 : 3;
         }
 
         ///<summary>
@@ -27,5 +29,10 @@ namespace RetroAchievements.Api.Requests.Games
         [ApiInputKey("i")]
         public int GameId { get; init; }
 
+        /// <summary>
+        /// <see langword="true" /> to get unofficial achievements, (Default = <see langword="false" />) to get core achievements.
+        /// </summary>
+        [ApiInputKey("f")]
+        public int AchievementTypesFlag { get; init; }
     }
 }

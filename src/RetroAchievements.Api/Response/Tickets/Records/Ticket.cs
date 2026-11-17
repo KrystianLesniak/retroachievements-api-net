@@ -143,5 +143,32 @@ namespace RetroAchievements.Api.Response.Records
         /// </summary>
         [JsonInclude]
         public string ResolvedBy { get; private set; } = string.Empty;
+
+        /// <summary>
+        /// Unique, stable identifier (ULID) of the user who created the achievement.
+        /// </summary>
+        [JsonInclude]
+        [JsonPropertyName("AchievementAuthorULID")]
+        public string? AchievementAuthorUlid { get; private set; }
+
+        /// <summary>
+        /// Type of the achievement (<see langword="progression"/>, <see langword="win_condition"/>, <see langword="missable"/> or <see langword="null"/>).
+        /// </summary>
+        [JsonInclude]
+        public string? AchievementType { get; private set; }
+
+        /// <summary>
+        /// Unique, stable identifier (ULID) of the user who reported the ticket.
+        /// </summary>
+        [JsonInclude]
+        [JsonPropertyName("ReportedByULID")]
+        public string? ReportedByUlid { get; private set; }
+
+        /// <summary>
+        /// Unique, stable identifier (ULID) of the user who resolved the ticket.
+        /// </summary>
+        [JsonInclude]
+        [JsonPropertyName("ResolvedByULID")]
+        public string? ResolvedByUlid { get; private set; }
     }
 }

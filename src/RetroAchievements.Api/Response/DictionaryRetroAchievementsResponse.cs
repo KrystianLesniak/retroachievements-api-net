@@ -43,7 +43,7 @@ namespace RetroAchievements.Api.Response
 
         public override void Write(Utf8JsonWriter writer, TResponse value, JsonSerializerOptions options)
         {
-            JsonSerializer.Serialize(writer, value, options);
+            JsonSerializer.Serialize(writer, value.Items, options);
         }
     }
 }

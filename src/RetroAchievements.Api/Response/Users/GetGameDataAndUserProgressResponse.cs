@@ -169,5 +169,43 @@ namespace RetroAchievements.Api.Response.Users
         /// </summary>
         [JsonInclude]
         public string RichPresencePatch { get; private set; } = string.Empty;
+
+        /// <summary>
+        /// Game flags.
+        /// </summary>
+        [JsonInclude]
+        public int? Flags { get; private set; }
+
+        /// <summary>
+        /// Granularity of the release date (<see langword="day"/>, <see langword="month"/> or <see langword="year"/>).
+        /// </summary>
+        [JsonInclude]
+        public string? ReleasedAtGranularity { get; private set; }
+
+        /// <summary>
+        /// Number of distinct players who have earned an achievement in the game.
+        /// </summary>
+        [JsonInclude]
+        [JsonPropertyName("NumDistinctPlayers")]
+        public int PlayersCount { get; private set; }
+
+        /// <summary>
+        /// Total time (in seconds) the user has spent playing the game.
+        /// </summary>
+        [JsonInclude]
+        public int UserTotalPlaytime { get; private set; }
+
+        /// <summary>
+        /// Highest award kind earned by the user for the game (<see langword="mastered"/>, <see langword="completed"/>, <see langword="beaten-hardcore"/>, <see langword="beaten-softcore"/>). Returned only when requested.
+        /// </summary>
+        [JsonInclude]
+        public string? HighestAwardKind { get; private set; }
+
+        /// <summary>
+        /// Date the user earned the highest award for the game. Returned only when requested.
+        /// </summary>
+        [JsonInclude]
+        [JsonConverter(typeof(DateTimeCustomApiFormatConverter))]
+        public DateTime? HighestAwardDate { get; private set; }
     }
 }

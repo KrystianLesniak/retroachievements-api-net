@@ -145,5 +145,39 @@ namespace RetroAchievements.Api.Response.Games
         /// </summary>
         [JsonInclude]
         public IReadOnlyCollection<GameClaim> Claims { get; private set; } = Array.Empty<GameClaim>();
+
+        /// <summary>
+        /// Game flags.
+        /// </summary>
+        [JsonInclude]
+        public int? Flags { get; private set; }
+
+        /// <summary>
+        /// Granularity of the release date (<see langword="day"/>, <see langword="month"/> or <see langword="year"/>).
+        /// </summary>
+        [JsonInclude]
+        public string? ReleasedAtGranularity { get; private set; }
+
+        /// <summary>
+        /// Number of distinct players who have earned an achievement in the game.
+        /// </summary>
+        [JsonInclude]
+        [JsonPropertyName("NumDistinctPlayers")]
+        public int PlayersCount { get; private set; }
+
+        /// <summary>
+        /// URL to the game's guide.
+        /// </summary>
+        [JsonInclude]
+        [JsonPropertyName("GuideURL")]
+        public string? GuideUrl { get; private set; }
+
+        /// <summary>
+        /// Date the game was last updated.
+        /// </summary>
+        [JsonInclude]
+        [JsonConverter(typeof(DateTimeCustomApiFormatConverter))]
+        [JsonPropertyName("Updated")]
+        public DateTime? UpdatedDate { get; private set; }
     }
 }
